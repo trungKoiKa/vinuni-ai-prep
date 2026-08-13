@@ -1968,18 +1968,18 @@ export const moduleCQuestions: Question[] = [
     id: "modC_135",
     module: "C",
     moduleName: "Kiến thức AI & Sản phẩm AI",
-    topic: "ReLU",
-    difficulty: "Dễ",
-    question: "Hàm kích hoạt ReLU (Rectified Linear Unit) có công thức là gì?",
+    topic: "Leaky ReLU",
+    difficulty: "Trung bình",
+    question: "Hàm kích hoạt Leaky ReLU khắc phục hiện tượng 'Dying ReLU' (neuron bị chết) bằng cách nào?",
     options: [
-      "f(z) = 1 / (1 + e⁻ᶻ)",
-      "f(z) = max(0, z)",
-      "f(z) = tanh(z)",
-      "f(z) = eᶻ"
+      "Đặt giá trị âm về hẳn bằng -1",
+      "Cho phép một gradient nhỏ khác 0 (ví dụ f(z) = max(α z, z) với α = 0.01) khi z ≤ 0",
+      "Biến đổi đầu ra thành phân phối xác suất từ 0 đến 1",
+      "Tự động triệt tiêu tất cả các giá trị dương"
     ],
     correctAnswer: 1,
-    explanation: "Hàm ReLU trả về chính z nếu z > 0, và trả về 0 nếu z ≤ 0.",
-    tags: ["relu", "activation_function"]
+    explanation: "Leaky ReLU gán một hệ số α nhỏ (như 0.01) cho miền âm z ≤ 0 để gradient không bị bằng 0 hoàn toàn, giúp các neuron nhận đầu ra âm vẫn có thể tiếp tục cập nhật trọng số.",
+    tags: ["leaky_relu", "activation_function"]
   },
   {
     id: "modC_136",

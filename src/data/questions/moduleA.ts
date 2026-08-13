@@ -109,18 +109,18 @@ export const moduleAQuestions: Question[] = [
     id: "modA_08",
     module: "A",
     moduleName: "Toán & Tư duy định lượng",
-    topic: "Nhân ma trận",
-    difficulty: "Trung bình",
-    question: "Cho A = [[2, 0], [1, 3]] và B = [[1, 2], [3, 4]]. Tính tích BA.",
+    topic: "Giao hoán ma trận",
+    difficulty: "Dễ",
+    question: "Phép nhân hai ma trận vuông A và B có tính chất giao hoán (AB = BA) trong trường hợp tổng quát không?",
     options: [
-      "[[4, 6], [10, 12]]",
-      "[[2, 0], [3, 12]]",
-      "[[3, 2], [4, 7]]",
-      "[[4, 10], [6, 12]]"
+      "Không, nói chung AB ≠ BA (phép nhân ma trận không có tính chất giao hoán)",
+      "Có, AB luôn luôn bằng BA với mọi ma trận vuông",
+      "Chỉ giao hoán khi định thức của A và B bằng 0",
+      "Chỉ giao hoán khi ma trận có kích thước 2x2"
     ],
     correctAnswer: 0,
-    explanation: "BA = [[1*2 + 2*1, 1*0 + 2*3], [3*2 + 4*1, 3*0 + 4*3]] = [[4, 6], [10, 12]]. Ta thấy phép nhân ma trận không có tính chất giao hoán.",
-    tags: ["matrix", "multiplication"]
+    explanation: "Phép nhân ma trận nói chung KHÔNG có tính chất giao hoán (AB ≠ BA), trừ một số trường hợp đặc biệt như nhân với ma trận đơn vị hay ma trận nghịch đảo.",
+    tags: ["matrix", "commutativity"]
   },
   {
     id: "modA_09",
@@ -1282,18 +1282,18 @@ export const moduleAQuestions: Question[] = [
     id: "modA_ext_35",
     module: "A",
     moduleName: "Toán & Tư duy định lượng",
-    topic: "Gradient Descent Formula",
+    topic: "Stochastic Gradient Descent",
     difficulty: "Dễ",
-    question: "Công thức cập nhật tham số trong thuật toán Gradient Descent cơ bản là:",
+    question: "Trong thuật toán Stochastic Gradient Descent (SGD) thuần túy, gradient của hàm mất mát được tính dựa trên bao nhiêu mẫu dữ liệu tại mỗi bước cập nhật?",
     options: [
-      "θ = θ + η ∇J(θ)",
-      "θ = θ - η ∇J(θ)",
-      "θ = η ∇J(θ)",
-      "θ = θ - ∇J(θ) / η"
+      "Duy nhất 1 mẫu dữ liệu được chọn ngẫu nhiên",
+      "Toàn bộ N mẫu dữ liệu của tập huấn luyện",
+      "Một mini-batch gồm 32 hoặc 64 mẫu",
+      "Không cần sử dụng mẫu dữ liệu nào"
     ],
-    correctAnswer: 1,
-    explanation: "Công thức cập nhật: θ_{t+1} = θ_t - η ∇J(θ), trong đó η là tốc độ học (learning rate).",
-    tags: ["gradient_descent", "formula"]
+    correctAnswer: 0,
+    explanation: "SGD thuần túy (Pure SGD) tính toán gradient và cập nhật trọng số dựa trên duy nhất 1 mẫu dữ liệu được chọn ngẫu nhiên tại mỗi bước lặp.",
+    tags: ["sgd", "stochastic_gradient_descent", "optimization"]
   },
   {
     id: "modA_ext_36",
