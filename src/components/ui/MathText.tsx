@@ -13,14 +13,44 @@ interface Segment {
 }
 
 /**
- * Parses text into plain text segments and LaTeX math segments.
- * Supports:
- * - Display math: $$...$$ or \[...\]
- * - Inline math: $...$ or \(...\)
- * - Auto-detects standalone LaTeX math strings containing \begin, \mathbb, \frac, \lambda, etc.
+ * Automatically converts bracketed matrix notations like [[1, 2], [3, 4]]
+ * into clean LaTeX bmatrix notation $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
+ * while leaving Python code blocks untouched.
  */
-function parseMathSegments(text: string): Segment[] {
-  if (!text) return [];
+export function convertBracketMatrices(text: string): string {
+  if (!text) return "";
+  
+  // Do not transform python code block text
+  if (text.trim().startsWith("```") || text.includes("np.array")) {
+    return text;
+  }
+
+  // Regex matching matrix patterns like [[a, b], [c, d]] or [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  const matrixRegex = /\[\s*(\[\s*[^\[\]]+?\s*\](?:\s*,\s*\[\s*[^\[\]]+?\s*\])+)\s*\]/g;
+
+  return text.replace(matrixRegex, (fullMatch, innerContent) => {
+    const rowMatches = innerContent.match(/\[\s*([^\[\]]+?)\s*\]/g);
+    if (!rowMatches) return fullMatch;
+
+    const rows = rowMatches.map((rowStr: string) => {
+      const inner = rowStr.replace(/^\[\s*/, "").replace(/\s*\]$/, "");
+      const elements = inner.split(/\s*,\s*/);
+      return elements.join(" & ");
+    });
+
+    const latexMatrix = `\\begin{bmatrix} ${rows.join(" \\\\ ")} \\end{bmatrix}`;
+    return `$${latexMatrix}$`;
+  });
+}
+
+/**
+ * Parses text into plain text segments and LaTeX math segments.
+ */
+function parseMathSegments(rawText: string): Segment[] {
+  if (!rawText) return [];
+
+  // Preprocess bracket matrix notation into LaTeX bmatrix
+  const text = convertBracketMatrices(rawText);
 
   const segments: Segment[] = [];
   // Regex matching $$...$$, $...$, \[...\], \(...\)
@@ -70,7 +100,7 @@ function parseMathSegments(text: string): Segment[] {
   // Push remaining text
   if (lastIndex < text.length) {
     const remaining = text.slice(lastIndex);
-    // Auto-detect if raw LaTeX command is present without $ delimiters
+    // Auto-detect standalone LaTeX math command without $ delimiters
     if (
       /\\(begin|mathbb|mathbbm|mathcal|mathbf|frac|sqrt|sum|prod|int|matrix|bmatrix|pmatrix|vmatrix|lambda|theta|sigma|alpha|beta|gamma|delta|epsilon|omega|phi|pi)/.test(
         remaining
@@ -110,7 +140,11 @@ export const MathText: React.FC<MathTextProps> = ({ text, className = "" }) => {
           return (
             <span
               key={idx}
-              className={seg.type === "display-math" ? "block my-2 text-center overflow-x-auto" : "inline-block px-0.5"}
+              className={
+                seg.type === "display-math"
+                  ? "block my-2 text-center overflow-x-auto"
+                  : "inline-block px-1 align-middle"
+              }
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
