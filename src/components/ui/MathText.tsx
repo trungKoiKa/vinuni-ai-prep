@@ -15,17 +15,14 @@ interface Segment {
 /**
  * Automatically converts bracketed matrix notations like [[1, 2], [3, 4]]
  * into clean LaTeX bmatrix notation $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
- * while leaving Python code blocks untouched.
  */
 export function convertBracketMatrices(text: string): string {
   if (!text) return "";
   
-  // Do not transform python code block text
   if (text.trim().startsWith("```") || text.includes("np.array")) {
     return text;
   }
 
-  // Regex matching matrix patterns like [[a, b], [c, d]] or [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
   const matrixRegex = /\[\s*(\[\s*[^\[\]]+?\s*\](?:\s*,\s*\[\s*[^\[\]]+?\s*\])+)\s*\]/g;
 
   return text.replace(matrixRegex, (fullMatch, innerContent) => {
@@ -44,16 +41,35 @@ export function convertBracketMatrices(text: string): string {
 }
 
 /**
+ * Automatically converts systems of equations like { x + y = 7, x - y = 1 }
+ * into clean 2D LaTeX cases notation $\begin{cases} x + y = 7 \\ x - y = 1 \end{cases}$
+ */
+export function convertSystemsOfEquations(text: string): string {
+  if (!text) return "";
+  if (text.trim().startsWith("```") || text.includes("np.array")) return text;
+
+  const systemRegex = /\{\s*([^\{\}]+?=[^\{\}]+?,\s*[^\{\}]+?=[^\{\}]+?)\s*\}/g;
+
+  return text.replace(systemRegex, (fullMatch, inner) => {
+    const equations = inner.split(/\s*,\s*/).map((eq: string) => eq.trim());
+    if (equations.length < 2) return fullMatch;
+
+    const latexCases = `\\begin{cases} ${equations.join(" \\\\ ")} \\end{cases}`;
+    return `$${latexCases}$`;
+  });
+}
+
+/**
  * Parses text into plain text segments and LaTeX math segments.
  */
 function parseMathSegments(rawText: string): Segment[] {
   if (!rawText) return [];
 
-  // Preprocess bracket matrix notation into LaTeX bmatrix
-  const text = convertBracketMatrices(rawText);
+  // Preprocess matrices and systems of equations
+  let text = convertBracketMatrices(rawText);
+  text = convertSystemsOfEquations(text);
 
   const segments: Segment[] = [];
-  // Regex matching $$...$$, $...$, \[...\], \(...\)
   const regex = /(\$\$[\s\S]+?\$\$|\$[\s\S]+?\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\))/g;
 
   let lastIndex = 0;
@@ -63,7 +79,6 @@ function parseMathSegments(rawText: string): Segment[] {
     const matchedStr = match[0];
     const matchIndex = match.index;
 
-    // Push preceding text segment if any
     if (matchIndex > lastIndex) {
       segments.push({
         type: "text",
@@ -71,7 +86,6 @@ function parseMathSegments(rawText: string): Segment[] {
       });
     }
 
-    // Determine math type and strip delimiters
     if (matchedStr.startsWith("$$") && matchedStr.endsWith("$$")) {
       segments.push({
         type: "display-math",
@@ -97,12 +111,10 @@ function parseMathSegments(rawText: string): Segment[] {
     lastIndex = regex.lastIndex;
   }
 
-  // Push remaining text
   if (lastIndex < text.length) {
     const remaining = text.slice(lastIndex);
-    // Auto-detect standalone LaTeX math command without $ delimiters
     if (
-      /\\(begin|mathbb|mathbbm|mathcal|mathbf|frac|sqrt|sum|prod|int|matrix|bmatrix|pmatrix|vmatrix|lambda|theta|sigma|alpha|beta|gamma|delta|epsilon|omega|phi|pi)/.test(
+      /\\(begin|mathbb|mathbbm|mathcal|mathbf|frac|sqrt|sum|prod|int|matrix|bmatrix|pmatrix|vmatrix|cases|lambda|theta|sigma|alpha|beta|gamma|delta|epsilon|omega|phi|pi)/.test(
         remaining
       )
     ) {

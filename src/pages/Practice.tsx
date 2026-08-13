@@ -26,7 +26,7 @@ export const Practice: React.FC = () => {
     [validModuleId]
   );
 
-  // Calculate total number of 50-question batches
+  // Calculate total number of 50-question batches (bài)
   const totalBatches = useMemo(
     () => Math.max(1, Math.ceil(fullModulePool.length / BATCH_SIZE)),
     [fullModulePool]
@@ -51,7 +51,7 @@ export const Practice: React.FC = () => {
       const answeredSet = new Set(progress.answeredQuestionIds || []);
       currentPool = selectSmartQuestions(fullModulePool, BATCH_SIZE, answeredSet);
     } else {
-      // Đợt 50 câu cố định (Đợt 1, 2, 3...)
+      // Bài 50 câu cố định (Bài 1, 2, 3...)
       const start = activeBatchIndex * BATCH_SIZE;
       currentPool = fullModulePool.slice(start, start + BATCH_SIZE);
     }
@@ -111,7 +111,7 @@ export const Practice: React.FC = () => {
       <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-medium">
         <Info className="w-5 h-5 shrink-0" />
         <span>
-          <strong>Lưu ý:</strong> Mỗi đợt luyện tập gồm 50 câu hỏi ngẫu nhiên/theo đợt. Tất cả các đợt cộng lại bao phủ 100% ngân hàng câu hỏi.
+          <strong>Lưu ý:</strong> Mỗi bài luyện tập gồm 50 câu hỏi ngẫu nhiên/theo bài. Tất cả các bài cộng lại bao phủ 100% ngân hàng câu hỏi.
         </span>
       </div>
 
@@ -129,7 +129,7 @@ export const Practice: React.FC = () => {
             )}
           </div>
           <p className="text-xs text-text-secondary mt-0.5">
-            Tổng cộng {fullModulePool.length} câu hỏi · Đang làm {questions.length} câu trong đợt hiện tại.
+            Tổng cộng {fullModulePool.length} câu hỏi · Đang làm {questions.length} câu trong bài hiện tại.
           </p>
         </div>
 
@@ -149,7 +149,7 @@ export const Practice: React.FC = () => {
               size="sm"
               onClick={handleReshuffle}
               icon={<RefreshCw className="w-4 h-4" />}
-              title="Tráo lại đợt câu hỏi mới"
+              title="Tráo lại bài câu hỏi mới"
             >
               Tráo lại
             </Button>
@@ -170,7 +170,7 @@ export const Practice: React.FC = () => {
       <div className="p-3.5 rounded-2xl bg-bg-surface border border-border-color flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-xs font-semibold text-text-secondary">
           <Layers className="w-4 h-4 text-indigo-500 shrink-0" />
-          <span>Chọn đợt luyện tập (50 câu / đợt):</span>
+          <span>Chọn bài luyện tập (50 câu / bài):</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -201,7 +201,7 @@ export const Practice: React.FC = () => {
                     : "bg-bg-base text-text-secondary hover:text-text-primary hover:bg-border-color/50 border border-border-color"
                 }`}
               >
-                Đợt {idx + 1} ({start}-{end})
+                Bài {idx + 1} ({start}-{end})
               </button>
             );
           })}
