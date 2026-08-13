@@ -7,6 +7,7 @@ import { Button } from "../components/ui/Button";
 import { Badge } from "../components/ui/Badge";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ExplanationBox } from "../components/question/ExplanationBox";
+import { MathText } from "../components/ui/MathText";
 import {
   CheckCircle2,
   BookmarkCheck,
@@ -148,7 +149,7 @@ export const ReviewMistakes: React.FC = () => {
                   </div>
 
                   <h3 className="text-base sm:text-lg font-semibold text-text-primary leading-relaxed">
-                    {q.question.replace(/```python[\s\S]*?```/g, "[Mã nguồn Python]")}
+                    <MathText text={q.question} />
                   </h3>
 
                   <div className="space-y-2.5">
@@ -172,9 +173,9 @@ export const ReviewMistakes: React.FC = () => {
                           disabled={selectedAns !== null || isRevealed}
                           className={`w-full text-left p-3.5 rounded-xl border text-sm flex items-center justify-between transition-colors ${style}`}
                         >
-                          <span>{optText}</span>
+                          <MathText text={optText} />
                           {(selectedAns !== null || isRevealed) && isCorrect && (
-                            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 shrink-0 ml-2">
                               <Check className="w-4 h-4" /> Đáp án đúng
                             </span>
                           )}
