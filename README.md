@@ -355,8 +355,7 @@ Dự án này được phân phối theo giấy phép **MIT**. Xem file [LICENSE
 
 <div align="center">
 
-Made with ❤️ by **trungKoiKa**
+Made with ❤️ by **NO0ne**
 
-⭐ Nếu project hữu ích, hãy để lại một Star để ủng hộ nhé!
 
 </div>
