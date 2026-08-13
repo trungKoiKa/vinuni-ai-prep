@@ -60,14 +60,40 @@ export function convertSystemsOfEquations(text: string): string {
 }
 
 /**
+ * Automatically converts slash division fractions like 1/(ad - bc), TP/(TP + FN), (x-min)/(max-min)
+ * into clean 2D vertical LaTeX fraction notation \frac{numerator}{denominator}
+ */
+export function convertSlashFractions(text: string): string {
+  if (!text) return "";
+  if (text.trim().startsWith("```") || text.includes("np.array") || text.includes("def ")) return text;
+
+  let res = text;
+
+  // 1. (expr1) / (expr2) -> \frac{expr1}{expr2}
+  res = res.replace(/\(\s*([^\(\)]+?)\s*\)\s*\/\s*\(\s*([^\(\)]+?)\s*\)/g, (_m, g1, g2) => `$\\frac{${g1}}{${g2}}$`);
+
+  // 2. N / (expr2) -> \frac{N}{expr2}
+  res = res.replace(/\b(\d+)\s*\/\s*\(\s*([^\(\)]+?)\s*\)/g, (_m, g1, g2) => `$\\frac{${g1}}{${g2}}$`);
+
+  // 3. 1 / det(A) -> \frac{1}{\det(A)}
+  res = res.replace(/1\s*\/\s*det\(([A-Z])\)/g, (_m, g1) => `$\\frac{1}{\\det(${g1})}$`);
+
+  // 4. TP / (TP + FN) or TP / (TP + FP)
+  res = res.replace(/\b([A-Z]{2,})\s*\/\s*\(\s*([^\(\)]+?)\s*\)/g, (_m, g1, g2) => `$\\frac{${g1}}{${g2}}$`);
+
+  return res;
+}
+
+/**
  * Parses text into plain text segments and LaTeX math segments.
  */
 function parseMathSegments(rawText: string): Segment[] {
   if (!rawText) return [];
 
-  // Preprocess matrices and systems of equations
+  // Preprocess matrices, systems of equations, and slash fractions
   let text = convertBracketMatrices(rawText);
   text = convertSystemsOfEquations(text);
+  text = convertSlashFractions(text);
 
   const segments: Segment[] = [];
   const regex = /(\$\$[\s\S]+?\$\$|\$[\s\S]+?\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\))/g;

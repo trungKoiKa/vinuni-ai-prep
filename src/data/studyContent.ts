@@ -88,7 +88,7 @@ export const studyGuides: Record<ModuleId, ModuleStudyGuide> = {
         title: "5. Xác suất Thống kê & Định lý Bayes",
         summary: "Cơ sở của việc cập nhật xác suất hậu nghiệm dựa trên bằng chứng thu thập được, ứng dụng trực tiếp trong bộ phân loại Naive Bayes.",
         keyFormulas: [
-          "Công thức Bayes: P(A|B) = [P(B|A) × P(A)] / P(B)",
+          "Công thức Bayes: P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}",
           "Xác suất toàn phần: P(B) = P(B|A)P(A) + P(B|¬A)P(¬A)",
           "Giả thiết độc lập Naive Bayes: P(x₁, x₂, ..., xₙ | c) = ∏ P(x_i | c)",
           "Làm mềm Laplace (Laplace Smoothing): P(x_i | c) = (N_ic + 1) / (N_c + V)"
@@ -141,7 +141,7 @@ export const studyGuides: Record<ModuleId, ModuleStudyGuide> = {
         codeExample: `import pandas as pd\nimport numpy as np\n\n# Xử lý ô khuyết (NaN)\ndf['age'] = df['age'].fillna(df['age'].median())\n\n# Biến đổi dữ liệu bằng apply & map\ndf['score_scaled'] = df['score'].apply(lambda x: x / 100.0)\n\n# Mã hóa một-hot (One-Hot Encoding)\ndf_encoded = pd.get_dummies(df, columns=['category'], drop_first=True)\n\n# Ghi file CSV loại bỏ cột index mặc định\ndf.to_csv('cleaned_output.csv', index=False)`,
         keyFormulas: [
           "Mã hóa One-Hot: Biến đổi cột phân loại K lớp thành K vector nhị phân (chỉ chứa 1 số 1 và còn lại bằng 0)",
-          "Chuẩn hóa L2 vector: x' = x / ||x||₂ (Đưa chuẩn độ dài vector đặc trưng về bằng 1)"
+          "Chuẩn hóa L2 vector: x' = \frac{x}{||x||₂} (Đưa chuẩn độ dài vector đặc trưng về bằng 1)"
         ]
       }
     ]
@@ -156,9 +156,9 @@ export const studyGuides: Record<ModuleId, ModuleStudyGuide> = {
         summary: "Phân loại các phương pháp học (Supervised, Unsupervised, Semi-supervised, Reinforcement) và đo lường hiệu năng bằng Ma trận nhầm lẫn (Confusion Matrix).",
         keyFormulas: [
           "Accuracy = (TP + TN) / (TP + TN + FP + FN)",
-          "Precision = TP / (TP + FP) (Độ chính xác trong số các mẫu được dự đoán là Positive)",
-          "Recall = TP / (TP + FN) (Độ nhạy / Tỷ lệ phát hiện đúng các mẫu Positive thực tế)",
-          "F1-Score = 2 × (Precision × Recall) / (Precision + Recall) (Trung bình hài hòa)",
+          "Precision = \frac{TP}{TP + FP} (Độ chính xác trong số các mẫu được dự đoán là Positive)",
+          "Recall = \frac{TP}{TP + FN} (Độ nhạy / Tỷ lệ phát hiện đúng các mẫu Positive thực tế)",
+          "F1-Score = \frac{2 \times (Precision \times Recall)}{Precision + Recall} (Trung bình hài hòa)",
           "MSE = (1/N) ∑ (y_i - y_pred_i)²; MAE = (1/N) ∑ |y_i - y_pred_i|"
         ],
         commonPitfalls: [
