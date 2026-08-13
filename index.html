@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ôn Thi Đánh Giá Năng Lực AI Thực Chiến - VinUni / Vingroup</title>
+    <meta name="description" content="Nền tảng ôn thi trắc nghiệm vòng đánh giá năng lực chương trình AI Thực chiến Vingroup - VinUni." />
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // Anti-flash dark mode hydration from localStorage before React mounts
+      (function() {
+        try {
+          var saved = localStorage.getItem('vinuni_ai_progress_v1');
+          if (saved) {
+            var parsed = JSON.parse(saved);
+            if (parsed && parsed.settings && parsed.settings.theme === 'dark') {
+              document.documentElement.classList.add('dark');
+            } else if (parsed && parsed.settings && parsed.settings.theme === 'light') {
+              document.documentElement.classList.remove('dark');
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.documentElement.classList.add('dark');
+            }
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-bg-base text-text-primary antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
