@@ -12,7 +12,7 @@
 **Web app ôn thi trắc nghiệm tương tác dành cho kỳ thi đầu vào Chương trình AI Thực chiến — Vingroup / VinUni.**  
 Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toàn trên LocalStorage
 
-[🚀 Xem Demo](https://github.com/trungKoiKa/vinuni-ai-prep) · [📚 Kho câu hỏi](#-kho-câu-hỏi--221-câu) · [🐛 Báo lỗi](https://github.com/trungKoiKa/vinuni-ai-prep/issues) · [✨ Đề xuất tính năng](https://github.com/trungKoiKa/vinuni-ai-prep/issues)
+[🚀 Xem Demo](https://github.com/trungKoiKa/vinuni-ai-prep) · [📚 Kho câu hỏi](#-kho-câu-hỏi--251-câu) · [🐛 Báo lỗi](https://github.com/trungKoiKa/vinuni-ai-prep/issues) · [✨ Đề xuất tính năng](https://github.com/trungKoiKa/vinuni-ai-prep/issues)
 
 </div>
 
@@ -22,7 +22,7 @@ Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toà
 
 - [Giới thiệu](#-giới-thiệu)
 - [Tính năng](#-tính-năng)
-- [Kho câu hỏi — 221 câu](#-kho-câu-hỏi--221-câu)
+- [Kho câu hỏi — 251 câu](#-kho-câu-hỏi--251-câu)
 - [Tech Stack](#-tech-stack)
 - [Cấu trúc dự án](#-cấu-trúc-dự-án)
 - [Cài đặt & Chạy local](#-cài-đặt--chạy-local)
@@ -81,15 +81,15 @@ Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toà
 
 ---
 
-## 📝 Kho câu hỏi — 221 câu
+## 📝 Kho câu hỏi — 251 câu
 
 | Module | Chủ đề | Số câu | Mức độ |
 |:------:|:-------|:------:|:------:|
-| **A** | Toán & Tư duy định lượng (Ma trận, Định thức, Gradient, Đạo hàm, O-notation...) | 50 | Dễ → Khó |
+| **A** | Toán & Tư duy định lượng (Ma trận, Trace, Hessian, MLE/MAP, Bayes...) | 80 | Dễ → Khó |
 | **B** | Lập trình & Xử lý dữ liệu (Python, NumPy, Pandas) | 56 | Dễ → Khó |
 | **C** | Kiến thức AI & Sản phẩm AI (ML, LLM, RAG, LoRA...) | 64 | Dễ → Khó |
 | **D** | Logic, Đạo đức & Hành vi AI | 51 | Dễ → Khó |
-| **Tổng** | | **221** | |
+| **Tổng** | | **251** | |
 
 ---
 
@@ -143,6 +143,6 @@ Dự án này được phân phối theo giấy phép **MIT**. Xem file [LICENSE
 
 <div align="center">
 
-Made with ❤️ by **NO0ne**
+Made with ❤️ by **trungKoiKa**
 
 </div>

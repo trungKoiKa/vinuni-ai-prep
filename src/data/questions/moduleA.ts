@@ -700,5 +700,512 @@ export const moduleAQuestions: Question[] = [
     correctAnswer: 0,
     explanation: "u · v = a(-b) + b(a) = -ab + ab = 0.",
     tags: ["vector", "dot_product"]
+  },
+
+  // ── 30 Additional Questions (modA_ext_01 -> modA_ext_30) ─────────────────
+  {
+    id: "modA_ext_01",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ký hiệu ma trận",
+    difficulty: "Dễ",
+    question: "Ký hiệu nào sau đây biểu diễn tập hợp các ma trận thực có m hàng và n cột?",
+    options: [
+      "ℝ^(m+n)",
+      "ℝ^(m × n)",
+      "ℝ^(m,n)",
+      "ℂ^(m × n)"
+    ],
+    correctAnswer: 1,
+    explanation: "Theo quy ước ký hiệu toán học phổ biến, ℝ^(m × n) biểu thị tập hợp các ma trận thực có m hàng và n cột.",
+    tags: ["matrix", "notation"]
+  },
+  {
+    id: "modA_ext_02",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Chuyển vị ma trận",
+    difficulty: "Dễ",
+    question: "Chuyển vị của tích hai ma trận (AB)ᵀ bằng biểu thức nào sau đây?",
+    options: [
+      "Aᵀ Bᵀ",
+      "Bᵀ Aᵀ",
+      "A Bᵀ",
+      "B Aᵀ"
+    ],
+    correctAnswer: 1,
+    explanation: "Phép chuyển vị của tích hai ma trận có tính chất đảo thứ tự: (AB)ᵀ = Bᵀ Aᵀ.",
+    tags: ["matrix", "transpose"]
+  },
+  {
+    id: "modA_ext_03",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ma trận trực giao",
+    difficulty: "Trung bình",
+    question: "Ma trận vuông U được gọi là ma trận trực giao (orthogonal matrix) nếu thỏa mãn điều kiện nào?",
+    options: [
+      "Uᵀ U = I",
+      "Uᵀ U = 0",
+      "Uᵀ = U",
+      "U U = I"
+    ],
+    correctAnswer: 0,
+    explanation: "Một ma trận vuông U có các cột là các vector trực chuẩn thì được gọi là ma trận trực giao, thỏa mãn Uᵀ U = I.",
+    tags: ["matrix", "orthogonal"]
+  },
+  {
+    id: "modA_ext_04",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Vết của ma trận",
+    difficulty: "Dễ",
+    question: "Vết (trace) của ma trận vuông A, ký hiệu là trace(A), là đại lượng gì?",
+    options: [
+      "Tích của tất cả các phần tử trên đường chéo chính",
+      "Tổng của tất cả các phần tử trên đường chéo chính",
+      "Định thức của ma trận A",
+      "Trị riêng lớn nhất của ma trận A"
+    ],
+    correctAnswer: 1,
+    explanation: "Vết của một ma trận vuông là tổng của tất cả các phần tử trên đường chéo chính của nó: trace(A) = ∑ a_ii.",
+    tags: ["matrix", "trace"]
+  },
+  {
+    id: "modA_ext_05",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Vết của ma trận",
+    difficulty: "Trung bình",
+    question: "Tính chất nào sau đây của hàm vết (trace) là ĐÚNG?",
+    options: [
+      "trace(AB) = trace(A) · trace(B)",
+      "trace(AB) = trace(BA)",
+      "trace(Aᵀ) = -trace(A)",
+      "trace(A + B) = trace(A) - trace(B)"
+    ],
+    correctAnswer: 1,
+    explanation: "Một tính chất quan trọng của hàm vết là tính chất hoán vị vòng quanh của tích: trace(AB) = trace(BA).",
+    tags: ["matrix", "trace"]
+  },
+  {
+    id: "modA_ext_06",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Chuẩn Frobenius",
+    difficulty: "Trung bình",
+    question: "Chuẩn Frobenius của một ma trận thực A, ký hiệu là ||A||_F, được tính như thế nào?",
+    options: [
+      "Trị tuyệt đối của định thức của A",
+      "Tổng bình phương của tất cả các phần tử trong A",
+      "Căn bậc hai của tổng bình phương tất cả các phần tử của A",
+      "Trị riêng lớn nhất của Aᵀ A"
+    ],
+    correctAnswer: 2,
+    explanation: "Chuẩn Frobenius ||A||_F là căn bậc hai của tổng bình phương tất cả các phần tử trong ma trận: √(∑_i ∑_j a_ij²).",
+    tags: ["matrix", "norm", "frobenius"]
+  },
+  {
+    id: "modA_ext_07",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ma trận xác định dương",
+    difficulty: "Trung bình",
+    question: "Ma trận đối xứng thực A được gọi là xác định dương (positive definite) nếu với mọi vector x ≠ 0, ta luôn có:",
+    options: [
+      "xᵀ A x ≥ 0",
+      "xᵀ A x > 0",
+      "xᵀ A x < 0",
+      "xᵀ A x = 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Định nghĩa ma trận xác định dương là xᵀ A x > 0 với mọi x ≠ 0. Nếu xᵀ A x ≥ 0 thì gọi là nửa xác định dương.",
+    tags: ["matrix", "positive_definite"]
+  },
+  {
+    id: "modA_ext_08",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Giải hệ phương trình",
+    difficulty: "Dễ",
+    question: "Nghiệm x của hệ phương trình tuyến tính Ax = b khi ma trận vuông A khả nghịch là:",
+    options: [
+      "x = A b",
+      "x = b A⁻¹",
+      "x = A⁻¹ b",
+      "x = (Aᵀ A)⁻¹ b"
+    ],
+    correctAnswer: 2,
+    explanation: "Khi A khả nghịch, ta nhân hai vế của phương trình Ax = b với ma trận nghịch đảo A⁻¹ về phía bên trái để thu được x = A⁻¹ b.",
+    tags: ["linear_system", "matrix_inverse"]
+  },
+  {
+    id: "modA_ext_09",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Trị riêng & Vector riêng",
+    difficulty: "Trung bình",
+    question: "Trị riêng (eigenvalue) λ và vector riêng (eigenvector) x tương ứng của ma trận vuông A thỏa mãn phương trình nào?",
+    options: [
+      "A x = λ x  (với x ≠ 0)",
+      "A x = λ x  (với x = 0)",
+      "A λ = x",
+      "xᵀ A = λ x"
+    ],
+    correctAnswer: 0,
+    explanation: "Trị riêng và vector riêng thỏa mãn đẳng thức Ax = λx với điều kiện bắt buộc vector riêng x ≠ 0.",
+    tags: ["eigenvalue", "eigenvector"]
+  },
+  {
+    id: "modA_ext_10",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Trị riêng & Vết ma trận",
+    difficulty: "Trung bình",
+    question: "Tổng các trị riêng của một ma trận vuông bất kỳ luôn bằng đại lượng nào?",
+    options: [
+      "Định thức của ma trận đó",
+      "Vết (trace) của ma trận đó",
+      "Chuẩn Frobenius của ma trận đó",
+      "Trị riêng lớn nhất"
+    ],
+    correctAnswer: 1,
+    explanation: "Tổng các trị riêng của một ma trận vuông bất kỳ luôn bằng vết (trace) của ma trận đó.",
+    tags: ["eigenvalue", "trace"]
+  },
+  {
+    id: "modA_ext_11",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient",
+    difficulty: "Trung bình",
+    question: "Gradient của một hàm số f(x): ℝⁿ → ℝ theo vector cột x là một vector thuộc không gian nào?",
+    options: [
+      "ℝ^(1 × n)",
+      "ℝⁿ",
+      "ℝ^(n × n)",
+      "ℝ"
+    ],
+    correctAnswer: 1,
+    explanation: "Theo định nghĩa, gradient của hàm số f(x) theo vector cột x ∈ ℝⁿ là một vector cột có cùng số chiều n thuộc ℝⁿ.",
+    tags: ["gradient", "multivariable"]
+  },
+  {
+    id: "modA_ext_12",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ma trận Hessian",
+    difficulty: "Trung bình",
+    question: "Ma trận Hessian (gradient bậc hai) của một hàm số f(x): ℝⁿ → ℝ là một ma trận đối xứng có kích thước bao nhiêu?",
+    options: [
+      "1 x n",
+      "n x 1",
+      "n x n",
+      "n x m"
+    ],
+    correctAnswer: 2,
+    explanation: "Ma trận Hessian chứa tất cả các đạo hàm riêng bậc hai của hàm số và có kích thước vuông n × n.",
+    tags: ["hessian", "gradient"]
+  },
+  {
+    id: "modA_ext_13",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient",
+    difficulty: "Trung bình",
+    question: "Gradient của hàm số f(x) = aᵀ x theo vector x là:",
+    options: ["x", "a", "aᵀ", "2a"],
+    correctAnswer: 1,
+    explanation: "Đạo hàm riêng theo từng x_i của aᵀ x = ∑ a_i x_i là a_i, do đó gradient theo vector x chính là vector hằng số a.",
+    tags: ["gradient", "calculus"]
+  },
+  {
+    id: "modA_ext_14",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient",
+    difficulty: "Khó",
+    question: "Gradient của hàm số f(x) = xᵀ A x theo vector x (với A là ma trận đối xứng) là:",
+    options: [
+      "A x",
+      "2 A x",
+      "xᵀ A",
+      "Aᵀ x"
+    ],
+    correctAnswer: 1,
+    explanation: "Gradient của dạng toàn phương xᵀ A x khi ma trận A đối xứng là 2 A x.",
+    tags: ["gradient", "quadratic_form"]
+  },
+  {
+    id: "modA_ext_15",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient",
+    difficulty: "Khó",
+    question: "Gradient của hàm số f(x) = ||Ax - b||₂² theo vector x bằng biểu thức nào sau đây?",
+    options: [
+      "2 Aᵀ (Ax - b)",
+      "2 A (Ax - b)",
+      "Aᵀ (Ax - b)",
+      "2 (Ax - b)"
+    ],
+    correctAnswer: 0,
+    explanation: "Khai triển f(x) = xᵀ Aᵀ A x - 2 bᵀ A x + bᵀ b. Lấy gradient theo x ta được 2 Aᵀ A x - 2 Aᵀ b = 2 Aᵀ (Ax - b).",
+    tags: ["gradient", "least_squares"]
+  },
+  {
+    id: "modA_ext_16",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient theo ma trận",
+    difficulty: "Khó",
+    question: "Gradient của hàm số f(X) = trace(AX) theo ma trận X (với kích thước phù hợp) là:",
+    options: [
+      "A",
+      "Aᵀ",
+      "I",
+      "trace(A)"
+    ],
+    correctAnswer: 1,
+    explanation: "Đạo hàm ma trận của trace(AX) theo ma trận X thu được ma trận Aᵀ.",
+    tags: ["matrix_calculus", "gradient"]
+  },
+  {
+    id: "modA_ext_17",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Kiểm tra Gradient",
+    difficulty: "Trung bình",
+    question: "Trong thực nghiệm, việc kiểm tra gradient (numerical gradient) sử dụng xấp xỉ đạo hàm dựa trên công thức sai phân nào để có độ chính xác cao nhất?",
+    options: [
+      "Sai phân tiến: (f(x+h) - f(x)) / h",
+      "Sai phân lùi: (f(x) - f(x-h)) / h",
+      "Sai phân trung tâm: (f(x+h) - f(x-h)) / (2h)",
+      "Sai phân bậc hai: (f(x+h) + f(x-h) - 2f(x)) / h²"
+    ],
+    correctAnswer: 2,
+    explanation: "Sai phân trung tâm (central difference) xấp xỉ đạo hàm tốt hơn sai phân tiến/lùi vì sai số có bậc O(h²) thay vì O(h).",
+    tags: ["numerical_gradient", "calculus"]
+  },
+  {
+    id: "modA_ext_18",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Biến ngẫu nhiên",
+    difficulty: "Dễ",
+    question: "Biến ngẫu nhiên có tập hợp các giá trị có thể nhận là hữu hạn hoặc đếm được được gọi là:",
+    options: [
+      "Biến ngẫu nhiên liên tục",
+      "Biến ngẫu nhiên rời rạc",
+      "Biến ngẫu nhiên chuẩn",
+      "Biến ngẫu nhiên độc lập"
+    ],
+    correctAnswer: 1,
+    explanation: "Một biến ngẫu nhiên có thể nhận các giá trị rời rạc (hữu hạn hoặc đếm được) được gọi là biến ngẫu nhiên rời rạc.",
+    tags: ["probability", "random_variable"]
+  },
+  {
+    id: "modA_ext_19",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Xác suất & Thống kê",
+    difficulty: "Dễ",
+    question: "Đại lượng nào đo lường mức độ biến thiên đồng thời (mối quan hệ tuyến tính) của hai biến ngẫu nhiên?",
+    options: [
+      "Kỳ vọng (Expectation)",
+      "Phương sai (Variance)",
+      "Hiệp phương sai (Covariance)",
+      "Độ lệch chuẩn (Standard Deviation)"
+    ],
+    correctAnswer: 2,
+    explanation: "Hiệp phương sai (Covariance) đo lường mối quan hệ tuyến tính và mức độ biến thiên cùng nhau của hai biến ngẫu nhiên.",
+    tags: ["covariance", "statistics"]
+  },
+  {
+    id: "modA_ext_20",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ma trận hiệp phương sai",
+    difficulty: "Trung bình",
+    question: "Ma trận hiệp phương sai của một vector ngẫu nhiên x có tính chất đặc biệt nào sau đây?",
+    options: [
+      "Luôn là ma trận phản đối xứng",
+      "Luôn là ma trận nửa xác định dương và đối xứng",
+      "Luôn là ma trận đường chéo",
+      "Luôn có định thức bằng 1"
+    ],
+    correctAnswer: 1,
+    explanation: "Ma trận hiệp phương sai luôn là ma trận đối xứng và nửa xác định dương.",
+    tags: ["covariance_matrix", "properties"]
+  },
+  {
+    id: "modA_ext_21",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Định lý Bayes",
+    difficulty: "Dễ",
+    question: "Công thức Bayes để tính xác suất hậu nghiệm p(c|x) dựa trên các xác suất đã biết là:",
+    options: [
+      "p(c|x) = (p(x|c) · p(c)) / p(x)",
+      "p(c|x) = (p(x|c) · p(x)) / p(c)",
+      "p(c|x) = p(c|x) · p(x)",
+      "p(c|x) = p(x) / p(c)"
+    ],
+    correctAnswer: 0,
+    explanation: "Công thức Bayes: p(c|x) = (p(x|c) · p(c)) / p(x) là nền tảng của các bài toán học máy thống kê.",
+    tags: ["bayes_theorem", "probability"]
+  },
+  {
+    id: "modA_ext_22",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Xác suất độc lập",
+    difficulty: "Dễ",
+    question: "Khi hai biến ngẫu nhiên x và y độc lập với nhau, xác suất đồng thời p(x, y) bằng:",
+    options: [
+      "p(x) + p(y)",
+      "p(x) · p(y)",
+      "p(x|y) + p(y|x)",
+      "p(x) / p(y)"
+    ],
+    correctAnswer: 1,
+    explanation: "Hai biến ngẫu nhiên độc lập khi và chỉ khi xác suất đồng thời bằng tích các xác suất biên: p(x, y) = p(x) · p(y).",
+    tags: ["probability", "independence"]
+  },
+  {
+    id: "modA_ext_23",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Phân phối Gaussian",
+    difficulty: "Dễ",
+    question: "Hàm mật độ xác suất (pdf) của phân phối chuẩn một chiều (Gaussian distribution) phụ thuộc vào hai tham số nào?",
+    options: [
+      "Kỳ vọng (μ) và phương sai (σ²)",
+      "Kỳ vọng (μ) và trung vị (median)",
+      "Phương sai (σ²) và hệ số bất đối xứng",
+      "Giá trị nhỏ nhất và lớn nhất"
+    ],
+    correctAnswer: 0,
+    explanation: "Phân phối chuẩn hoàn toàn được xác định bởi kỳ vọng (μ) xác định tâm và phương sai (σ²) xác định độ rộng của phân phối.",
+    tags: ["gaussian", "probability"]
+  },
+  {
+    id: "modA_ext_24",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "MLE",
+    difficulty: "Dễ",
+    question: "Ước lượng hợp lý cực đại (Maximum Likelihood Estimation - MLE) tìm tham số mô hình bằng cách tối đa hóa đại lượng nào?",
+    options: [
+      "Xác suất hậu nghiệm p(θ|X)",
+      "Hàm hợp lý p(X|θ)",
+      "Xác suất tiên nghiệm p(θ)",
+      "Hàm entropy chéo"
+    ],
+    correctAnswer: 1,
+    explanation: "MLE đi tìm tham số θ sao cho xác suất xảy ra của dữ liệu huấn luyện X là lớn nhất, tức là tối đa hóa hàm hợp lý p(X|θ).",
+    tags: ["mle", "estimation"]
+  },
+  {
+    id: "modA_ext_25",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "MLE & Log-Likelihood",
+    difficulty: "Trung bình",
+    question: "Tại sao trong ước lượng tham số (MLE & MAP), người ta thường tối thiểu hóa trừ log-likelihood thay vì tối đa hóa trực tiếp hàm likelihood?",
+    options: [
+      "Để biến phép cộng các xác suất thành phép nhân",
+      "Để biến tích các xác suất độc lập thành tổng log, tránh hiện tượng tràn số dưới (underflow) và dễ lấy đạo hàm",
+      "Vì hàm log làm thay đổi vị trí điểm cực trị",
+      "Để mô hình tuyến tính hóa dữ liệu phi tuyến"
+    ],
+    correctAnswer: 1,
+    explanation: "Likelihood là tích của nhiều xác suất nhỏ (dễ gây underflow). Hàm log biến tích thành tổng và là hàm đơn điệu tăng nên giữ nguyên vị trí cực trị, thêm dấu âm để chuyển bài toán tối đa thành tối thiểu.",
+    tags: ["mle", "log_likelihood"]
+  },
+  {
+    id: "modA_ext_26",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "MAP",
+    difficulty: "Trung bình",
+    question: "Ước lượng hậu nghiệm cực đại (Maximum A Posteriori - MAP) khác với MLE ở điểm cốt lõi nào?",
+    options: [
+      "MAP không sử dụng dữ liệu huấn luyện",
+      "MAP kết hợp thêm thông tin về phân phối tiên nghiệm (prior) p(θ) của tham số",
+      "MAP luôn cho kết quả giống MLE",
+      "MAP chỉ áp dụng được cho phân phối chuẩn"
+    ],
+    correctAnswer: 1,
+    explanation: "Công thức MAP: θ = arg max p(X|θ)p(θ). Khác với MLE, MAP tích hợp thêm phân phối tiên nghiệm p(θ) của tham số.",
+    tags: ["map", "estimation"]
+  },
+  {
+    id: "modA_ext_27",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "MAP vs MLE",
+    difficulty: "Trung bình",
+    question: "Khi nào ước lượng MAP cho kết quả hoàn toàn trùng khớp với ước lượng MLE?",
+    options: [
+      "Khi phân phối tiên nghiệm p(θ) là phân phối chuẩn",
+      "Khi phân phối tiên nghiệm p(θ) là phân phối đều (uniform distribution) trên tập xác định",
+      "Khi số lượng điểm dữ liệu tiến dần về 0",
+      "Khi tham số λ của tiên nghiệm rất lớn"
+    ],
+    correctAnswer: 1,
+    explanation: "Khi p(θ) là phân phối đều (là hằng số với mọi θ), việc tối đa hóa p(X|θ)p(θ) tương đương với tối đa hóa p(X|θ) của MLE.",
+    tags: ["map", "mle"]
+  },
+  {
+    id: "modA_ext_28",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Conjugate Prior",
+    difficulty: "Trung bình",
+    question: "Tiên nghiệm liên hợp (conjugate prior) là gì?",
+    options: [
+      "Là tiên nghiệm có dạng đồ thị đối xứng qua trục tung",
+      "Là tiên nghiệm mà khi kết hợp với hàm hợp lý (likelihood) sẽ cho ra phân phối hậu nghiệm (posterior) cùng họ với phân phối tiên nghiệm",
+      "Là tiên nghiệm có phương sai bằng 0",
+      "Là tiên nghiệm luôn bằng 1"
+    ],
+    correctAnswer: 1,
+    explanation: "Định nghĩa tiên nghiệm liên hợp là phân phối tiên nghiệm và phân phối hậu nghiệm có cùng một dạng toán học (họ phân phối), giúp việc tính toán cực kỳ đơn giản.",
+    tags: ["conjugate_prior", "bayesian"]
+  },
+  {
+    id: "modA_ext_29",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Phân phối Beta & Bernoulli",
+    difficulty: "Trung bình",
+    question: "Trong bài toán tung đồng xu với phân phối Bernoulli, phân phối tiên nghiệm liên hợp thường được chọn cho tham số λ là phân phối nào?",
+    options: [
+      "Phân phối chuẩn (Gaussian)",
+      "Phân phối đều (Uniform)",
+      "Phân phối Beta",
+      "Phân phối Poisson"
+    ],
+    correctAnswer: 2,
+    explanation: "Phân phối Beta là tiên nghiệm liên hợp của phân phối Bernoulli. Khi kết hợp likelihood Bernoulli và prior Beta, posterior thu được cũng là phân phối Beta.",
+    tags: ["beta_distribution", "bernoulli"]
+  },
+  {
+    id: "modA_ext_30",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ước lượng MAP",
+    difficulty: "Khó",
+    question: "Nghiệm MAP của tham số λ trong phân phối Bernoulli với tiên nghiệm Beta(α, β) khi quan sát được n mặt ngửa và m mặt sấp là:",
+    options: [
+      "n / (n + m)",
+      "(n + α) / (n + m + α + β)",
+      "(n + α - 1) / (n + m + α + β - 2)",
+      "(α - 1) / (α + β - 2)"
+    ],
+    correctAnswer: 2,
+    explanation: "Theo kết quả giải bài toán tối ưu MAP cho Bernoulli-Beta, nghiệm MAP thu được là (n + α - 1) / ((n + m) + α + β - 2).",
+    tags: ["map", "beta_distribution"]
   }
 ];

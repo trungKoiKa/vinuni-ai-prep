@@ -9,7 +9,7 @@ export const modulesData: ModuleMetadata[] = [
     iconName: "Calculator",
     color: "#4F5FF0",
     badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    totalQuestions: 50,
+    totalQuestions: 80,
   },
   {
     id: "B",
