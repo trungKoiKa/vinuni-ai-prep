@@ -6,7 +6,17 @@ import { useProgress } from "../context/ProgressContext";
 import { QuestionCard } from "../components/question/QuestionCard";
 import { QuestionNavigator } from "../components/question/QuestionNavigator";
 import { Button } from "../components/ui/Button";
-import { Info, ArrowLeft, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { Info, ArrowLeft, ArrowRight, Eye, EyeOff, Shuffle, RefreshCw } from "lucide-react";
+
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 export const Practice: React.FC = () => {
   const { moduleId } = useParams<{ moduleId?: string }>();
@@ -17,6 +27,7 @@ export const Practice: React.FC = () => {
       ? (moduleId.toUpperCase() as ModuleId)
       : undefined;
 
+  const [isShuffled, setIsShuffled] = useState<boolean>(false);
   const [questions, setQuestions] = useState<Question[]>(() =>
     getQuestionsByModule(validModuleId)
   );
@@ -28,10 +39,30 @@ export const Practice: React.FC = () => {
   );
 
   useEffect(() => {
-    setQuestions(getQuestionsByModule(validModuleId));
+    const rawQuestions = getQuestionsByModule(validModuleId);
+    setQuestions(isShuffled ? shuffleArray(rawQuestions) : rawQuestions);
     setCurrentIndex(0);
     setUserAnswers({});
   }, [validModuleId]);
+
+  const handleToggleShuffle = () => {
+    const rawQuestions = getQuestionsByModule(validModuleId);
+    if (!isShuffled) {
+      setQuestions(shuffleArray(rawQuestions));
+      setIsShuffled(true);
+    } else {
+      setQuestions(rawQuestions);
+      setIsShuffled(false);
+    }
+    setCurrentIndex(0);
+  };
+
+  const handleReshuffle = () => {
+    const rawQuestions = getQuestionsByModule(validModuleId);
+    setQuestions(shuffleArray(rawQuestions));
+    setIsShuffled(true);
+    setCurrentIndex(0);
+  };
 
   const currentQuestion = questions[currentIndex];
   if (!currentQuestion) return null;
@@ -70,15 +101,43 @@ export const Practice: React.FC = () => {
 
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-color pb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
-            Luyện tập trắc nghiệm {validModuleId ? `Module ${validModuleId}` : "Tất cả Module"}
-          </h1>
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
+              Luyện tập trắc nghiệm {validModuleId ? `Module ${validModuleId}` : "Tất cả Module"}
+            </h1>
+            {isShuffled && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                <Shuffle className="w-3 h-3" /> Đã tráo ngẫu nhiên
+              </span>
+            )}
+          </div>
           <p className="text-xs text-text-secondary mt-0.5">
             Làm bài không giới hạn thời gian, tự do xem lời giải chi tiết.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
+          <Button
+            variant={isShuffled ? "primary" : "outline"}
+            size="sm"
+            onClick={handleToggleShuffle}
+            icon={<Shuffle className="w-4 h-4" />}
+          >
+            {isShuffled ? "Đang tráo ngẫu nhiên" : "Tráo câu hỏi"}
+          </Button>
+
+          {isShuffled && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleReshuffle}
+              icon={<RefreshCw className="w-4 h-4" />}
+              title="Tráo lại danh sách câu hỏi mới"
+            >
+              Tráo lại
+            </Button>
+          )}
+
           <Button
             variant="outline"
             size="sm"
