@@ -143,6 +143,6 @@ Dự án này được phân phối theo giấy phép **MIT**. Xem file [LICENSE
 
 <div align="center">
 
-Made with ❤️ by **trungKoiKa**
+Made with ❤️ by **NO0ne**
 
 </div>
