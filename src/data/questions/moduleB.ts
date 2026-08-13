@@ -1,870 +1,1371 @@
 import type { Question } from "../../types/question";
 
 export const moduleBQuestions: Question[] = [
-  // ── Existing 12 questions ─────────────────────────────────────────────────
   {
-    id: "modB_01",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Cấu trúc dữ liệu Python",
-    difficulty: "Dễ",
-    question: "Đoạn mã Python sau xuất ra kết quả gì?\n\n```python\ndata = [1, 2, 3, 4, 5]\nres = [x ** 2 for x in data if x % 2 != 0]\nprint(res)\n```",
-    options: ["[1, 9, 25]", "[4, 16]", "[1, 4, 9, 16, 25]", "[1, 3, 5]"],
-    correctAnswer: 0,
-    explanation: "List comprehension lọc các số lẻ [1, 3, 5] và bình phương chúng thành [1, 9, 25].",
-    tags: ["Python", "List Comprehension", "Cấu trúc dữ liệu"]
+    "id": "modB_01",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Cấu trúc dữ liệu Python",
+    "difficulty": "Dễ",
+    "question": "Đoạn mã Python sau xuất ra kết quả gì?\n\n```python\ndata = [1, 2, 3, 4, 5]\nres = [x ** 2 for x in data if x % 2 != 0]\nprint(res)\n```",
+    "options": [
+      "[4, 16]",
+      "[1, 9, 25]",
+      "[1, 4, 9, 16, 25]",
+      "[1, 3, 5]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "List comprehension lọc các số lẻ [1, 3, 5] và bình phương chúng thành [1, 9, 25].",
+    "tags": [
+      "Python",
+      "List Comprehension",
+      "Cấu trúc dữ liệu"
+    ]
   },
   {
-    id: "modB_02",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Độ phức tạp thuật toán (Big O)",
-    difficulty: "Dễ",
-    question: "Thuật toán tìm kiếm nhị phân (Binary Search) trên một mảng đã được sắp xếp gồm N phần tử có độ phức tạp thời gian trong trường hợp xấu nhất là bao nhiêu?",
-    options: ["O(log N)", "O(N)", "O(N log N)", "O(1)"],
-    correctAnswer: 0,
-    explanation: "Binary search chia đôi không gian tìm kiếm ở mỗi bước nên độ phức tạp thời gian là O(log N).",
-    tags: ["Big O", "Binary Search", "Thuật toán"]
+    "id": "modB_02",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Độ phức tạp thuật toán (Big O)",
+    "difficulty": "Dễ",
+    "question": "Thuật toán tìm kiếm nhị phân (Binary Search) trên một mảng đã được sắp xếp gồm N phần tử có độ phức tạp thời gian trong trường hợp xấu nhất là bao nhiêu?",
+    "options": [
+      "O(1)",
+      "O(N)",
+      "O(N log N)",
+      "O(log N)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Binary search chia đôi không gian tìm kiếm ở mỗi bước nên độ phức tạp thời gian là O(log N).",
+    "tags": [
+      "Big O",
+      "Binary Search",
+      "Thuật toán"
+    ]
   },
   {
-    id: "modB_03",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Xử lý mảng NumPy",
-    difficulty: "Trung bình",
-    question: "Đoạn mã NumPy sau thực hiện phép toán nào và kết quả `arr.shape` là gì?\n\n```python\nimport numpy as np\na = np.ones((3, 1))\nb = np.zeros((1, 4))\narr = a + b\nprint(arr.shape)\n```",
-    options: ["(3, 4)", "(3, 1)", "(1, 4)", "Báo lỗi ValueError"],
-    correctAnswer: 0,
-    explanation: "NumPy áp dụng cơ chế Broadcasting mở rộng chiều (3, 1) và (1, 4) thành ma trận kết quả có shape (3, 4).",
-    tags: ["NumPy", "Broadcasting", "Python"]
+    "id": "modB_03",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Xử lý mảng NumPy",
+    "difficulty": "Trung bình",
+    "question": "Đoạn mã NumPy sau thực hiện phép toán nào và kết quả `arr.shape` là gì?\n\n```python\nimport numpy as np\na = np.ones((3, 1))\nb = np.zeros((1, 4))\narr = a + b\nprint(arr.shape)\n```",
+    "options": [
+      "(3, 4)",
+      "(3, 1)",
+      "(1, 4)",
+      "Báo lỗi ValueError"
+    ],
+    "correctAnswer": 0,
+    "explanation": "NumPy áp dụng cơ chế Broadcasting mở rộng chiều (3, 1) và (1, 4) thành ma trận kết quả có shape (3, 4).",
+    "tags": [
+      "NumPy",
+      "Broadcasting",
+      "Python"
+    ]
   },
   {
-    id: "modB_04",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Xử lý dữ liệu Pandas",
-    difficulty: "Trung bình",
-    question: "Trong thư viện Pandas, phương thức nào được dùng để điền các giá trị thiếu (NaN / Missing values) bằng một giá trị cụ thể hoặc phương pháp nội suy?",
-    options: ["df.fillna()", "df.dropna()", "df.replace_null()", "df.clean_na()"],
-    correctAnswer: 0,
-    explanation: "Phương thức `df.fillna()` trong Pandas được sử dụng để thay thế các giá trị NaN bằng giá trị mặc định hoặc mean/median/mode.",
-    tags: ["Pandas", "Data Cleaning", "Data Preprocessing"]
+    "id": "modB_04",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Xử lý dữ liệu Pandas",
+    "difficulty": "Trung bình",
+    "question": "Trong thư viện Pandas, phương thức nào được dùng để điền các giá trị thiếu (NaN / Missing values) bằng một giá trị cụ thể hoặc phương pháp nội suy?",
+    "options": [
+      "df.replace_null()",
+      "df.dropna()",
+      "df.fillna()",
+      "df.clean_na()"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Phương thức `df.fillna()` trong Pandas được sử dụng để thay thế các giá trị NaN bằng giá trị mặc định hoặc mean/median/mode.",
+    "tags": [
+      "Pandas",
+      "Data Cleaning",
+      "Data Preprocessing"
+    ]
   },
   {
-    id: "modB_05",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Generator & Memory Efficiency",
-    difficulty: "Trung bình",
-    question: "Đoạn mã Python sau in ra giá trị gì khi chạy?\n\n```python\ndef count_gen(n):\n    for i in range(n):\n        yield i * 2\n\ng = count_gen(3)\nprint(next(g), next(g))\n```",
-    options: ["0 2", "0 1", "2 4", "Báo lỗi StopIteration"],
-    correctAnswer: 0,
-    explanation: "Lần `next(g)` thứ nhất trả về 0*2 = 0. Lần `next(g)` thứ hai tiếp tục từ trạng thái tạm dừng và trả về 1*2 = 2.",
-    tags: ["Python", "Generator", "Yield"]
+    "id": "modB_05",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Generator & Memory Efficiency",
+    "difficulty": "Trung bình",
+    "question": "Đoạn mã Python sau in ra giá trị gì khi chạy?\n\n```python\ndef count_gen(n):\n    for i in range(n):\n        yield i * 2\n\ng = count_gen(3)\nprint(next(g), next(g))\n```",
+    "options": [
+      "2 4",
+      "0 1",
+      "0 2",
+      "Báo lỗi StopIteration"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Lần `next(g)` thứ nhất trả về 0*2 = 0. Lần `next(g)` thứ hai tiếp tục từ trạng thái tạm dừng và trả về 1*2 = 2.",
+    "tags": [
+      "Python",
+      "Generator",
+      "Yield"
+    ]
   },
   {
-    id: "modB_06",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Thuật toán sắp xếp & Đệ quy",
-    difficulty: "Khó",
-    question: "Đoạn mã đệ quy Python sau đây implement thuật toán nào và trả về kết quả gì cho `func([3, 1, 4, 1, 5])`?\n\n```python\ndef func(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return func(left) + middle + func(right)\n```",
-    options: ["Quick Sort, trả về [1, 1, 3, 4, 5]", "Merge Sort, trả về [5, 4, 3, 1, 1]", "Bubble Sort, trả về [1, 3, 4, 5]", "Selection Sort, trả về [3, 1, 4, 1, 5]"],
-    correctAnswer: 0,
-    explanation: "Đoạn mã là triển khai kinh điển của thuật toán Quick Sort chia mảng thành phần bé hơn, bằng, và lớn hơn phần tử pivot.",
-    tags: ["Python", "QuickSort", "Đệ quy", "Thuật toán"]
+    "id": "modB_06",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Thuật toán sắp xếp & Đệ quy",
+    "difficulty": "Khó",
+    "question": "Đoạn mã đệ quy Python sau đây implement thuật toán nào và trả về kết quả gì cho `func([3, 1, 4, 1, 5])`?\n\n```python\ndef func(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return func(left) + middle + func(right)\n```",
+    "options": [
+      "Quick Sort, trả về [1, 1, 3, 4, 5]",
+      "Merge Sort, trả về [5, 4, 3, 1, 1]",
+      "Bubble Sort, trả về [1, 3, 4, 5]",
+      "Selection Sort, trả về [3, 1, 4, 1, 5]"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Đoạn mã là triển khai kinh điển của thuật toán Quick Sort chia mảng thành phần bé hơn, bằng, và lớn hơn phần tử pivot.",
+    "tags": [
+      "Python",
+      "QuickSort",
+      "Đệ quy",
+      "Thuật toán"
+    ]
   },
   {
-    id: "modB_07",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Tiền xử lý dữ liệu (Feature Scaling)",
-    difficulty: "Khó",
-    question: "Khi tiền xử lý dữ liệu cho mô hình Machine Learning, phương pháp Standard Scaling (Z-score normalization) biến đổi dữ liệu x thành z theo công thức nào?",
-    options: ["z = (x - μ) / σ (trung bình μ = 0, độ lệch chuẩn σ = 1)", "z = (x - min) / (max - min) (đưa dữ liệu về [0, 1])", "z = log(x + 1)", "z = x / ||x||₂"],
-    correctAnswer: 0,
-    explanation: "Z-score Standard Scaling trừ đi giá trị trung bình mẫu μ và chia cho độ lệch chuẩn σ, giúp dữ liệu có mean = 0 và std = 1.",
-    tags: ["Feature Engineering", "Preprocessing", "StandardScaler"]
+    "id": "modB_07",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Tiền xử lý dữ liệu (Feature Scaling)",
+    "difficulty": "Khó",
+    "question": "Khi tiền xử lý dữ liệu cho mô hình Machine Learning, phương pháp Standard Scaling (Z-score normalization) biến đổi dữ liệu x thành z theo công thức nào?",
+    "options": [
+      "z = x / ||x||₂",
+      "z = (x - min) / (max - min) (đưa dữ liệu về [0, 1])",
+      "z = log(x + 1)",
+      "z = (x - μ) / σ (trung bình μ = 0, độ lệch chuẩn σ = 1)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Z-score Standard Scaling trừ đi giá trị trung bình mẫu μ và chia cho độ lệch chuẩn σ, giúp dữ liệu có mean = 0 và std = 1.",
+    "tags": [
+      "Feature Engineering",
+      "Preprocessing",
+      "StandardScaler"
+    ]
   },
   {
-    id: "modB_08",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Tối ưu bộ nhớ với Pandas",
-    difficulty: "Khó",
-    question: "Đâu là kỹ thuật hiệu quả nhất để giảm bớt dung lượng bộ nhớ (RAM usage) khi load một file CSV khổng lồ vào Pandas DataFrame?",
-    options: ["Chỉ định tham số `dtype` phù hợp (vd: float32 thay vì float64, category cho chuỗi lặp lại) hoặc đọc từng chunk (`chunksize`).", "Gọi `df.dropna()` ngay sau khi load file.", "Chuyển toàn bộ dữ liệu thành kiểu `object` (string).", "Tăng dung lượng file swap trên ổ cứng."],
-    correctAnswer: 0,
-    explanation: "Việc dùng đúng kiểu dữ liệu nhẹ hơn (downcasting float64 -> float32, category dtype) và dùng `chunksize` đọc theo luồng giúp giảm tiêu tốn bộ nhớ RAM đáng kể.",
-    tags: ["Pandas", "Memory Optimization", "Big Data"]
+    "id": "modB_08",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu bộ nhớ với Pandas",
+    "difficulty": "Khó",
+    "question": "Đâu là kỹ thuật hiệu quả nhất để giảm bớt dung lượng bộ nhớ (RAM usage) khi load một file CSV khổng lồ vào Pandas DataFrame?",
+    "options": [
+      "Gọi `df.dropna()` ngay sau khi load file.",
+      "Chỉ định tham số `dtype` phù hợp (vd: float32 thay vì float64, category cho chuỗi lặp lại) hoặc đọc từng chunk (`chunksize`).",
+      "Chuyển toàn bộ dữ liệu thành kiểu `object` (string).",
+      "Tăng dung lượng file swap trên ổ cứng."
+    ],
+    "correctAnswer": 1,
+    "explanation": "Việc dùng đúng kiểu dữ liệu nhẹ hơn (downcasting float64 -> float32, category dtype) và dùng `chunksize` đọc theo luồng giúp giảm tiêu tốn bộ nhớ RAM đáng kể.",
+    "tags": [
+      "Pandas",
+      "Memory Optimization",
+      "Big Data"
+    ]
   },
   {
-    id: "modB_09",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Dictionary Comprehension & Xử lý chuỗi",
-    difficulty: "Dễ",
-    question: "Đoạn mã Python sau xuất ra kết quả gì?\n\n```python\ntext = 'vinuni'\ncount = {char: text.count(char) for char in text}\nprint(count['n'])\n```",
-    options: ["2", "1", "3", "0"],
-    correctAnswer: 0,
-    explanation: "Từ 'vinuni' chứa 2 chữ cái 'n'. Dictionary comprehension đếm số lần xuất hiện và gán `count['n'] = 2`.",
-    tags: ["Python", "Dictionary", "String Processing"]
+    "id": "modB_09",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Dictionary Comprehension & Xử lý chuỗi",
+    "difficulty": "Dễ",
+    "question": "Đoạn mã Python sau xuất ra kết quả gì?\n\n```python\ntext = 'vinuni'\ncount = {char: text.count(char) for char in text}\nprint(count['n'])\n```",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "0"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Từ 'vinuni' chứa 2 chữ cái 'n'. Dictionary comprehension đếm số lần xuất hiện và gán `count['n'] = 2`.",
+    "tags": [
+      "Python",
+      "Dictionary",
+      "String Processing"
+    ]
   },
   {
-    id: "modB_10",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Quản lý Ngoại lệ (Exception Handling)",
-    difficulty: "Trung bình",
-    question: "Trong khối try-except-else-finally của Python, khối mã `else` được thực thi trong trường hợp nào?",
-    options: ["Khối `else` chỉ chạy khi KHÔNG có bất kỳ ngoại lệ (exception) nào xảy ra trong khối `try`.", "Khối `else` luôn luôn chạy sau khối `finally`.", "Khối `else` chạy khi xảy ra ngoại lệ nhưng đã được `except` bắt.", "Khối `else` chạy để báo lỗi cú pháp (SyntaxError)."],
-    correctAnswer: 0,
-    explanation: "Trong Python, khối `else` sau `try-except` chỉ được kích hoạt thực thi khi không có bất kỳ ngoại lệ nào bắn ra trong khối `try`.",
-    tags: ["Python", "Exception Handling", "Try-Except"]
+    "id": "modB_10",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Quản lý Ngoại lệ (Exception Handling)",
+    "difficulty": "Trung bình",
+    "question": "Trong khối try-except-else-finally của Python, khối mã `else` được thực thi trong trường hợp nào?",
+    "options": [
+      "Khối `else` chạy khi xảy ra ngoại lệ nhưng đã được `except` bắt.",
+      "Khối `else` luôn luôn chạy sau khối `finally`.",
+      "Khối `else` chỉ chạy khi KHÔNG có bất kỳ ngoại lệ (exception) nào xảy ra trong khối `try`.",
+      "Khối `else` chạy để báo lỗi cú pháp (SyntaxError)."
+    ],
+    "correctAnswer": 2,
+    "explanation": "Trong Python, khối `else` sau `try-except` chỉ được kích hoạt thực thi khi không có bất kỳ ngoại lệ nào bắn ra trong khối `try`.",
+    "tags": [
+      "Python",
+      "Exception Handling",
+      "Try-Except"
+    ]
   },
   {
-    id: "modB_11",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy Indexing & Slicing",
-    difficulty: "Trung bình",
-    question: "Đoạn mã NumPy sau in ra giá trị mảng con nào?\n\n```python\nimport numpy as np\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nsub = arr[:2, 1:]\nprint(sub)\n```",
-    options: ["[[2, 3], [5, 6]]", "[[1, 2], [4, 5]]", "[[5, 6], [8, 9]]", "[[2, 3, 4], [5, 6, 7]]"],
-    correctAnswer: 0,
-    explanation: "`arr[:2, 1:]` lấy 2 hàng đầu tiên (hàng 0, 1) và lấy các cột từ cột 1 đến hết (cột 1, 2), cho kết quả [[2, 3], [5, 6]].",
-    tags: ["NumPy", "Slicing", "Array Indexing"]
+    "id": "modB_11",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy Indexing & Slicing",
+    "difficulty": "Trung bình",
+    "question": "Đoạn mã NumPy sau in ra giá trị mảng con nào?\n\n```python\nimport numpy as np\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nsub = arr[:2, 1:]\nprint(sub)\n```",
+    "options": [
+      "[[1, 2], [4, 5]]",
+      "[[2, 3], [5, 6]]",
+      "[[5, 6], [8, 9]]",
+      "[[2, 3, 4], [5, 6, 7]]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "`arr[:2, 1:]` lấy 2 hàng đầu tiên (hàng 0, 1) và lấy các cột từ cột 1 đến hết (cột 1, 2), cho kết quả [[2, 3], [5, 6]].",
+    "tags": [
+      "NumPy",
+      "Slicing",
+      "Array Indexing"
+    ]
   },
   {
-    id: "modB_12",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Bảng băm (Hash Table) & Tìm kiếm O(1)",
-    difficulty: "Khó",
-    question: "Cấu trúc dữ liệu `set` và `dict` trong Python có thời gian truy vấn tìm kiếm một phần tử (`x in container`) trung bình có độ phức tạp là bao nhiêu?",
-    options: ["O(1)", "O(N)", "O(log N)", "O(N log N)"],
-    correctAnswer: 0,
-    explanation: "Python `set` và `dict` được triển khai bằng Bảng băm (Hash Table), cho phép truy vấn tìm kiếm phần tử theo khóa với độ phức tạp trung bình O(1).",
-    tags: ["Python", "Hash Table", "Big O"]
-  },
-
-  // ── NEW questions provided by user (renumbered from 13) ───────────────────
-  {
-    id: "modB_13",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Broadcasting",
-    difficulty: "Trung bình",
-    question: "Hiện tượng nào xảy ra trong NumPy khi thực hiện đoạn code sau?\n\n```python\nimport numpy as np\na = np.array([1, 2, 3])\nprint(a + 10)\n```",
-    options: ["Broadcasting - số 10 được mở rộng để cộng vào từng phần tử của mảng", "Lỗi TypeError do khác kiểu dữ liệu", "Lỗi ValueError do kích thước không khớp", "Nối chuỗi [1, 2, 3, 10]"],
-    correctAnswer: 0,
-    explanation: "Broadcasting tự động mở rộng hằng số 10 thành mảng [10, 10, 10] để cộng từng phần tử cho kết quả [11, 12, 13].",
-    tags: ["numpy", "broadcasting"]
+    "id": "modB_12",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Bảng băm (Hash Table) & Tìm kiếm O(1)",
+    "difficulty": "Khó",
+    "question": "Cấu trúc dữ liệu `set` và `dict` trong Python có thời gian truy vấn tìm kiếm một phần tử (`x in container`) trung bình có độ phức tạp là bao nhiêu?",
+    "options": [
+      "O(N log N)",
+      "O(N)",
+      "O(log N)",
+      "O(1)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Python `set` và `dict` được triển khai bằng Bảng băm (Hash Table), cho phép truy vấn tìm kiếm phần tử theo khóa với độ phức tạp trung bình O(1).",
+    "tags": [
+      "Python",
+      "Hash Table",
+      "Big O"
+    ]
   },
   {
-    id: "modB_14",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Các hàm cơ bản",
-    difficulty: "Dễ",
-    question: "Để tính giá trị trung bình của các phần tử trong NumPy array `a`, hàm nào được sử dụng?",
-    options: ["a.average()", "a.mean()", "np.median(a)", "a.sum()/len(a) duy nhất"],
-    correctAnswer: 1,
-    explanation: "a.mean() hoặc np.mean(a) là phương thức chuẩn tính trung bình trong NumPy.",
-    tags: ["numpy", "statistics"]
+    "id": "modB_13",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Broadcasting",
+    "difficulty": "Trung bình",
+    "question": "Hiện tượng nào xảy ra trong NumPy khi thực hiện đoạn code sau?\n\n```python\nimport numpy as np\na = np.array([1, 2, 3])\nprint(a + 10)\n```",
+    "options": [
+      "Nối chuỗi [1, 2, 3, 10]",
+      "Lỗi TypeError do khác kiểu dữ liệu",
+      "Lỗi ValueError do kích thước không khớp",
+      "Broadcasting - số 10 được mở rộng để cộng vào từng phần tử của mảng"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Broadcasting tự động mở rộng hằng số 10 thành mảng [10, 10, 10] để cộng từng phần tử cho kết quả [11, 12, 13].",
+    "tags": [
+      "numpy",
+      "broadcasting"
+    ]
   },
   {
-    id: "modB_15",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Filtering",
-    difficulty: "Dễ",
-    question: "Cú pháp đúng trong Pandas để lọc các hàng có giá trị cột `age` lớn hơn 25 là:",
-    options: ["df[df['age'] > 25]", "df.filter(df['age'] > 25)", "df.where('age > 25')", "df.select('age > 25')"],
-    correctAnswer: 0,
-    explanation: "Boolean indexing df[df['age'] > 25] là cú pháp lọc dữ liệu phổ biến nhất trong Pandas.",
-    tags: ["pandas", "filtering"]
+    "id": "modB_14",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Các hàm cơ bản",
+    "difficulty": "Dễ",
+    "question": "Để tính giá trị trung bình của các phần tử trong NumPy array `a`, hàm nào được sử dụng?",
+    "options": [
+      "a.average()",
+      "a.mean()",
+      "np.median(a)",
+      "a.sum()/len(a) duy nhất"
+    ],
+    "correctAnswer": 1,
+    "explanation": "a.mean() hoặc np.mean(a) là phương thức chuẩn tính trung bình trong NumPy.",
+    "tags": [
+      "numpy",
+      "statistics"
+    ]
   },
   {
-    id: "modB_16",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Sorting",
-    difficulty: "Dễ",
-    question: "Lệnh nào dùng để sắp xếp DataFrame `df` theo cột `score` giảm dần?",
-    options: ["df.sort_values('score', ascending=False)", "df.sort_values('score', ascending=True)", "df.order_by('score', descending=True)", "df.sort('score', reverse=True)"],
-    correctAnswer: 0,
-    explanation: "df.sort_values('score', ascending=False) sắp xếp theo thứ tự giảm dần.",
-    tags: ["pandas", "sorting"]
+    "id": "modB_15",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Filtering",
+    "difficulty": "Dễ",
+    "question": "Cú pháp đúng trong Pandas để lọc các hàng có giá trị cột `age` lớn hơn 25 là:",
+    "options": [
+      "df.where('age > 25')",
+      "df.filter(df['age'] > 25)",
+      "df[df['age'] > 25]",
+      "df.select('age > 25')"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Boolean indexing df[df['age'] > 25] là cú pháp lọc dữ liệu phổ biến nhất trong Pandas.",
+    "tags": [
+      "pandas",
+      "filtering"
+    ]
   },
   {
-    id: "modB_17",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Missing Values",
-    difficulty: "Dễ",
-    question: "Lệnh nào trong Pandas dùng để đếm số lượng giá trị khuyết thiếu (NaN/Null) theo từng cột?",
-    options: ["df.isna().sum()", "df.isnull().count()", "df.isna().all()", "df.missing().sum()"],
-    correctAnswer: 0,
-    explanation: "df.isna().sum() tạo mảng boolean kiểm tra NaN rồi tính tổng theo từng cột.",
-    tags: ["pandas", "missing_values"]
+    "id": "modB_16",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Sorting",
+    "difficulty": "Dễ",
+    "question": "Lệnh nào dùng để sắp xếp DataFrame `df` theo cột `score` giảm dần?",
+    "options": [
+      "df.sort_values('score', ascending=False)",
+      "df.sort_values('score', ascending=True)",
+      "df.order_by('score', descending=True)",
+      "df.sort('score', reverse=True)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "df.sort_values('score', ascending=False) sắp xếp theo thứ tự giảm dần.",
+    "tags": [
+      "pandas",
+      "sorting"
+    ]
   },
   {
-    id: "modB_18",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Missing Values",
-    difficulty: "Dễ",
-    question: "Lệnh `df.dropna()` trong Pandas thực hiện công việc gì?",
-    options: ["Xóa các hàng có chứa giá trị khuyết thiếu (NaN)", "Điền số 0 vào các ô NaN", "Xóa toàn bộ các cột trong DataFrame", "Đếm số lượng ô không bị NaN"],
-    correctAnswer: 0,
-    explanation: "df.dropna() mặc định loại bỏ các hàng chứa ít nhất một giá trị khuyết thiếu (NaN).",
-    tags: ["pandas", "missing_values"]
+    "id": "modB_17",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Missing Values",
+    "difficulty": "Dễ",
+    "question": "Lệnh nào trong Pandas dùng để đếm số lượng giá trị khuyết thiếu (NaN/Null) theo từng cột?",
+    "options": [
+      "df.isnull().count()",
+      "df.isna().sum()",
+      "df.isna().all()",
+      "df.missing().sum()"
+    ],
+    "correctAnswer": 1,
+    "explanation": "df.isna().sum() tạo mảng boolean kiểm tra NaN rồi tính tổng theo từng cột.",
+    "tags": [
+      "pandas",
+      "missing_values"
+    ]
   },
   {
-    id: "modB_19",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Forward Fill",
-    difficulty: "Trung bình",
-    question: "Phương thức `df.fillna(method='ffill')` có ý nghĩa gì?",
-    options: ["Lấy giá trị hợp lệ gần nhất phía trước để điền vào ô NaN", "Lấy giá trị hợp lệ phía sau để điền vào ô NaN", "Điền giá trị trung bình của toàn bộ cột vào ô NaN", "Làm đầy dữ liệu bằng giá trị 0"],
-    correctAnswer: 0,
-    explanation: "ffill (Forward Fill) điền các giá trị NaN bằng giá trị hợp lệ gần nhất xuất hiện phía trước nó.",
-    tags: ["pandas", "imputation"]
+    "id": "modB_18",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Missing Values",
+    "difficulty": "Dễ",
+    "question": "Lệnh `df.dropna()` trong Pandas thực hiện công việc gì?",
+    "options": [
+      "Đếm số lượng ô không bị NaN",
+      "Điền số 0 vào các ô NaN",
+      "Xóa toàn bộ các cột trong DataFrame",
+      "Xóa các hàng có chứa giá trị khuyết thiếu (NaN)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "df.dropna() mặc định loại bỏ các hàng chứa ít nhất một giá trị khuyết thiếu (NaN).",
+    "tags": [
+      "pandas",
+      "missing_values"
+    ]
   },
   {
-    id: "modB_20",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Forward Fill",
-    difficulty: "Trung bình",
-    question: "Cho chuỗi dữ liệu [10, NaN, NaN, 20]. Sau khi áp dụng `fillna(method='ffill')`, kết quả là gì?",
-    options: ["[10, 10, 10, 20]", "[10, 20, 20, 20]", "[10, 15, 15, 20]", "[10, 0, 0, 20]"],
-    correctAnswer: 0,
-    explanation: "Giá trị 10 phía trước được lan truyền điền vào hai vị trí NaN liên tiếp.",
-    tags: ["pandas", "imputation"]
+    "id": "modB_19",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Forward Fill",
+    "difficulty": "Trung bình",
+    "question": "Phương thức `df.fillna(method='ffill')` có ý nghĩa gì?",
+    "options": [
+      "Lấy giá trị hợp lệ gần nhất phía trước để điền vào ô NaN",
+      "Lấy giá trị hợp lệ phía sau để điền vào ô NaN",
+      "Điền giá trị trung bình của toàn bộ cột vào ô NaN",
+      "Làm đầy dữ liệu bằng giá trị 0"
+    ],
+    "correctAnswer": 0,
+    "explanation": "ffill (Forward Fill) điền các giá trị NaN bằng giá trị hợp lệ gần nhất xuất hiện phía trước nó.",
+    "tags": [
+      "pandas",
+      "imputation"
+    ]
   },
   {
-    id: "modB_21",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Duplicates",
-    difficulty: "Dễ",
-    question: "Lệnh nào dùng để loại bỏ các hàng bị trùng lặp trong Pandas?",
-    options: ["df.drop_duplicates()", "df.remove_duplicates()", "df.distinct()", "df.unique()"],
-    correctAnswer: 0,
-    explanation: "df.drop_duplicates() loại bỏ các hàng có dữ liệu hoàn toàn trùng lặp.",
-    tags: ["pandas", "duplicates"]
+    "id": "modB_20",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Forward Fill",
+    "difficulty": "Trung bình",
+    "question": "Cho chuỗi dữ liệu [10, NaN, NaN, 20]. Sau khi áp dụng `fillna(method='ffill')`, kết quả là gì?",
+    "options": [
+      "[10, 15, 15, 20]",
+      "[10, 20, 20, 20]",
+      "[10, 10, 10, 20]",
+      "[10, 0, 0, 20]"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Giá trị 10 phía trước được lan truyền điền vào hai vị trí NaN liên tiếp.",
+    "tags": [
+      "pandas",
+      "imputation"
+    ]
   },
   {
-    id: "modB_22",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - GroupBy",
-    difficulty: "Trung bình",
-    question: "Đoạn code nào dùng để tính tổng `revenue` theo từng `region`?",
-    options: ["df.groupby('region')['revenue'].sum()", "df.groupby('revenue')['region'].sum()", "df.sum().groupby('region')", "df.aggregate('revenue', by='region')"],
-    correctAnswer: 0,
-    explanation: "df.groupby('region')['revenue'].sum() nhóm theo cột 'region' và tính tổng cột 'revenue'.",
-    tags: ["pandas", "groupby"]
+    "id": "modB_21",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Duplicates",
+    "difficulty": "Dễ",
+    "question": "Lệnh nào dùng để loại bỏ các hàng bị trùng lặp trong Pandas?",
+    "options": [
+      "df.distinct()",
+      "df.remove_duplicates()",
+      "df.drop_duplicates()",
+      "df.unique()"
+    ],
+    "correctAnswer": 2,
+    "explanation": "df.drop_duplicates() loại bỏ các hàng có dữ liệu hoàn toàn trùng lặp.",
+    "tags": [
+      "pandas",
+      "duplicates"
+    ]
   },
   {
-    id: "modB_23",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - agg()",
-    difficulty: "Trung bình",
-    question: "Lệnh `df.groupby('region').agg({'revenue': 'sum', 'score': 'mean'})` thực hiện điều gì?",
-    options: ["Tính tổng revenue và tính trung bình score cho mỗi region", "Tính trung bình revenue và tính tổng score cho mỗi region", "Lọc các nhóm có revenue bằng sum và score bằng mean", "Tạo hai DataFrame riêng biệt cho revenue và score"],
-    correctAnswer: 0,
-    explanation: "Hàm .agg() cho phép áp dụng nhiều phép gom nhóm tổng hợp khác nhau trên từng cột tương ứng.",
-    tags: ["pandas", "aggregation"]
+    "id": "modB_22",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - GroupBy",
+    "difficulty": "Trung bình",
+    "question": "Đoạn code nào dùng để tính tổng `revenue` theo từng `region`?",
+    "options": [
+      "df.groupby('region')['revenue'].sum()",
+      "df.groupby('revenue')['region'].sum()",
+      "df.sum().groupby('region')",
+      "df.aggregate('revenue', by='region')"
+    ],
+    "correctAnswer": 0,
+    "explanation": "df.groupby('region')['revenue'].sum() nhóm theo cột 'region' và tính tổng cột 'revenue'.",
+    "tags": [
+      "pandas",
+      "groupby"
+    ]
   },
   {
-    id: "modB_24",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Merge vs Concat",
-    difficulty: "Trung bình",
-    question: "Sự khác biệt chính giữa `pd.merge()` và `pd.concat()` trong Pandas là gì?",
-    options: ["merge thường ghép dữ liệu theo khóa (Key/Column values), còn concat thường nối các DataFrame theo trục (hàng hoặc cột)", "concat dùng ghép theo Key, merge dùng nối file", "Cả hai hàm có chức năng hoàn toàn giống hệt nhau", "merge chỉ áp dụng cho Series, concat chỉ áp dụng cho DataFrame"],
-    correctAnswer: 0,
-    explanation: "Merge thực hiện phép Join cơ sở dữ liệu dựa trên giá trị cột khóa chung, Concat thực hiện nối chuỗi mảng theo hàng/cột.",
-    tags: ["pandas", "merge", "concat"]
+    "id": "modB_23",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - agg()",
+    "difficulty": "Trung bình",
+    "question": "Lệnh `df.groupby('region').agg({'revenue': 'sum', 'score': 'mean'})` thực hiện điều gì?",
+    "options": [
+      "Tạo hai DataFrame riêng biệt cho revenue và score",
+      "Tính trung bình revenue và tính tổng score cho mỗi region",
+      "Lọc các nhóm có revenue bằng sum và score bằng mean",
+      "Tính tổng revenue và tính trung bình score cho mỗi region"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Hàm .agg() cho phép áp dụng nhiều phép gom nhóm tổng hợp khác nhau trên từng cột tương ứng.",
+    "tags": [
+      "pandas",
+      "aggregation"
+    ]
   },
   {
-    id: "modB_25",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - List vs Tuple",
-    difficulty: "Dễ",
-    question: "Đâu là đặc điểm khác biệt quan trọng nhất giữa List và Tuple trong Python?",
-    options: ["List có thể thay đổi phần tử (mutable), Tuple không thể thay đổi phần tử (immutable)", "Tuple truy cập phần tử nhanh hơn O(n^2)", "List dùng dấu ngoặc đơn (), Tuple dùng dấu ngoặc vuông []", "List chỉ chứa số, Tuple chứa được chuỗi"],
-    correctAnswer: 0,
-    explanation: "List là mutable (dùng []), Tuple là immutable (dùng ()).",
-    tags: ["python", "list", "tuple"]
+    "id": "modB_24",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Merge vs Concat",
+    "difficulty": "Trung bình",
+    "question": "Sự khác biệt chính giữa `pd.merge()` và `pd.concat()` trong Pandas là gì?",
+    "options": [
+      "concat dùng ghép theo Key, merge dùng nối file",
+      "merge thường ghép dữ liệu theo khóa (Key/Column values), còn concat thường nối các DataFrame theo trục (hàng hoặc cột)",
+      "Cả hai hàm có chức năng hoàn toàn giống hệt nhau",
+      "merge chỉ áp dụng cho Series, concat chỉ áp dụng cho DataFrame"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Merge thực hiện phép Join cơ sở dữ liệu dựa trên giá trị cột khóa chung, Concat thực hiện nối chuỗi mảng theo hàng/cột.",
+    "tags": [
+      "pandas",
+      "merge",
+      "concat"
+    ]
   },
   {
-    id: "modB_26",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Dot Product",
-    difficulty: "Dễ",
-    question: "Hàm nào trong NumPy dùng để tính tích vô hướng của hai vector hoặc nhân hai ma trận?",
-    options: ["np.dot(a, b)", "np.multiply(a, b)", "np.cross(a, b)", "np.sum(a * b)"],
-    correctAnswer: 0,
-    explanation: "np.dot(a, b) được dùng để tính dot product hoặc nhân ma trận chuẩn.",
-    tags: ["numpy", "dot_product"]
+    "id": "modB_25",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - List vs Tuple",
+    "difficulty": "Dễ",
+    "question": "Đâu là đặc điểm khác biệt quan trọng nhất giữa List và Tuple trong Python?",
+    "options": [
+      "List có thể thay đổi phần tử (mutable), Tuple không thể thay đổi phần tử (immutable)",
+      "Tuple truy cập phần tử nhanh hơn O(n^2)",
+      "List dùng dấu ngoặc đơn (), Tuple dùng dấu ngoặc vuông []",
+      "List chỉ chứa số, Tuple chứa được chuỗi"
+    ],
+    "correctAnswer": 0,
+    "explanation": "List là mutable (dùng []), Tuple là immutable (dùng ()).",
+    "tags": [
+      "python",
+      "list",
+      "tuple"
+    ]
   },
   {
-    id: "modB_27",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Output",
-    difficulty: "Dễ",
-    question: "Cho đoạn code sau:\n\n```python\na = [1, 2, 3, 4]\nprint(a[1:3])\n```\n\nOutput thu được là gì?",
-    options: ["[2, 3]", "[1, 2]", "[2, 3, 4]", "[1, 2, 3]"],
-    correctAnswer: 0,
-    explanation: "Slicing a[1:3] lấy phần tử index 1 và 2, là [2, 3].",
-    tags: ["python", "slicing"]
+    "id": "modB_26",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Dot Product",
+    "difficulty": "Dễ",
+    "question": "Hàm nào trong NumPy dùng để tính tích vô hướng của hai vector hoặc nhân hai ma trận?",
+    "options": [
+      "np.cross(a, b)",
+      "np.multiply(a, b)",
+      "np.dot(a, b)",
+      "np.sum(a * b)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "np.dot(a, b) được dùng để tính dot product hoặc nhân ma trận chuẩn.",
+    "tags": [
+      "numpy",
+      "dot_product"
+    ]
   },
   {
-    id: "modB_28",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Output",
-    difficulty: "Dễ",
-    question: "Cho đoạn code sau:\n\n```python\nimport numpy as np\na = np.array([1, 2, 3])\nprint(a * 3)\n```\n\nOutput là gì?",
-    options: ["[3, 6, 9]", "[1, 2, 3, 1, 2, 3, 1, 2, 3]", "[3, 3, 3]", "Error"],
-    correctAnswer: 0,
-    explanation: "Từng phần tử nhân với 3 thu được [3, 6, 9].",
-    tags: ["numpy", "array"]
+    "id": "modB_27",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Output",
+    "difficulty": "Dễ",
+    "question": "Cho đoạn code sau:\n\n```python\na = [1, 2, 3, 4]\nprint(a[1:3])\n```\n\nOutput thu được là gì?",
+    "options": [
+      "[1, 2]",
+      "[2, 3]",
+      "[2, 3, 4]",
+      "[1, 2, 3]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Slicing a[1:3] lấy phần tử index 1 và 2, là [2, 3].",
+    "tags": [
+      "python",
+      "slicing"
+    ]
   },
   {
-    id: "modB_29",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Fillna Mean",
-    difficulty: "Trung bình",
-    question: "Đoạn code nào điền giá trị trung bình của cột `age` vào các ô bị khuyết (NaN) của cột đó?",
-    options: ["df['age'] = df['age'].fillna(df['age'].mean())", "df['age'].dropna(df['age'].mean())", "df.fillna('age', mean=True)", "df['age'].replace(np.nan, df.mean())"],
-    correctAnswer: 0,
-    explanation: "df['age'].fillna(df['age'].mean()) tính mean cột age và điền vào vị trí NaN.",
-    tags: ["pandas", "imputation"]
+    "id": "modB_28",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Output",
+    "difficulty": "Dễ",
+    "question": "Cho đoạn code sau:\n\n```python\nimport numpy as np\na = np.array([1, 2, 3])\nprint(a * 3)\n```\n\nOutput là gì?",
+    "options": [
+      "Error",
+      "[1, 2, 3, 1, 2, 3, 1, 2, 3]",
+      "[3, 3, 3]",
+      "[3, 6, 9]"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Từng phần tử nhân với 3 thu được [3, 6, 9].",
+    "tags": [
+      "numpy",
+      "array"
+    ]
   },
   {
-    id: "modB_30",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Dictionary",
-    difficulty: "Dễ",
-    question: "Cấu trúc dữ liệu Dictionary trong Python lưu trữ dữ liệu dưới dạng cặp nào?",
-    options: ["Key - Value", "Index - Element", "Header - Row", "Node - Pointer"],
-    correctAnswer: 0,
-    explanation: "Dictionary trong Python lưu trữ dữ liệu theo cặp Khóa - Giá trị (Key-Value).",
-    tags: ["python", "dictionary"]
+    "id": "modB_29",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Fillna Mean",
+    "difficulty": "Trung bình",
+    "question": "Đoạn code nào điền giá trị trung bình của cột `age` vào các ô bị khuyết (NaN) của cột đó?",
+    "options": [
+      "df['age'].replace(np.nan, df.mean())",
+      "df['age'].dropna(df['age'].mean())",
+      "df.fillna('age', mean=True)",
+      "df['age'] = df['age'].fillna(df['age'].mean())"
+    ],
+    "correctAnswer": 3,
+    "explanation": "df['age'].fillna(df['age'].mean()) tính mean cột age và điền vào vị trí NaN.",
+    "tags": [
+      "pandas",
+      "imputation"
+    ]
   },
   {
-    id: "modB_31",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Merge",
-    difficulty: "Trung bình",
-    question: "Muốn kết hợp hai DataFrame `customers` và `orders` theo cột chung `customer_id`, ta dùng cú pháp nào?",
-    options: ["pd.merge(customers, orders, on='customer_id')", "pd.concat([customers, orders], key='customer_id')", "customers.append(orders, on='customer_id')", "pd.join(customers, orders, where='customer_id')"],
-    correctAnswer: 0,
-    explanation: "pd.merge(df1, df2, on='key') thực hiện join hai bảng theo cột khóa chung.",
-    tags: ["pandas", "merge"]
+    "id": "modB_30",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Dictionary",
+    "difficulty": "Dễ",
+    "question": "Cấu trúc dữ liệu Dictionary trong Python lưu trữ dữ liệu dưới dạng cặp nào?",
+    "options": [
+      "Index - Element",
+      "Key - Value",
+      "Header - Row",
+      "Node - Pointer"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Dictionary trong Python lưu trữ dữ liệu theo cặp Khóa - Giá trị (Key-Value).",
+    "tags": [
+      "python",
+      "dictionary"
+    ]
   },
   {
-    id: "modB_32",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Reshape",
-    difficulty: "Trung bình",
-    question: "Mảng NumPy 1D gồm 12 phần tử có thể chuyển thành mảng 2D kích thước nào bằng phương thức `.reshape()`?",
-    options: ["3 x 4", "3 x 5", "2 x 5", "4 x 4"],
-    correctAnswer: 0,
-    explanation: "Tổng số phần tử phải giữ nguyên: 3 * 4 = 12 phần tử.",
-    tags: ["numpy", "reshape"]
+    "id": "modB_31",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Merge",
+    "difficulty": "Trung bình",
+    "question": "Muốn kết hợp hai DataFrame `customers` và `orders` theo cột chung `customer_id`, ta dùng cú pháp nào?",
+    "options": [
+      "customers.append(orders, on='customer_id')",
+      "pd.concat([customers, orders], key='customer_id')",
+      "pd.merge(customers, orders, on='customer_id')",
+      "pd.join(customers, orders, where='customer_id')"
+    ],
+    "correctAnswer": 2,
+    "explanation": "pd.merge(df1, df2, on='key') thực hiện join hai bảng theo cột khóa chung.",
+    "tags": [
+      "pandas",
+      "merge"
+    ]
   },
   {
-    id: "modB_33",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - List Comprehension",
-    difficulty: "Trung bình",
-    question: "Kết quả của cú pháp List Comprehension `[x**2 for x in range(4)]` là gì?",
-    options: ["[0, 1, 4, 9]", "[1, 4, 9, 16]", "[0, 2, 4, 6]", "[0, 1, 2, 3]"],
-    correctAnswer: 0,
-    explanation: "range(4) sinh ra 0, 1, 2, 3. Bình phương tương ứng là 0, 1, 4, 9.",
-    tags: ["python", "list_comprehension"]
+    "id": "modB_32",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Reshape",
+    "difficulty": "Trung bình",
+    "question": "Mảng NumPy 1D gồm 12 phần tử có thể chuyển thành mảng 2D kích thước nào bằng phương thức `.reshape()`?",
+    "options": [
+      "3 x 4",
+      "3 x 5",
+      "2 x 5",
+      "4 x 4"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Tổng số phần tử phải giữ nguyên: 3 * 4 = 12 phần tử.",
+    "tags": [
+      "numpy",
+      "reshape"
+    ]
   },
   {
-    id: "modB_34",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Filtering & Sorting",
-    difficulty: "Trung bình",
-    question: "Đoạn code kết hợp lọc `age > 25` và sắp xếp `score` giảm dần là:",
-    options: ["df[df['age'] > 25].sort_values('score', ascending=False)", "df.sort_values('score').filter(df['age'] > 25)", "df[df['score'] > 25].sort('age')", "df.groupby('age').sort('score')"],
-    correctAnswer: 0,
-    explanation: "Đầu tiên lọc df[df['age'] > 25], sau đó gọi phương thức .sort_values('score', ascending=False).",
-    tags: ["pandas", "filtering", "sorting"]
+    "id": "modB_33",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - List Comprehension",
+    "difficulty": "Trung bình",
+    "question": "Kết quả của cú pháp List Comprehension `[x**2 for x in range(4)]` là gì?",
+    "options": [
+      "[1, 4, 9, 16]",
+      "[0, 1, 4, 9]",
+      "[0, 2, 4, 6]",
+      "[0, 1, 2, 3]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "range(4) sinh ra 0, 1, 2, 3. Bình phương tương ứng là 0, 1, 4, 9.",
+    "tags": [
+      "python",
+      "list_comprehension"
+    ]
   },
   {
-    id: "modB_35",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Max Min",
-    difficulty: "Dễ",
-    question: "Trong NumPy, làm sao để tìm giá trị lớn nhất và nhỏ nhất của mảng `a`?",
-    options: ["a.max() và a.min()", "a.highest() và a.lowest()", "np.maximum(a) và np.minimum(a)", "a.top() và a.bottom()"],
-    correctAnswer: 0,
-    explanation: "a.max() và a.min() là hai hàm chuẩn trong NumPy.",
-    tags: ["numpy", "statistics"]
+    "id": "modB_34",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Filtering & Sorting",
+    "difficulty": "Trung bình",
+    "question": "Đoạn code kết hợp lọc `age > 25` và sắp xếp `score` giảm dần là:",
+    "options": [
+      "df.groupby('age').sort('score')",
+      "df.sort_values('score').filter(df['age'] > 25)",
+      "df[df['score'] > 25].sort('age')",
+      "df[df['age'] > 25].sort_values('score', ascending=False)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Đầu tiên lọc df[df['age'] > 25], sau đó gọi phương thức .sort_values('score', ascending=False).",
+    "tags": [
+      "pandas",
+      "filtering",
+      "sorting"
+    ]
   },
   {
-    id: "modB_36",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Lambda Function",
-    difficulty: "Trung bình",
-    question: "Cú pháp `lambda x: x * 2` trong Python đại diện cho một:",
-    options: ["Hàm vô danh (Anonymous Function) nhận x và trả về x * 2", "Biến toàn cục có giá trị x * 2", "Vòng lặp nhân x với 2", "Cấu trúc rẽ nhánh điều kiện"],
-    correctAnswer: 0,
-    explanation: "Lambda trong Python tạo ra hàm vô danh ngắn gọn.",
-    tags: ["python", "lambda"]
+    "id": "modB_35",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Max Min",
+    "difficulty": "Dễ",
+    "question": "Trong NumPy, làm sao để tìm giá trị lớn nhất và nhỏ nhất của mảng `a`?",
+    "options": [
+      "a.max() và a.min()",
+      "a.highest() và a.lowest()",
+      "np.maximum(a) và np.minimum(a)",
+      "a.top() và a.bottom()"
+    ],
+    "correctAnswer": 0,
+    "explanation": "a.max() và a.min() là hai hàm chuẩn trong NumPy.",
+    "tags": [
+      "numpy",
+      "statistics"
+    ]
   },
   {
-    id: "modB_37",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - loc vs iloc",
-    difficulty: "Trung bình",
-    question: "Sự khác biệt giữa `df.loc` và `df.iloc` trong Pandas là gì?",
-    options: ["loc dựa trên nhãn (Label-based), còn iloc dựa trên vị trí chỉ số nguyên (Integer index-based)", "iloc dựa trên nhãn, loc dựa trên chỉ số nguyên", "loc dùng cho hàng, iloc dùng cho cột", "Không có khác biệt nào"],
-    correctAnswer: 0,
-    explanation: "loc chọn dữ liệu theo tên nhãn hàng/cột, iloc chọn theo chỉ số vị trí số nguyên (0, 1, 2...).",
-    tags: ["pandas", "loc_iloc"]
+    "id": "modB_36",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Lambda Function",
+    "difficulty": "Trung bình",
+    "question": "Cú pháp `lambda x: x * 2` trong Python đại diện cho một:",
+    "options": [
+      "Vòng lặp nhân x với 2",
+      "Biến toàn cục có giá trị x * 2",
+      "Hàm vô danh (Anonymous Function) nhận x và trả về x * 2",
+      "Cấu trúc rẽ nhánh điều kiện"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Lambda trong Python tạo ra hàm vô danh ngắn gọn.",
+    "tags": [
+      "python",
+      "lambda"
+    ]
   },
   {
-    id: "modB_38",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Generator",
-    difficulty: "Khó",
-    question: "Từ khóa nào được dùng trong hàm Python để biến hàm đó thành một Generator?",
-    options: ["yield", "return", "generate", "emit"],
-    correctAnswer: 0,
-    explanation: "Từ khóa yield tạm dừng hàm và trả về một giá trị, biến hàm thành một Generator tiết kiệm bộ nhớ.",
-    tags: ["python", "generator"]
+    "id": "modB_37",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - loc vs iloc",
+    "difficulty": "Trung bình",
+    "question": "Sự khác biệt giữa `df.loc` và `df.iloc` trong Pandas là gì?",
+    "options": [
+      "loc dùng cho hàng, iloc dùng cho cột",
+      "iloc dựa trên nhãn, loc dựa trên chỉ số nguyên",
+      "loc dựa trên nhãn (Label-based), còn iloc dựa trên vị trí chỉ số nguyên (Integer index-based)",
+      "Không có khác biệt nào"
+    ],
+    "correctAnswer": 2,
+    "explanation": "loc chọn dữ liệu theo tên nhãn hàng/cột, iloc chọn theo chỉ số vị trí số nguyên (0, 1, 2...).",
+    "tags": [
+      "pandas",
+      "loc_iloc"
+    ]
   },
   {
-    id: "modB_39",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Shape",
-    difficulty: "Dễ",
-    question: "Thuộc tính `df.shape` của một DataFrame trả về kết quả gì?",
-    options: ["Một tuple chứa (số hàng, số cột)", "Tổng số ô dữ liệu trong DataFrame", "Danh sách tên các cột", "Kiểu dữ liệu của từng cột"],
-    correctAnswer: 0,
-    explanation: "df.shape trả về (num_rows, num_cols).",
-    tags: ["pandas", "dataframe"]
+    "id": "modB_38",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Generator",
+    "difficulty": "Khó",
+    "question": "Từ khóa nào được dùng trong hàm Python để biến hàm đó thành một Generator?",
+    "options": [
+      "yield",
+      "return",
+      "generate",
+      "emit"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Từ khóa yield tạm dừng hàm và trả về một giá trị, biến hàm thành một Generator tiết kiệm bộ nhớ.",
+    "tags": [
+      "python",
+      "generator"
+    ]
   },
   {
-    id: "modB_40",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Value Counts",
-    difficulty: "Dễ",
-    question: "Hàm nào dùng để đếm tần suất xuất hiện của các giá trị riêng biệt trong một cột Pandas Series?",
-    options: ["s.value_counts()", "s.count_values()", "s.distinct_count()", "s.frequency()"],
-    correctAnswer: 0,
-    explanation: "s.value_counts() đếm số lần xuất hiện của từng giá trị độc nhất trong Series.",
-    tags: ["pandas", "series"]
+    "id": "modB_39",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Shape",
+    "difficulty": "Dễ",
+    "question": "Thuộc tính `df.shape` của một DataFrame trả về kết quả gì?",
+    "options": [
+      "Kiểu dữ liệu của từng cột",
+      "Tổng số ô dữ liệu trong DataFrame",
+      "Danh sách tên các cột",
+      "Một tuple chứa (số hàng, số cột)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "df.shape trả về (num_rows, num_cols).",
+    "tags": [
+      "pandas",
+      "dataframe"
+    ]
   },
   {
-    id: "modB_41",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Zeros Ones",
-    difficulty: "Dễ",
-    question: "Hàm `np.zeros((2, 3))` tạo ra ma trận như thế nào?",
-    options: ["Ma trận kích thước 2 hàng 3 cột toàn số 0", "Ma trận kích thước 3 hàng 2 cột toàn số 0", "Mảng 1D gồm 6 số 0", "Ma trận đơn vị 2x3"],
-    correctAnswer: 0,
-    explanation: "np.zeros((2, 3)) tạo ma trận 2 hàng, 3 cột với tất cả các phần tử có giá trị 0.0.",
-    tags: ["numpy", "array_creation"]
+    "id": "modB_40",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Value Counts",
+    "difficulty": "Dễ",
+    "question": "Hàm nào dùng để đếm tần suất xuất hiện của các giá trị riêng biệt trong một cột Pandas Series?",
+    "options": [
+      "s.count_values()",
+      "s.value_counts()",
+      "s.distinct_count()",
+      "s.frequency()"
+    ],
+    "correctAnswer": 1,
+    "explanation": "s.value_counts() đếm số lần xuất hiện của từng giá trị độc nhất trong Series.",
+    "tags": [
+      "pandas",
+      "series"
+    ]
   },
   {
-    id: "modB_42",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Map / Apply",
-    difficulty: "Trung bình",
-    question: "Để áp dụng một hàm tùy chỉnh lên từng phần tử của một cột trong DataFrame, ta sử dụng phương thức nào?",
-    options: ["df['col'].apply(fn)", "df['col'].run(fn)", "df['col'].execute(fn)", "df['col'].transform_all(fn)"],
-    correctAnswer: 0,
-    explanation: "Phương thức .apply() được sử dụng để áp dụng một hàm lên từng phần tử hoặc từng hàng/cột của DataFrame.",
-    tags: ["pandas", "apply"]
+    "id": "modB_41",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Zeros Ones",
+    "difficulty": "Dễ",
+    "question": "Hàm `np.zeros((2, 3))` tạo ra ma trận như thế nào?",
+    "options": [
+      "Ma trận kích thước 2 hàng 3 cột toàn số 0",
+      "Ma trận kích thước 3 hàng 2 cột toàn số 0",
+      "Mảng 1D gồm 6 số 0",
+      "Ma trận đơn vị 2x3"
+    ],
+    "correctAnswer": 0,
+    "explanation": "np.zeros((2, 3)) tạo ma trận 2 hàng, 3 cột với tất cả các phần tử có giá trị 0.0.",
+    "tags": [
+      "numpy",
+      "array_creation"
+    ]
   },
   {
-    id: "modB_43",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Pass by Reference",
-    difficulty: "Trung bình",
-    question: "Kết quả của đoạn code sau là gì?\n\n```python\ndef append_item(lst):\n    lst.append(100)\n\nmy_list = [1, 2]\nappend_item(my_list)\nprint(my_list)\n```",
-    options: ["[1, 2, 100]", "[1, 2]", "[100]", "Error"],
-    correctAnswer: 0,
-    explanation: "List trong Python là đối tượng mutable và được truyền theo tham chiếu (pass by assignment/reference), do đó làm thay đổi danh sách gốc.",
-    tags: ["python", "mutable", "functions"]
+    "id": "modB_42",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Map / Apply",
+    "difficulty": "Trung bình",
+    "question": "Để áp dụng một hàm tùy chỉnh lên từng phần tử của một cột trong DataFrame, ta sử dụng phương thức nào?",
+    "options": [
+      "df['col'].execute(fn)",
+      "df['col'].run(fn)",
+      "df['col'].apply(fn)",
+      "df['col'].transform_all(fn)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Phương thức .apply() được sử dụng để áp dụng một hàm lên từng phần tử hoặc từng hàng/cột của DataFrame.",
+    "tags": [
+      "pandas",
+      "apply"
+    ]
   },
   {
-    id: "modB_44",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Argmax",
-    difficulty: "Trung bình",
-    question: "Hàm `np.argmax(a)` trả về kết quả gì?",
-    options: ["Chỉ số (index) của phần tử có giá trị lớn nhất trong mảng", "Giá trị lớn nhất trong mảng", "Mảng sắp xếp theo thứ tự tăng dần", "Số lượng phần tử lớn hơn 0"],
-    correctAnswer: 0,
-    explanation: "argmax trả về vị trí index của phần tử đạt giá trị cực đại.",
-    tags: ["numpy", "argmax"]
+    "id": "modB_43",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Pass by Reference",
+    "difficulty": "Trung bình",
+    "question": "Kết quả của đoạn code sau là gì?\n\n```python\ndef append_item(lst):\n    lst.append(100)\n\nmy_list = [1, 2]\nappend_item(my_list)\nprint(my_list)\n```",
+    "options": [
+      "[1, 2]",
+      "[1, 2, 100]",
+      "[100]",
+      "Error"
+    ],
+    "correctAnswer": 1,
+    "explanation": "List trong Python là đối tượng mutable và được truyền theo tham chiếu (pass by assignment/reference), do đó làm thay đổi danh sách gốc.",
+    "tags": [
+      "python",
+      "mutable",
+      "functions"
+    ]
   },
   {
-    id: "modB_45",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Reset Index",
-    difficulty: "Dễ",
-    question: "Sau khi groupby hoặc filter, để đưa chỉ số dòng về dạng mặc định 0, 1, 2..., ta gọi hàm nào?",
-    options: ["df.reset_index()", "df.reindex_clean()", "df.set_index_zero()", "df.clear_index()"],
-    correctAnswer: 0,
-    explanation: "df.reset_index() đặt lại chỉ số dòng về dạng số nguyên liên tiếp bắt đầu từ 0.",
-    tags: ["pandas", "indexing"]
+    "id": "modB_44",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Argmax",
+    "difficulty": "Trung bình",
+    "question": "Hàm `np.argmax(a)` trả về kết quả gì?",
+    "options": [
+      "Số lượng phần tử lớn hơn 0",
+      "Giá trị lớn nhất trong mảng",
+      "Mảng sắp xếp theo thứ tự tăng dần",
+      "Chỉ số (index) của phần tử có giá trị lớn nhất trong mảng"
+    ],
+    "correctAnswer": 3,
+    "explanation": "argmax trả về vị trí index của phần tử đạt giá trị cực đại.",
+    "tags": [
+      "numpy",
+      "argmax"
+    ]
   },
   {
-    id: "modB_46",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - String Splitting",
-    difficulty: "Dễ",
-    question: "Kết quả của `'AI,ML,DL'.split(',')` là:",
-    options: ["['AI', 'ML', 'DL']", "('AI', 'ML', 'DL')", "{'AI', 'ML', 'DL'}", "'AI ML DL'"],
-    correctAnswer: 0,
-    explanation: "Phương thức .split(',') tách chuỗi thành một danh sách (list) các chuỗi con.",
-    tags: ["python", "string"]
+    "id": "modB_45",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Reset Index",
+    "difficulty": "Dễ",
+    "question": "Sau khi groupby hoặc filter, để đưa chỉ số dòng về dạng mặc định 0, 1, 2..., ta gọi hàm nào?",
+    "options": [
+      "df.clear_index()",
+      "df.reindex_clean()",
+      "df.set_index_zero()",
+      "df.reset_index()"
+    ],
+    "correctAnswer": 3,
+    "explanation": "df.reset_index() đặt lại chỉ số dòng về dạng số nguyên liên tiếp bắt đầu từ 0.",
+    "tags": [
+      "pandas",
+      "indexing"
+    ]
   },
   {
-    id: "modB_47",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Concatenate",
-    difficulty: "Trung bình",
-    question: "Để nối hai mảng NumPy `a` và `b` theo chiều dọc (theo hàng), hàm nào đúng?",
-    options: ["np.vstack((a, b))", "np.hstack((a, b))", "np.append_column(a, b)", "np.merge(a, b)"],
-    correctAnswer: 0,
-    explanation: "np.vstack (vertical stack) ghép nối các mảng theo chiều dọc.",
-    tags: ["numpy", "vstack"]
+    "id": "modB_46",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - String Splitting",
+    "difficulty": "Dễ",
+    "question": "Kết quả của `'AI,ML,DL'.split(',')` là:",
+    "options": [
+      "('AI', 'ML', 'DL')",
+      "['AI', 'ML', 'DL']",
+      "{'AI', 'ML', 'DL'}",
+      "'AI ML DL'"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Phương thức .split(',') tách chuỗi thành một danh sách (list) các chuỗi con.",
+    "tags": [
+      "python",
+      "string"
+    ]
   },
   {
-    id: "modB_48",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Info & Describe",
-    difficulty: "Dễ",
-    question: "Hàm nào trong Pandas cung cấp tóm tắt thống kê mô tả (count, mean, std, min, max, quartiles) cho các cột định lượng?",
-    options: ["df.describe()", "df.info()", "df.summary()", "df.stats()"],
-    correctAnswer: 0,
-    explanation: "df.describe() tạo các thống kê tổng quan định lượng cho từng cột số trong DataFrame.",
-    tags: ["pandas", "describe"]
+    "id": "modB_47",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Concatenate",
+    "difficulty": "Trung bình",
+    "question": "Để nối hai mảng NumPy `a` và `b` theo chiều dọc (theo hàng), hàm nào đúng?",
+    "options": [
+      "np.append_column(a, b)",
+      "np.hstack((a, b))",
+      "np.vstack((a, b))",
+      "np.merge(a, b)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "np.vstack (vertical stack) ghép nối các mảng theo chiều dọc.",
+    "tags": [
+      "numpy",
+      "vstack"
+    ]
   },
   {
-    id: "modB_49",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Zip",
-    difficulty: "Trung bình",
-    question: "Kết quả của `list(zip(['a', 'b'], [1, 2]))` là gì?",
-    options: ["[('a', 1), ('b', 2)]", "[{'a': 1}, {'b': 2}]", "['a', 1, 'b', 2]", "[('a', 'b'), (1, 2)]"],
-    correctAnswer: 0,
-    explanation: "Hàm zip ghép từng cặp phần tử tương ứng từ các iterable thành một tuple.",
-    tags: ["python", "zip"]
+    "id": "modB_48",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Info & Describe",
+    "difficulty": "Dễ",
+    "question": "Hàm nào trong Pandas cung cấp tóm tắt thống kê mô tả (count, mean, std, min, max, quartiles) cho các cột định lượng?",
+    "options": [
+      "df.describe()",
+      "df.info()",
+      "df.summary()",
+      "df.stats()"
+    ],
+    "correctAnswer": 0,
+    "explanation": "df.describe() tạo các thống kê tổng quan định lượng cho từng cột số trong DataFrame.",
+    "tags": [
+      "pandas",
+      "describe"
+    ]
   },
   {
-    id: "modB_50",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - DataType",
-    difficulty: "Dễ",
-    question: "Lệnh nào dùng để đổi kiểu dữ liệu của cột `age` sang kiểu int trong Pandas?",
-    options: ["df['age'] = df['age'].astype(int)", "df['age'] = df['age'].to_int()", "df['age'].convert(int)", "df.cast('age', int)"],
-    correctAnswer: 0,
-    explanation: "df['age'].astype(int) ép kiểu dữ liệu của cột trong Pandas.",
-    tags: ["pandas", "astype"]
+    "id": "modB_49",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Zip",
+    "difficulty": "Trung bình",
+    "question": "Kết quả của `list(zip(['a', 'b'], [1, 2]))` là gì?",
+    "options": [
+      "[{'a': 1}, {'b': 2}]",
+      "[('a', 1), ('b', 2)]",
+      "['a', 1, 'b', 2]",
+      "[('a', 'b'), (1, 2)]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Hàm zip ghép từng cặp phần tử tương ứng từ các iterable thành một tuple.",
+    "tags": [
+      "python",
+      "zip"
+    ]
   },
   {
-    id: "modB_51",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Linspace",
-    difficulty: "Trung bình",
-    question: "Lệnh `np.linspace(0, 1, 5)` trả về mảng như thế nào?",
-    options: ["Mảng gồm 5 số cách đều nhau từ 0 đến 1 (bao gồm cả 0 và 1)", "Mảng chứa các số nguyên từ 0 đến 5", "Mảng ngẫu nhiên 5 phần tử trong [0, 1]", "Mảng [0, 0.2, 0.4, 0.6, 0.8]"],
-    correctAnswer: 0,
-    explanation: "linspace(start, stop, num) tạo mảng gồm num giá trị chia đều đoạn [start, stop].",
-    tags: ["numpy", "linspace"]
+    "id": "modB_50",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - DataType",
+    "difficulty": "Dễ",
+    "question": "Lệnh nào dùng để đổi kiểu dữ liệu của cột `age` sang kiểu int trong Pandas?",
+    "options": [
+      "df.cast('age', int)",
+      "df['age'] = df['age'].to_int()",
+      "df['age'].convert(int)",
+      "df['age'] = df['age'].astype(int)"
+    ],
+    "correctAnswer": 3,
+    "explanation": "df['age'].astype(int) ép kiểu dữ liệu của cột trong Pandas.",
+    "tags": [
+      "pandas",
+      "astype"
+    ]
   },
   {
-    id: "modB_52",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Enumerate",
-    difficulty: "Dễ",
-    question: "Hàm `enumerate(['a', 'b', 'c'])` trong vòng lặp `for i, val in ...` cung cấp biến `i` là gì?",
-    options: ["Chỉ số (index) bắt đầu từ 0", "Độ dài của danh sách", "Giá trị băm của phần tử", "Trạng thái boolean"],
-    correctAnswer: 0,
-    explanation: "enumerate() trả về cặp (index, value) khi duyệt qua iterable.",
-    tags: ["python", "enumerate"]
+    "id": "modB_51",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Linspace",
+    "difficulty": "Trung bình",
+    "question": "Lệnh `np.linspace(0, 1, 5)` trả về mảng như thế nào?",
+    "options": [
+      "Mảng gồm 5 số cách đều nhau từ 0 đến 1 (bao gồm cả 0 và 1)",
+      "Mảng chứa các số nguyên từ 0 đến 5",
+      "Mảng ngẫu nhiên 5 phần tử trong [0, 1]",
+      "Mảng [0, 0.2, 0.4, 0.6, 0.8]"
+    ],
+    "correctAnswer": 0,
+    "explanation": "linspace(start, stop, num) tạo mảng gồm num giá trị chia đều đoạn [start, stop].",
+    "tags": [
+      "numpy",
+      "linspace"
+    ]
   },
   {
-    id: "modB_53",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Pivot Table",
-    difficulty: "Trung bình",
-    question: "Công cụ nào trong Pandas tương tự như Pivot Table của Excel để tổng hợp dữ liệu 2 chiều?",
-    options: ["pd.pivot_table()", "df.cross_table()", "df.group_matrix()", "df.reshape_table()"],
-    correctAnswer: 0,
-    explanation: "pd.pivot_table() tạo bảng tổng hợp dữ liệu xoay chiều linh hoạt.",
-    tags: ["pandas", "pivot_table"]
+    "id": "modB_52",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Enumerate",
+    "difficulty": "Dễ",
+    "question": "Hàm `enumerate(['a', 'b', 'c'])` trong vòng lặp `for i, val in ...` cung cấp biến `i` là gì?",
+    "options": [
+      "Giá trị băm của phần tử",
+      "Độ dài của danh sách",
+      "Chỉ số (index) bắt đầu từ 0",
+      "Trạng thái boolean"
+    ],
+    "correctAnswer": 2,
+    "explanation": "enumerate() trả về cặp (index, value) khi duyệt qua iterable.",
+    "tags": [
+      "python",
+      "enumerate"
+    ]
   },
   {
-    id: "modB_54",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "NumPy - Random",
-    difficulty: "Dễ",
-    question: "Để kết quả sinh số ngẫu nhiên trong NumPy luôn cố định sau mỗi lần chạy code, ta dùng lệnh nào?",
-    options: ["np.random.seed(42)", "np.fix_random()", "np.random.freeze()", "np.set_static_rand()"],
-    correctAnswer: 0,
-    explanation: "np.random.seed() thiết lập hạt giống số ngẫu nhiên để tái lập kết quả (reproducibility).",
-    tags: ["numpy", "random", "seed"]
+    "id": "modB_53",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Pivot Table",
+    "difficulty": "Trung bình",
+    "question": "Công cụ nào trong Pandas tương tự như Pivot Table của Excel để tổng hợp dữ liệu 2 chiều?",
+    "options": [
+      "df.group_matrix()",
+      "df.cross_table()",
+      "pd.pivot_table()",
+      "df.reshape_table()"
+    ],
+    "correctAnswer": 2,
+    "explanation": "pd.pivot_table() tạo bảng tổng hợp dữ liệu xoay chiều linh hoạt.",
+    "tags": [
+      "pandas",
+      "pivot_table"
+    ]
   },
   {
-    id: "modB_55",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Python Core - Any All",
-    difficulty: "Trung bình",
-    question: "Hàm `all([True, True, False])` trong Python trả về giá trị gì?",
-    options: ["False", "True", "None", "Error"],
-    correctAnswer: 0,
-    explanation: "Hàm all() chỉ trả về True nếu tất cả các phần tử trong iterable đều là True.",
-    tags: ["python", "boolean"]
+    "id": "modB_54",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy - Random",
+    "difficulty": "Dễ",
+    "question": "Để kết quả sinh số ngẫu nhiên trong NumPy luôn cố định sau mỗi lần chạy code, ta dùng lệnh nào?",
+    "options": [
+      "np.random.seed(42)",
+      "np.fix_random()",
+      "np.random.freeze()",
+      "np.set_static_rand()"
+    ],
+    "correctAnswer": 0,
+    "explanation": "np.random.seed() thiết lập hạt giống số ngẫu nhiên để tái lập kết quả (reproducibility).",
+    "tags": [
+      "numpy",
+      "random",
+      "seed"
+    ]
   },
   {
-    id: "modB_56",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Pandas - Export CSV",
-    difficulty: "Dễ",
-    question: "Để xuất DataFrame ra file CSV mà không ghi kèm cột index mặc định, ta dùng lệnh nào?",
-    options: ["df.to_csv('output.csv', index=False)", "df.write_csv('output.csv', no_index=True)", "df.export('output.csv', index=0)", "df.to_file('output.csv', ignore_index=True)"],
-    correctAnswer: 0,
-    explanation: "Tham số index=False trong to_csv() loại bỏ cột chỉ số dòng khi ghi ra file.",
-    tags: ["pandas", "io", "csv"]
+    "id": "modB_55",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core - Any All",
+    "difficulty": "Trung bình",
+    "question": "Hàm `all([True, True, False])` trong Python trả về giá trị gì?",
+    "options": [
+      "Error",
+      "True",
+      "None",
+      "False"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Hàm all() chỉ trả về True nếu tất cả các phần tử trong iterable đều là True.",
+    "tags": [
+      "python",
+      "boolean"
+    ]
   },
-
-  // ── 9 New Module B Questions (modB_57 -> modB_65) ────────────────────────
   {
-    id: "modB_57",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Bag of Words",
-    difficulty: "Dễ",
-    question: "Phương pháp Bag of Words (BoW) biểu diễn một văn bản dưới dạng một vector đặc trưng dựa trên:",
-    options: [
-      "Thứ tự ngữ pháp của các từ trong câu",
+    "id": "modB_56",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas - Export CSV",
+    "difficulty": "Dễ",
+    "question": "Để xuất DataFrame ra file CSV mà không ghi kèm cột index mặc định, ta dùng lệnh nào?",
+    "options": [
+      "df.write_csv('output.csv', no_index=True)",
+      "df.to_csv('output.csv', index=False)",
+      "df.export('output.csv', index=0)",
+      "df.to_file('output.csv', ignore_index=True)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Tham số index=False trong to_csv() loại bỏ cột chỉ số dòng khi ghi ra file.",
+    "tags": [
+      "pandas",
+      "io",
+      "csv"
+    ]
+  },
+  {
+    "id": "modB_57",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Bag of Words",
+    "difficulty": "Dễ",
+    "question": "Phương pháp Bag of Words (BoW) biểu diễn một văn bản dưới dạng một vector đặc trưng dựa trên:",
+    "options": [
       "Tần suất xuất hiện (hoặc sự hiện diện) của các từ trong văn bản dựa trên một từ điển định sẵn",
+      "Thứ tự ngữ pháp của các từ trong câu",
       "Độ dài ký tự của văn bản",
       "Nghĩa ngữ nghĩa sâu sắc của câu"
     ],
-    correctAnswer: 1,
-    explanation: "Bag of Words bỏ qua thứ tự từ và cấu trúc ngữ pháp, chỉ đếm số lần xuất hiện của các từ thuộc một bộ từ điển xác định để tạo vector đặc trưng.",
-    tags: ["nlp", "bow", "feature_engineering"]
+    "correctAnswer": 0,
+    "explanation": "Bag of Words bỏ qua thứ tự từ và cấu trúc ngữ pháp, chỉ đếm số lần xuất hiện của các từ thuộc một bộ từ điển xác định để tạo vector đặc trưng.",
+    "tags": [
+      "nlp",
+      "bow",
+      "feature_engineering"
+    ]
   },
   {
-    id: "modB_58",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Bag of Visual Words",
-    difficulty: "Trung bình",
-    question: "Khi áp dụng Bag of Words cho hình ảnh (Bag of Visual Words), các 'từ' được định nghĩa là:",
-    options: [
+    "id": "modB_58",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Bag of Visual Words",
+    "difficulty": "Trung bình",
+    "question": "Khi áp dụng Bag of Words cho hình ảnh (Bag of Visual Words), các 'từ' được định nghĩa là:",
+    "options": [
       "Các từ tiếng Anh mô tả bức ảnh",
-      "Các vùng ảnh nhỏ đặc trưng (visual patches) được gom cụm lại thành các từ thị giác",
       "Các pixel riêng lẻ của ảnh",
+      "Các vùng ảnh nhỏ đặc trưng (visual patches) được gom cụm lại thành các từ thị giác",
       "Các kênh màu RGB"
     ],
-    correctAnswer: 1,
-    explanation: "Bag of Visual Words trích chọn các patch nhỏ từ ảnh (như mắt, mũi với mặt người, bánh xe với xe hơi), gom cụm chúng để tạo thành một 'từ điển thị giác'.",
-    tags: ["computer_vision", "bovw"]
+    "correctAnswer": 2,
+    "explanation": "Bag of Visual Words trích chọn các patch nhỏ từ ảnh (như mắt, mũi với mặt người, bánh xe với xe hơi), gom cụm chúng để tạo thành một 'từ điển thị giác'.",
+    "tags": [
+      "computer_vision",
+      "bovw"
+    ]
   },
   {
-    id: "modB_59",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Normalization",
-    difficulty: "Dễ",
-    question: "Chuẩn hóa vector đặc trưng (feature normalization) bằng cách chia vector cho chuẩn L₂ (||x||₂) giúp:",
-    options: [
+    "id": "modB_59",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Normalization",
+    "difficulty": "Dễ",
+    "question": "Chuẩn hóa vector đặc trưng (feature normalization) bằng cách chia vector cho chuẩn L₂ (||x||₂) giúp:",
+    "options": [
       "Biến mọi phần tử của vector thành số nguyên",
       "Đưa độ dài (chuẩn L2) của vector đặc trưng về bằng 1",
       "Tăng số chiều của vector đặc trưng",
       "Loại bỏ hoàn toàn các phần tử bằng 0"
     ],
-    correctAnswer: 1,
-    explanation: "Phép chuẩn hóa x' = x / ||x||₂ đưa vector về độ dài đơn vị (||x'||₂ = 1), giúp triệt tiêu ảnh hưởng của độ dài văn bản hoặc độ sáng ảnh.",
-    tags: ["normalization", "preprocessing"]
+    "correctAnswer": 1,
+    "explanation": "Phép chuẩn hóa x' = x / ||x||₂ đưa vector về độ dài đơn vị (||x'||₂ = 1), giúp triệt tiêu ảnh hưởng của độ dài văn bản hoặc độ sáng ảnh.",
+    "tags": [
+      "normalization",
+      "preprocessing"
+    ]
   },
   {
-    id: "modB_60",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Scikit-Learn KNN",
-    difficulty: "Trung bình",
-    question: "Trong scikit-learn, để tự định nghĩa trọng số cho KNN dựa trên khoảng cách (ví dụ sử dụng hàm mũ), ta truyền tham số nào vào `weights`?",
-    options: [
+    "id": "modB_60",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Scikit-Learn KNN",
+    "difficulty": "Trung bình",
+    "question": "Trong scikit-learn, để tự định nghĩa trọng số cho KNN dựa trên khoảng cách (ví dụ sử dụng hàm mũ), ta truyền tham số nào vào `weights`?",
+    "options": [
       "weights = 'distance'",
       "weights = 'uniform'",
-      "Một hàm số tự định nghĩa (custom function)",
-      "weights = 'exponential'"
+      "weights = 'exponential'",
+      "Một hàm số tự định nghĩa (custom function)"
     ],
-    correctAnswer: 2,
-    explanation: "scikit-learn cho phép truyền một hàm tự định nghĩa vào tham số `weights` để tự tính trọng số theo khoảng cách.",
-    tags: ["scikit_learn", "knn", "python"]
+    "correctAnswer": 3,
+    "explanation": "scikit-learn cho phép truyền một hàm tự định nghĩa vào tham số `weights` để tự tính trọng số theo khoảng cách.",
+    "tags": [
+      "scikit_learn",
+      "knn",
+      "python"
+    ]
   },
   {
-    id: "modB_61",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "One-Hot Encoding",
-    difficulty: "Dễ",
-    question: "Mã hóa one-hot (one-hot encoding) biểu diễn nhãn cụm y_i của điểm x_i trong K-means dưới dạng:",
-    options: [
+    "id": "modB_61",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "One-Hot Encoding",
+    "difficulty": "Dễ",
+    "question": "Mã hóa one-hot (one-hot encoding) biểu diễn nhãn cụm y_i của điểm x_i trong K-means dưới dạng:",
+    "options": [
       "Một số thực duy nhất từ 1 đến K",
-      "Một vector hàng có K phần tử, trong đó phần tử ứng với cụm của điểm đó bằng 1, các phần tử còn lại bằng 0",
+      "Một ma trận đường chéo",
       "Một chuỗi ký tự",
-      "Một ma trận đường chéo"
+      "Một vector hàng có K phần tử, trong đó phần tử ứng với cụm của điểm đó bằng 1, các phần tử còn lại bằng 0"
     ],
-    correctAnswer: 1,
-    explanation: "Mã hóa one-hot biểu diễn nhãn dưới dạng vector nhị phân chỉ có duy nhất một phần tử bằng 1.",
-    tags: ["one_hot_encoding", "preprocessing"]
+    "correctAnswer": 3,
+    "explanation": "Mã hóa one-hot biểu diễn nhãn dưới dạng vector nhị phân chỉ có duy nhất một phần tử bằng 1.",
+    "tags": [
+      "one_hot_encoding",
+      "preprocessing"
+    ]
   },
   {
-    id: "modB_62",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Scikit-Learn Logistic Regression",
-    difficulty: "Dễ",
-    question: "Trong scikit-learn, lớp nào được sử dụng để chạy mô hình hồi quy Logistic?",
-    options: [
+    "id": "modB_62",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Scikit-Learn Logistic Regression",
+    "difficulty": "Dễ",
+    "question": "Trong scikit-learn, lớp nào được sử dụng để chạy mô hình hồi quy Logistic?",
+    "options": [
       "sklearn.linear_model.LinearRegression",
       "sklearn.linear_model.LogisticRegression",
       "sklearn.neighbors.KNeighborsClassifier",
       "sklearn.naive_bayes.MultinomialNB"
     ],
-    correctAnswer: 1,
-    explanation: "Lớp `LogisticRegression` trong module `linear_model` của scikit-learn được dùng cho hồi quy Logistic.",
-    tags: ["scikit_learn", "logistic_regression", "python"]
+    "correctAnswer": 1,
+    "explanation": "Lớp `LogisticRegression` trong module `linear_model` của scikit-learn được dùng cho hồi quy Logistic.",
+    "tags": [
+      "scikit_learn",
+      "logistic_regression",
+      "python"
+    ]
   },
   {
-    id: "modB_63",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Stable Softmax",
-    difficulty: "Trung bình",
-    question: "Trong lập trình Python thực tế, làm thế nào để tránh hiện tượng tràn số (overflow) khi tính toán hàm Softmax?",
-    options: [
+    "id": "modB_63",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Stable Softmax",
+    "difficulty": "Trung bình",
+    "question": "Trong lập trình Python thực tế, làm thế nào để tránh hiện tượng tràn số (overflow) khi tính toán hàm Softmax?",
+    "options": [
       "Sử dụng kiểu dữ liệu float128",
-      "Trừ đi giá trị lớn nhất của vector điểm số trước khi tính số mũ: z_i' = z_i - max(z)",
       "Chia toàn bộ vector z cho 100",
+      "Trừ đi giá trị lớn nhất của vector điểm số trước khi tính số mũ: z_i' = z_i - max(z)",
       "Bỏ qua các điểm số có giá trị dương"
     ],
-    correctAnswer: 1,
-    explanation: "Tính eᶻ với z lớn rất dễ gây tràn số. Việc trừ đi max(z) (stable softmax) không làm thay đổi kết quả của hàm softmax và giữ các số mũ luôn ≤ 0.",
-    tags: ["stable_softmax", "numerical_stability", "python"]
+    "correctAnswer": 2,
+    "explanation": "Tính eᶻ với z lớn rất dễ gây tràn số. Việc trừ đi max(z) (stable softmax) không làm thay đổi kết quả của hàm softmax và giữ các số mũ luôn ≤ 0.",
+    "tags": [
+      "stable_softmax",
+      "numerical_stability",
+      "python"
+    ]
   },
   {
-    id: "modB_64",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Scikit-Learn Softmax",
-    difficulty: "Trung bình",
-    question: "Để chạy hồi quy Softmax bằng lớp `LogisticRegression` của scikit-learn, ta cần cấu hình các tham số nào?",
-    options: [
-      "weights = 'distance'",
+    "id": "modB_64",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Scikit-Learn Softmax",
+    "difficulty": "Trung bình",
+    "question": "Để chạy hồi quy Softmax bằng lớp `LogisticRegression` của scikit-learn, ta cần cấu hình các tham số nào?",
+    "options": [
       "multi_class = 'multinomial' và solver = 'lbfgs'",
+      "weights = 'distance'",
       "kernel = 'rbf'",
       "C = 0"
     ],
-    correctAnswer: 1,
-    explanation: "Mặc định scikit-learn dùng kỹ thuật one-vs-rest cho bài toán đa lớp. Để kích hoạt hồi quy Softmax thực sự, ta phải set `multi_class='multinomial'` và dùng thuật toán tối ưu hỗ trợ như `'lbfgs'`.",
-    tags: ["scikit_learn", "softmax", "python"]
+    "correctAnswer": 0,
+    "explanation": "Mặc định scikit-learn dùng kỹ thuật one-vs-rest cho bài toán đa lớp. Để kích hoạt hồi quy Softmax thực sự, ta phải set `multi_class='multinomial'` và dùng thuật toán tối ưu hỗ trợ như `'lbfgs'`.",
+    "tags": [
+      "scikit_learn",
+      "softmax",
+      "python"
+    ]
   },
   {
-    id: "modB_65",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Weight Initialization",
-    difficulty: "Trung bình",
-    question: "Trong lập trình MLP bằng numpy, tại sao ta cần khởi tạo ngẫu nhiên các trọng số W với giá trị nhỏ (ví dụ nhân với 0.01) thay vì khởi tạo tất cả bằng 0?",
-    options: [
+    "id": "modB_65",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Weight Initialization",
+    "difficulty": "Trung bình",
+    "question": "Trong lập trình MLP bằng numpy, tại sao ta cần khởi tạo ngẫu nhiên các trọng số W với giá trị nhỏ (ví dụ nhân với 0.01) thay vì khởi tạo tất cả bằng 0?",
+    "options": [
       "Khởi tạo bằng 0 sẽ làm tràn bộ nhớ máy tính",
       "Để phá vỡ tính đối xứng (symmetry breaking), giúp các neuron ở cùng một tầng học các đặc trưng khác nhau thay vì cập nhật giống hệt nhau",
       "Để tăng tốc độ học lên cực đại ngay từ epoch đầu tiên",
       "Để hàm kích hoạt ReLU hoạt động hiệu quả hơn"
     ],
-    correctAnswer: 1,
-    explanation: "Nếu khởi tạo tất cả trọng số bằng 0, các neuron ở tầng ẩn sẽ nhận cùng một tín hiệu đầu vào và có gradient giống hệt nhau, khiến chúng cập nhật y hệt nhau và mạng neuron mất đi năng lực biểu diễn đa dạng.",
-    tags: ["weight_initialization", "symmetry_breaking", "mlp"]
+    "correctAnswer": 1,
+    "explanation": "Nếu khởi tạo tất cả trọng số bằng 0, các neuron ở tầng ẩn sẽ nhận cùng một tín hiệu đầu vào và có gradient giống hệt nhau, khiến chúng cập nhật y hệt nhau và mạng neuron mất đi năng lực biểu diễn đa dạng.",
+    "tags": [
+      "weight_initialization",
+      "symmetry_breaking",
+      "mlp"
+    ]
   },
-
-  // ── 2 New Module B Questions (modB_66 -> modB_67) ─────────────────────────
   {
-    id: "modB_66",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "PCA Preprocessing",
-    difficulty: "Dễ",
-    question: "Trước khi thực hiện thuật toán PCA, bước xử lý dữ liệu bắt buộc nào phải được thực hiện?",
-    options: [
+    "id": "modB_66",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "PCA Preprocessing",
+    "difficulty": "Dễ",
+    "question": "Trước khi thực hiện thuật toán PCA, bước xử lý dữ liệu bắt buộc nào phải được thực hiện?",
+    "options": [
       "Mã hóa one-hot các đặc trưng",
-      "Trừ đi giá trị trung bình (zero-mean centering) của toàn bộ dữ liệu để tâm của dữ liệu trùng với gốc tọa độ",
+      "Nhân dữ liệu với ma trận đơn vị I",
       "Chuyển dữ liệu thành dạng thưa (sparse vector)",
-      "Nhân dữ liệu với ma trận đơn vị I"
+      "Trừ đi giá trị trung bình (zero-mean centering) của toàn bộ dữ liệu để tâm của dữ liệu trùng với gốc tọa độ"
     ],
-    correctAnswer: 1,
-    explanation: "Zero-mean centering là bước bắt buộc để ma trận hiệp phương sai được tính toán chính xác bằng công thức X Xᵀ / N.",
-    tags: ["pca", "zero_mean_centering", "preprocessing"]
+    "correctAnswer": 3,
+    "explanation": "Zero-mean centering là bước bắt buộc để ma trận hiệp phương sai được tính toán chính xác bằng công thức X Xᵀ / N.",
+    "tags": [
+      "pca",
+      "zero_mean_centering",
+      "preprocessing"
+    ]
   },
   {
-    id: "modB_67",
-    module: "B",
-    moduleName: "Lập trình & Xử lý dữ liệu",
-    topic: "Scikit-Learn SVC",
-    difficulty: "Dễ",
-    question: "Trong scikit-learn, lớp nào được sử dụng để xây dựng bộ phân loại Máy vector hỗ trợ (Support Vector Machine)?",
-    options: [
-      "sklearn.linear_model.SGDClassifier",
+    "id": "modB_67",
+    "module": "B",
+    "moduleName": "Lập trình & Xử lý dữ liệu",
+    "topic": "Scikit-Learn SVC",
+    "difficulty": "Dễ",
+    "question": "Trong scikit-learn, lớp nào được sử dụng để xây dựng bộ phân loại Máy vector hỗ trợ (Support Vector Machine)?",
+    "options": [
       "sklearn.svm.SVC (Support Vector Classifier)",
+      "sklearn.linear_model.SGDClassifier",
       "sklearn.svm.SVR",
       "sklearn.neighbors.KNeighborsClassifier"
     ],
-    correctAnswer: 1,
-    explanation: "Lớp `SVC` trong module `svm` của scikit-learn được dùng chuyên biệt cho bài toán phân loại vector hỗ trợ.",
-    tags: ["scikit_learn", "svc", "python"]
+    "correctAnswer": 0,
+    "explanation": "Lớp `SVC` trong module `svm` của scikit-learn được dùng chuyên biệt cho bài toán phân loại vector hỗ trợ.",
+    "tags": [
+      "scikit_learn",
+      "svc",
+      "python"
+    ]
   }
 ];
