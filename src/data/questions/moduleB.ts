@@ -830,5 +830,41 @@ export const moduleBQuestions: Question[] = [
     correctAnswer: 1,
     explanation: "Nếu khởi tạo tất cả trọng số bằng 0, các neuron ở tầng ẩn sẽ nhận cùng một tín hiệu đầu vào và có gradient giống hệt nhau, khiến chúng cập nhật y hệt nhau và mạng neuron mất đi năng lực biểu diễn đa dạng.",
     tags: ["weight_initialization", "symmetry_breaking", "mlp"]
+  },
+
+  // ── 2 New Module B Questions (modB_66 -> modB_67) ─────────────────────────
+  {
+    id: "modB_66",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "PCA Preprocessing",
+    difficulty: "Dễ",
+    question: "Trước khi thực hiện thuật toán PCA, bước xử lý dữ liệu bắt buộc nào phải được thực hiện?",
+    options: [
+      "Mã hóa one-hot các đặc trưng",
+      "Trừ đi giá trị trung bình (zero-mean centering) của toàn bộ dữ liệu để tâm của dữ liệu trùng với gốc tọa độ",
+      "Chuyển dữ liệu thành dạng thưa (sparse vector)",
+      "Nhân dữ liệu với ma trận đơn vị I"
+    ],
+    correctAnswer: 1,
+    explanation: "Zero-mean centering là bước bắt buộc để ma trận hiệp phương sai được tính toán chính xác bằng công thức X Xᵀ / N.",
+    tags: ["pca", "zero_mean_centering", "preprocessing"]
+  },
+  {
+    id: "modB_67",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Scikit-Learn SVC",
+    difficulty: "Dễ",
+    question: "Trong scikit-learn, lớp nào được sử dụng để xây dựng bộ phân loại Máy vector hỗ trợ (Support Vector Machine)?",
+    options: [
+      "sklearn.linear_model.SGDClassifier",
+      "sklearn.svm.SVC (Support Vector Classifier)",
+      "sklearn.svm.SVR",
+      "sklearn.neighbors.KNeighborsClassifier"
+    ],
+    correctAnswer: 1,
+    explanation: "Lớp `SVC` trong module `svm` của scikit-learn được dùng chuyên biệt cho bài toán phân loại vector hỗ trợ.",
+    tags: ["scikit_learn", "svc", "python"]
   }
 ];

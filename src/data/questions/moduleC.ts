@@ -2065,5 +2065,517 @@ export const moduleCQuestions: Question[] = [
     correctAnswer: 0,
     explanation: "Ở các epoch cuối, khi mô hình đã gần cực tiểu, tốc độ học lớn dễ làm tham số nhảy vượt qua điểm tối ưu. Việc giảm dần learning rate giúp mô hình tiến sát và hội tụ tại cực tiểu một cách êm ái hơn.",
     tags: ["learning_rate_decay", "optimization"]
+  },
+
+  // ── 30 New Module C Questions (modC_141 -> modC_170) ──────────────────────
+  {
+    id: "modC_141",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Recommender Systems Basics",
+    difficulty: "Dễ",
+    question: "Hai thực thể chính tương tác trong bất kỳ hệ thống gợi ý (Recommender Systems) nào là gì?",
+    options: [
+      "Nhà quảng cáo và Khách hàng",
+      "Người dùng (Users) và Sản phẩm (Items)",
+      "Lọc cộng tác và Lọc nội dung",
+      "Trọng số và Hệ số điều chỉnh"
+    ],
+    correctAnswer: 1,
+    explanation: "Người dùng (Users) và Sản phẩm (Items) là hai đối tượng trung tâm trong mọi hệ thống gợi ý.",
+    tags: ["recommender_systems", "basics"]
+  },
+  {
+    id: "modC_142",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Utility Matrix",
+    difficulty: "Dễ",
+    question: "Ma trận tiện ích (Utility Matrix) trong hệ thống gợi ý dùng để lưu trữ thông tin gì?",
+    options: [
+      "Thông tin giá cả và cấu hình của sản phẩm",
+      "Mức độ quan tâm (ví dụ: điểm số đánh giá rating) của từng người dùng đối với từng sản phẩm",
+      "Lịch sử đăng nhập của khách hàng",
+      "Các vector đặc trưng của sản phẩm"
+    ],
+    correctAnswer: 1,
+    explanation: "Ma trận tiện ích Y có hàng là người dùng, cột là sản phẩm, các ô chứa điểm đánh giá (rating) mà người dùng dành cho sản phẩm.",
+    tags: ["utility_matrix", "recommender_systems"]
+  },
+  {
+    id: "modC_143",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Utility Matrix Sparsity",
+    difficulty: "Dễ",
+    question: "Đặc trưng nổi bật của ma trận tiện ích trong thực tế là gì?",
+    options: [
+      "Là một ma trận vuông khả nghịch",
+      "Là một ma trận cực kỳ thưa (sparse matrix) vì một người dùng thông thường chỉ đánh giá một lượng rất nhỏ sản phẩm trong toàn bộ hệ thống",
+      "Tất cả các ô đều được lấp đầy dữ liệu",
+      "Có toàn bộ các trị riêng bằng nhau"
+    ],
+    correctAnswer: 1,
+    explanation: "Trong thực tế, số lượng sản phẩm lên tới hàng triệu nhưng mỗi người dùng chỉ tương tác vài chục sản phẩm, nên đa số các ô của ma trận tiện ích bị bỏ trống (thưa).",
+    tags: ["utility_matrix", "sparsity"]
+  },
+  {
+    id: "modC_144",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Content-based Recommendation",
+    difficulty: "Dễ",
+    question: "Hệ thống gợi ý dựa trên nội dung (Content-based Recommendation) đưa ra gợi ý cho một người dùng dựa trên cơ chế nào?",
+    options: [
+      "Gợi ý các sản phẩm tương tự với những sản phẩm mà người dùng đó đã từng thích hoặc đánh giá cao trong quá khứ",
+      "Gợi ý các sản phẩm mà bạn bè của người dùng đó đã mua",
+      "Gợi ý các sản phẩm bán chạy nhất hệ thống",
+      "Gợi ý ngẫu nhiên các sản phẩm mới nhập kho"
+    ],
+    correctAnswer: 0,
+    explanation: "Content-based gợi ý dựa trên việc phân tích đặc trưng của sản phẩm và mô hình hóa sở thích người dùng từ lịch sử tiêu dùng của chính họ.",
+    tags: ["content_based", "recommender_systems"]
+  },
+  {
+    id: "modC_145",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Content-based Modeling",
+    difficulty: "Trung bình",
+    question: "Thuật toán hồi quy nào thường được áp dụng để tìm vector trọng số sở thích w_n cho từng người dùng n trong hệ thống gợi ý dựa trên nội dung?",
+    options: [
+      "Hồi quy tuyến tính thông thường không bias",
+      "Hồi quy Ridge (hồi quy tuyến tính có kiểm soát L2)",
+      "Hồi quy Softmax đa lớp",
+      "Hồi quy Lasso để tạo nghiệm thưa"
+    ],
+    correctAnswer: 1,
+    explanation: "Sử dụng hồi quy Ridge (Ridge regression) để giải bài toán tìm vector sở thích w_n nhằm kiểm soát độ lớn trọng số, tránh quá khớp khi dữ liệu ít.",
+    tags: ["content_based", "ridge_regression"]
+  },
+  {
+    id: "modC_146",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Content-based Limitations",
+    difficulty: "Trung bình",
+    question: "Nhược điểm lớn nhất của hệ thống gợi ý dựa trên nội dung là gì?",
+    options: [
+      "Thời gian huấn luyện quá lâu",
+      "Không thể gợi ý được sản phẩm nằm ngoài phạm vi sở thích cũ của người dùng (tính đa dạng kém) và khó trích chọn đặc trưng sản phẩm thủ công một cách chính xác",
+      "Yêu cầu bộ nhớ lưu trữ ma trận tiện ích chuẩn hóa quá lớn",
+      "Không thể chạy song song trên GPU"
+    ],
+    correctAnswer: 1,
+    explanation: "Content-based bị giới hạn bởi khả năng trích chọn đặc trưng sản phẩm và không thể gợi ý những món đồ bất ngờ, khác biệt hẳn với lịch sử tiêu dùng của khách hàng.",
+    tags: ["content_based", "limitations"]
+  },
+  {
+    id: "modC_147",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Collaborative Filtering",
+    difficulty: "Dễ",
+    question: "Ý tưởng cốt lõi của phương pháp Lọc cộng tác (Collaborative Filtering - CF) là gì?",
+    options: [
+      "Xây dựng các đặc trưng sản phẩm cực kỳ chi tiết",
+      "Dự đoán mức độ quan tâm của một người dùng dựa trên hành vi, sở thích của các người dùng khác có sự tương đồng trong hệ thống",
+      "Lọc bỏ hoàn toàn các email rác khỏi hệ thống gợi ý",
+      "Sử dụng mạng neuron tích chập để xử lý ma trận tiện ích"
+    ],
+    correctAnswer: 1,
+    explanation: "CF tận dụng 'trí tuệ đám đông', giả định rằng những người có cùng sở thích trong quá khứ sẽ tiếp tục thích những thứ giống nhau trong tương lai.",
+    tags: ["collaborative_filtering", "recommender_systems"]
+  },
+  {
+    id: "modC_148",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Neighborhood CF",
+    difficulty: "Dễ",
+    question: "Lọc cộng tác lân cận (Neighborhood-based CF) gồm hai hướng tiếp cận chính là:",
+    options: [
+      "User-user CF (lọc theo người dùng tương đồng) và Item-item CF (lọc theo sản phẩm tương đồng)",
+      "Content-based CF và Matrix Factorization CF",
+      "K-means CF và Naive Bayes CF",
+      "Lề cứng CF và Lề mềm CF"
+    ],
+    correctAnswer: 0,
+    explanation: "Neighborhood-based CF gồm User-user CF (tìm nhóm người dùng giống nhau để gợi ý) và Item-item CF (tìm nhóm sản phẩm giống nhau dựa trên đánh giá của mọi người để gợi ý).",
+    tags: ["user_user_cf", "item_item_cf"]
+  },
+  {
+    id: "modC_149",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Cosine Similarity",
+    difficulty: "Dễ",
+    question: "Độ đo phổ biến nào được sử dụng để tính toán mức độ tương đồng (similarity) giữa hai người dùng hoặc hai sản phẩm trong lọc cộng tác lân cận?",
+    options: [
+      "Khoảng cách Euclid",
+      "Độ tương tự Cosine (Cosine Similarity)",
+      "Khoảng cách Manhattan",
+      "Định thức ma trận"
+    ],
+    correctAnswer: 1,
+    explanation: "Độ tương tự Cosine là độ đo tiêu chuẩn, tính góc giữa hai vector đánh giá để thể hiện mức độ đồng điệu về xu hướng thích/ghét.",
+    tags: ["cosine_similarity", "collaborative_filtering"]
+  },
+  {
+    id: "modC_150",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Normalization in CF",
+    difficulty: "Trung bình",
+    question: "Tại sao việc chuẩn hóa ma trận tiện ích bằng cách trừ đi điểm đánh giá trung bình của từng người dùng (hoặc sản phẩm) là cực kỳ quan trọng trước khi tính độ tương tự Cosine?",
+    options: [
+      "Để đưa tất cả các điểm đánh giá về bằng 0",
+      "Để giải quyết hiện tượng thiên vị đánh giá (có người dùng dễ tính luôn cho 5 sao, người khó tính chỉ cho tối đa 3 sao), đưa điểm về dạng âm/dương phản ánh đúng yêu/ghét thực sự",
+      "Để ma trận tiện ích trở thành ma trận khả nghịch",
+      "Để giảm chiều ma trận về kích thước 1x1"
+    ],
+    correctAnswer: 1,
+    explanation: "Chuẩn hóa giúp triệt tiêu sự sai lệch trong thang điểm cá nhân của mỗi người dùng, biến điểm đánh giá thành giá trị xoay quanh 0 (điểm dương là thích, âm là ghét).",
+    tags: ["normalization", "collaborative_filtering"]
+  },
+  {
+    id: "modC_151",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Item-item vs User-user CF",
+    difficulty: "Trung bình",
+    question: "Tại sao Lọc cộng tác sản phẩm (Item-item CF) thường được ưa chuộng hơn Lọc cộng tác người dùng (User-user CF) trong các hệ thống thương mại điện tử lớn?",
+    options: [
+      "Vì Item-item CF không cần sử dụng ma trận tiện ích",
+      "Vì số lượng sản phẩm thường ít biến động và hành vi tương tác trên sản phẩm ổn định hơn hành vi biến đổi liên tục của người dùng, giúp việc tính toán và cập nhật ma trận tương tự hiệu quả hơn",
+      "Vì Item-item CF luôn cho kết quả độ chính xác 100%",
+      "Vì Item-item CF dễ lập trình hơn trên numpy"
+    ],
+    correctAnswer: 1,
+    explanation: "Số lượng người dùng tăng trưởng rất nhanh và sở thích thay đổi liên tục, trong khi danh mục sản phẩm tương đối cố định. Việc tính toán độ tương tự giữa các sản phẩm (Item-item) có tính ổn định và lưu trữ lâu dài tốt hơn.",
+    tags: ["item_item_cf", "user_user_cf"]
+  },
+  {
+    id: "modC_152",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Matrix Factorization",
+    difficulty: "Trung bình",
+    question: "Phương pháp Lọc cộng tác phân tích ma trận (Matrix Factorization CF) xấp xỉ ma trận tiện ích thưa Y bằng tích của hai ma trận ẩn nào?",
+    options: [
+      "Ma trận người dùng W và Ma trận sản phẩm X có số chiều ẩn K nhỏ",
+      "Ma trận đơn vị I và Ma trận nghịch đảo A⁻¹",
+      "Ma trận trực giao U và Ma trận trực chuẩn V",
+      "Ma trận hiệp phương sai liên lớp và nội lớp"
+    ],
+    correctAnswer: 0,
+    explanation: "Matrix Factorization phân tích ma trận tiện ích Y thành tích của ma trận đặc trưng ẩn của người dùng Wᵀ và sản phẩm X (Y ≈ X Wᵀ), với số chiều ẩn K rất nhỏ.",
+    tags: ["matrix_factorization", "latent_factors"]
+  },
+  {
+    id: "modC_153",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Matrix Factorization Regularization",
+    difficulty: "Trung bình",
+    question: "Hàm mất mát của Matrix Factorization CF thường tích hợp thêm thành phần kiểm soát nào để tránh quá khớp?",
+    options: [
+      "L1 regularization cho cả W và X",
+      "L2 regularization cho cả ma trận ẩn của người dùng W và sản phẩm X",
+      "Làm mềm Laplace cho các điểm trống",
+      "Hàm mất mát bản lề hinge loss"
+    ],
+    correctAnswer: 1,
+    explanation: "Để tránh việc các giá trị ẩn trong W và X quá lớn gây quá khớp, mô hình cộng thêm phạt L2 (Ridge penalty) cho cả hai ma trận này vào hàm mất mát.",
+    tags: ["matrix_factorization", "l2_regularization"]
+  },
+  {
+    id: "modC_154",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Incremental Matrix Factorization",
+    difficulty: "Khó",
+    question: "Kỹ thuật phân tích ma trận điều chỉnh nhỏ (Incremental Matrix Factorization) giải quyết bài toán gì trong thực tế?",
+    options: [
+      "Giúp giảm số lượng sản phẩm trong kho xuống tối đa",
+      "Cho phép cập nhật nhanh mô hình khi có thêm người dùng hoặc đánh giá mới bằng cách huấn luyện thêm vài vòng lặp thay vì phải huấn luyện lại từ đầu cực kỳ tốn thời gian",
+      "Tự động xóa bỏ các đánh giá xấu",
+      "Chuyển mô hình từ không giám sát sang có giám sát"
+    ],
+    correctAnswer: 1,
+    explanation: "Trong thực tế, ma trận tiện ích biến động liên tục. Incremental MF giúp hệ thống cập nhật online cực kỳ nhanh chóng mà không cần tốn nhiều ngày để chạy lại toàn bộ dữ liệu.",
+    tags: ["incremental_mf", "online_learning"]
+  },
+  {
+    id: "modC_155",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Recommender Systems Evaluation",
+    difficulty: "Dễ",
+    question: "Độ đo nào thường được dùng để đánh giá hiệu năng của hệ thống gợi ý trên tập kiểm tra?",
+    options: [
+      "Độ chính xác Accuracy",
+      "Căn bậc hai sai số trung bình bình phương (Root Mean Squared Error - RMSE)",
+      "Hàm vết trace",
+      "Độ tương tự Cosine trung bình"
+    ],
+    correctAnswer: 1,
+    explanation: "RMSE đo lường độ lệch giữa điểm rating dự đoán và điểm rating thực tế trên các ô đã biết ở tập kiểm tra, giá trị RMSE càng nhỏ mô hình gợi ý càng chính xác.",
+    tags: ["rmse", "evaluation"]
+  },
+  {
+    id: "modC_156",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "PCA Type",
+    difficulty: "Dễ",
+    question: "Thuật toán Phân tích thành phần chính (Principal Component Analysis - PCA) là một thuật toán giảm chiều dữ liệu thuộc loại học nào?",
+    options: [
+      "Học có giám sát (Supervised Learning)",
+      "Học không giám sát (Unsupervised Learning)",
+      "Học củng cố (Reinforcement Learning)",
+      "Học bán giám sát"
+    ],
+    correctAnswer: 1,
+    explanation: "PCA chỉ phân tích cấu trúc phân bố của các điểm dữ liệu đầu vào mà không cần quan tâm đến nhãn của chúng, do đó là học không giám sát.",
+    tags: ["pca", "unsupervised_learning"]
+  },
+  {
+    id: "modC_157",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Eigenface",
+    difficulty: "Trung bình",
+    question: "Ứng dụng 'Eigenface' trong nhận diện khuôn mặt thực chất là việc áp dụng thuật toán nào?",
+    options: [
+      "K-Nearest Neighbors",
+      "Principal Component Analysis (PCA)",
+      "Linear Discriminant Analysis (LDA)",
+      "Support Vector Machine"
+    ],
+    correctAnswer: 1,
+    explanation: "Eigenfaces là các gương mặt riêng tìm được bằng cách áp dụng PCA lên cơ sở dữ liệu ảnh khuôn mặt để giảm chiều và trích chọn đặc trưng nhận diện.",
+    tags: ["eigenface", "pca", "computer_vision"]
+  },
+  {
+    id: "modC_158",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "LDA vs PCA",
+    difficulty: "Trung bình",
+    question: "Thuật toán Phân tích biệt thức tuyến tính (Linear Discriminant Analysis - LDA) khác với PCA ở điểm cốt lõi nào?",
+    options: [
+      "LDA không sử dụng toán ma trận",
+      "LDA là thuật toán học có giám sát (supervised) tận dụng thông tin nhãn của dữ liệu để tìm hướng phân tách các lớp tốt nhất",
+      "LDA luôn giảm chiều dữ liệu về 1 chiều duy nhất",
+      "LDA chỉ áp dụng được cho dữ liệu ảnh xám"
+    ],
+    correctAnswer: 1,
+    explanation: "Khác với PCA (không giám sát), LDA là học có giám sát. Nó tìm hướng chiếu sao cho dữ liệu thuộc các lớp khác nhau được phân tách rõ rệt nhất.",
+    tags: ["lda", "pca", "supervised_learning"]
+  },
+  {
+    id: "modC_159",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "LDA Limitations",
+    difficulty: "Trung bình",
+    question: "Khi dữ liệu thực tế của các lớp chồng lấn mạnh mẽ và không tách biệt tuyến tính (linearly separable), hiệu năng của LDA sẽ thế nào?",
+    options: [
+      "Vẫn hoạt động cực kỳ tốt",
+      "Giảm đi rõ rệt vì mọi phương chiếu tuyến tính đều làm các lớp bị trộn lẫn vào nhau",
+      "Luôn đạt độ chính xác 100%",
+      "Tự động chuyển thành thuật toán SVM hạt nhân RBF"
+    ],
+    correctAnswer: 1,
+    explanation: "LDA là một bộ phân loại tuyến tính. Nếu ranh giới phân chia giữa các lớp là phi tuyến phức tạp, phép chiếu tuyến tính của LDA sẽ làm mất đi khả năng phân tách của dữ liệu.",
+    tags: ["lda", "limitations"]
+  },
+  {
+    id: "modC_160",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Hard-margin SVM Idea",
+    difficulty: "Dễ",
+    question: "Ý tưởng cơ bản đứng sau thuật toán Máy vector hỗ trợ (Support Vector Machine - SVM) lề cứng là gì?",
+    options: [
+      "Tìm một siêu phẳng phân chia dữ liệu sao cho khoảng cách (lề - margin) từ siêu phẳng đó tới các điểm dữ liệu gần nhất của hai lớp là lớn nhất",
+      "Tìm tâm cụm của hai lớp dữ liệu",
+      "Tối thiểu hóa sai số bình phương trung bình trên tập kiểm tra",
+      "Giảm chiều dữ liệu về không gian 2 chiều bằng hàm hạt nhân"
+    ],
+    correctAnswer: 0,
+    explanation: "SVM lề cứng (hard-margin SVM) đi tìm siêu phẳng phân chia lề rộng nhất (maximum margin classifier) để tối đa hóa khả năng phân loại chính xác.",
+    tags: ["svm", "maximum_margin"]
+  },
+  {
+    id: "modC_161",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Support Vectors",
+    difficulty: "Dễ",
+    question: "Các 'vector hỗ trợ' (Support Vectors) trong thuật toán SVM là gì?",
+    options: [
+      "Tất cả các điểm dữ liệu huấn luyện",
+      "Các điểm dữ liệu nằm sát đường biên lề (margin boundary) nhất, đóng vai trò quyết định vị trí của siêu phẳng phân chia",
+      "Các vector trọng số w của mô hình",
+      "Các hàm hạt nhân phi tuyến"
+    ],
+    correctAnswer: 1,
+    explanation: "Chỉ các điểm nằm sát lề (support vectors) quyết định vị trí siêu phẳng phân chia. Các điểm khác không ảnh hưởng tới nghiệm.",
+    tags: ["support_vectors", "svm"]
+  },
+  {
+    id: "modC_162",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "SMO Algorithm",
+    difficulty: "Trung bình",
+    question: "Thuật toán phổ biến và hiệu quả thường được dùng để giải bài toán quy hoạch toàn phương đối ngẫu của SVM là gì?",
+    options: [
+      "Gradient Descent cơ bản",
+      "Tối ưu hóa tối thiểu tuần tự (Sequential Minimal Optimization - SMO)",
+      "Phân tích giá trị suy biến SVD",
+      "Thuật toán học Perceptron"
+    ],
+    correctAnswer: 1,
+    explanation: "SMO giải quyết bài toán đối ngẫu SVM bằng cách chia nhỏ thành các bài toán tối ưu con chỉ gồm 2 biến nhân tử Lagrange tại mỗi bước.",
+    tags: ["smo", "svm_optimization"]
+  },
+  {
+    id: "modC_163",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Soft-margin SVM",
+    difficulty: "Dễ",
+    question: "SVM lề mềm (Soft-margin SVM) đưa thêm đại lượng nào vào bài toán tối ưu để chấp nhận một số điểm bị phân loại sai hoặc nằm trong lề?",
+    options: [
+      "Hệ số regularization L1",
+      "Các biến lỏng lẻo (slack variables, ký hiệu là ξ)",
+      "Hàm kích hoạt sigmoid",
+      "Làm mềm Laplace"
+    ],
+    correctAnswer: 1,
+    explanation: "Biến lỏng lẻo ξ_i ≥ 0 cho phép các điểm dữ liệu lấn lách vào vùng biên lề hoặc nằm sai phía ranh giới với một mức phạt nhất định.",
+    tags: ["soft_margin_svm", "slack_variables"]
+  },
+  {
+    id: "modC_164",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "C-SVM Parameter",
+    difficulty: "Trung bình",
+    question: "Hằng số phạt C (C-SVM) trong SVM lề mềm kiểm soát mối quan hệ đánh đổi giữa hai đại lượng nào?",
+    options: [
+      "Số lượng đặc trưng và số lượng mẫu",
+      "Mức độ ưu tiên tối đa hóa độ rộng của lề (margin) và mức độ phạt sai số phân loại sai (tổng các biến lỏng lẻo ξ_i)",
+      "Tốc độ học và độ chính xác",
+      "Hàm mục tiêu và hàm đối ngẫu"
+    ],
+    correctAnswer: 1,
+    explanation: "C càng lớn thì phạt phân loại sai càng mạnh (biên lề thu hẹp lại), C càng nhỏ thì chấp nhận sai sót nhiều hơn để đổi lấy biên lề rộng hơn.",
+    tags: ["c_svm", "hyperparameters"]
+  },
+  {
+    id: "modC_165",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Hinge Loss",
+    difficulty: "Dễ",
+    question: "Hàm mất mát bản lề (Hinge Loss) dùng trong SVM lề mềm tối ưu không ràng buộc có dạng toán học là gì?",
+    options: [
+      "max(0, 1 - y (wᵀ x + b))",
+      "1 / (1 + e⁻ʸᶻ)",
+      "y log(p) + (1-y) log(1-p)",
+      "(y - y_{pred})²"
+    ],
+    correctAnswer: 0,
+    explanation: "Hinge loss bằng 0 nếu điểm nằm đúng phía ngoài lề (y z ≥ 1), và bằng 1 - y z nếu điểm lấn lề hoặc phân loại sai.",
+    tags: ["hinge_loss", "svm"]
+  },
+  {
+    id: "modC_166",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Kernel Trick",
+    difficulty: "Trung bình",
+    question: "Thủ thuật hạt nhân (Kernel Trick) trong SVM hạt nhân (Kernel SVM) là gì?",
+    options: [
+      "Chiếu dữ liệu trực tiếp lên không gian cực kỳ nhiều chiều rồi phân loại",
+      "Thay thế tích vô hướng x_iᵀ x_j trong bài toán đối ngẫu bằng một hàm hạt nhân K(x_i, x_j) tương đương với tích vô hướng trong không gian chiếu mới mà không cần thực hiện phép chiếu tường minh",
+      "Sử dụng mạng neuron tích chập để biến đổi ảnh",
+      "Loại bỏ hoàn toàn các vector hỗ trợ"
+    ],
+    correctAnswer: 1,
+    explanation: "Kernel trick cho phép tính toán trực tiếp độ tương đồng trong không gian chiếu bằng cách tính hàm hạt nhân ở không gian gốc mà không cần chiếu tường minh.",
+    tags: ["kernel_trick", "kernel_svm"]
+  },
+  {
+    id: "modC_167",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "RBF Kernel",
+    difficulty: "Dễ",
+    question: "Hàm hạt nhân RBF (Radial Basis Function / Gaussian kernel) phổ biến có công thức là:",
+    options: [
+      "K(x, y) = xᵀ y",
+      "K(x, y) = exp(-γ ||x - y||₂²)",
+      "K(x, y) = (xᵀ y + 1)ᵈ",
+      "K(x, y) = tanh(β xᵀ y + θ)"
+    ],
+    correctAnswer: 1,
+    explanation: "Hạt nhân RBF tính toán độ tương đồng dựa trên khoảng cách bình phương Euclid giữa hai điểm ngẫu nhiên K(x, y) = exp(-γ ||x - y||₂²).",
+    tags: ["rbf_kernel", "gaussian_kernel"]
+  },
+  {
+    id: "modC_168",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "RBF Gamma Parameter",
+    difficulty: "Trung bình",
+    question: "Điều gì xảy ra khi siêu tham số γ trong hạt nhân RBF của SVM quá lớn?",
+    options: [
+      "Ranh giới phân chia trở thành đường thẳng tuyến tính",
+      "Mô hình rất dễ bị quá khớp (overfitting) vì vùng quyết định của mỗi điểm bị co hẹp lại xung quanh chính nó",
+      "Mô hình bị chưa khớp (underfitting) tuyệt đối",
+      "Thuật toán không thể hội tụ"
+    ],
+    correctAnswer: 1,
+    explanation: "Gamma quá lớn làm hàm hạt nhân tiến về 0 rất nhanh khi điểm x xa y, khiến mô hình chỉ ghi nhớ cục bộ các điểm dữ liệu huấn luyện (overfitting).",
+    tags: ["gamma_parameter", "overfitting", "rbf_kernel"]
+  },
+  {
+    id: "modC_169",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "One-vs-Rest SVM",
+    difficulty: "Dễ",
+    question: "Khi chạy SVM đa lớp (Multi-class SVM), phương pháp One-vs-Rest (OvR) hoạt động theo cơ chế nào?",
+    options: [
+      "Huấn luyện đồng thời tất cả các lớp trong một bài toán tối ưu duy nhất",
+      "Huấn luyện C bộ phân loại nhị phân, bộ thứ i phân biệt lớp i với tất cả C-1 lớp còn lại, điểm mới thuộc về lớp có điểm số cao nhất",
+      "So sánh từng cặp lớp một (One-vs-One)",
+      "Phân cụm dữ liệu thành C nhóm bằng K-means trước"
+    ],
+    correctAnswer: 1,
+    explanation: "One-vs-Rest là kỹ thuật chia bài toán đa lớp thành C bài toán nhị phân độc lập của lớp đó chống lại tập hợp các lớp còn lại.",
+    tags: ["one_vs_rest", "multi_class_svm"]
+  },
+  {
+    id: "modC_170",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Softmax vs Multi-class SVM",
+    difficulty: "Trung bình",
+    question: "Sự khác biệt chính về hàm mất mát giữa Hồi quy Softmax và SVM đa lớp là gì?",
+    options: [
+      "Softmax không sử dụng ma trận trọng số",
+      "Softmax cố gắng tối đa hóa xác suất của lớp đúng (phân phối xác suất mượt), trong khi SVM đa lớp chỉ cần lớp đúng vượt qua các lớp sai một khoảng lề an toàn (hinge loss cứng)",
+      "SVM đa lớp tính toán nhanh hơn 100 lần",
+      "Softmax chỉ dùng cho dữ liệu 2 lớp"
+    ],
+    correctAnswer: 1,
+    explanation: "Softmax regression sử dụng cross-entropy cố gắng đẩy xác suất lớp đúng sát 1, trong khi SVM đa lớp chỉ cần đạt khoảng cách lề tối thiểu giữa lớp đúng và các lớp sai.",
+    tags: ["softmax_vs_svm", "loss_function"]
   }
 ];

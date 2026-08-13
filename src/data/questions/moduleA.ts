@@ -1459,5 +1459,483 @@ export const moduleAQuestions: Question[] = [
     correctAnswer: 1,
     explanation: "Phép nhân ma trận kích thước (N, d₀) nhân với (d₀, d₁) cho ra ma trận có kích thước (N, d₁) theo quy tắc nhân ma trận.",
     tags: ["matrix_multiplication", "mlp"]
+  },
+
+  // ── 28 New Module A Questions (modA_ext_46 -> modA_ext_73) ────────────────
+  {
+    id: "modA_ext_46",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Dimensionality Reduction Purpose",
+    difficulty: "Dễ",
+    question: "Mục đích chung của các thuật toán giảm chiều dữ liệu (Dimensionality Reduction) là gì?",
+    options: [
+      "Tăng số lượng đặc trưng của dữ liệu lên vô hạn",
+      "Chuyển đổi dữ liệu từ không gian nhiều chiều về không gian ít chiều hơn nhưng vẫn giữ lại tối đa các thông tin quan trọng nhất",
+      "Xóa bỏ các điểm dữ liệu bị phân loại sai",
+      "Chuyển dữ liệu có giám sát thành không giám sát"
+    ],
+    correctAnswer: 1,
+    explanation: "Giảm chiều dữ liệu giúp trực quan hóa, giảm chi phí lưu trữ, tính toán và hạn chế hiện tượng quá khớp.",
+    tags: ["dimensionality_reduction"]
+  },
+  {
+    id: "modA_ext_47",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "SVD",
+    difficulty: "Trung bình",
+    question: "Phân tích giá trị suy biến (Singular Value Decomposition - SVD) phát biểu rằng mọi ma trận thực A kích thước m × n đều có thể phân tích thành tích của mấy ma trận?",
+    options: [
+      "Hai ma trận vuông khả nghịch",
+      "Ba ma trận đặc biệt: A = U Σ Vᵀ",
+      "Bốn ma trận trực giao",
+      "Một ma trận đường chéo duy nhất"
+    ],
+    correctAnswer: 1,
+    explanation: "SVD phân tích ma trận A thành tích của ma trận trực giao U (m × m), ma trận đường chéo chứa các giá trị suy biến Σ (m × n), và ma trận trực giao Vᵀ (n × n).",
+    tags: ["svd", "linear_algebra"]
+  },
+  {
+    id: "modA_ext_48",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Singular Values",
+    difficulty: "Trung bình",
+    question: "Trong phân tích SVD, các phần tử trên đường chéo chính của ma trận Σ được gọi là:",
+    options: [
+      "Các trị riêng của ma trận A",
+      "Các giá trị suy biến (singular values) của ma trận A, được sắp xếp theo thứ tự giảm dần",
+      "Các vector riêng của ma trận A",
+      "Các vết của ma trận A"
+    ],
+    correctAnswer: 1,
+    explanation: "Các phần tử này là các giá trị suy biến không âm, là căn bậc hai của các trị riêng của ma trận Aᵀ A hoặc A Aᵀ, xếp giảm dần.",
+    tags: ["svd", "singular_values"]
+  },
+  {
+    id: "modA_ext_49",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Compact SVD",
+    difficulty: "Khó",
+    question: "SVD giản lược (Compact SVD) loại bỏ những thành phần nào khỏi ma trận phân tích?",
+    options: [
+      "Loại bỏ các phần tử nằm trên đường chéo chính",
+      "Loại bỏ các cột của U, hàng của Vᵀ và phần tử của Σ tương ứng với các giá trị suy biến bằng 0",
+      "Loại bỏ toàn bộ ma trận Σ",
+      "Loại bỏ các giá trị suy biến lớn nhất"
+    ],
+    correctAnswer: 1,
+    explanation: "Compact SVD loại bỏ các thành phần tương ứng với giá trị suy biến bằng 0 để tiết kiệm không gian lưu trữ mà không làm mất mát bất kỳ thông tin nào của ma trận gốc.",
+    tags: ["compact_svd", "svd"]
+  },
+  {
+    id: "modA_ext_50",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "SVD Low-rank Approximation",
+    difficulty: "Khó",
+    question: "Ứng dụng xấp xỉ hạng thấp (Low-rank approximation) của SVD trong nén ảnh hoạt động theo cơ chế nào?",
+    options: [
+      "Chỉ giữ lại k giá trị suy biến lớn nhất trong Σ và các cột tương ứng trong U, V để xấp xỉ ma trận ảnh, giúp tiết kiệm bộ nhớ",
+      "Xóa bỏ ngẫu nhiên một nửa số pixel của ảnh",
+      "Chuyển ảnh màu thành ảnh xám",
+      "Tăng độ phân giải của ảnh lên gấp đôi"
+    ],
+    correctAnswer: 0,
+    explanation: "Bằng cách chỉ giữ lại k giá trị suy biến lớn nhất (k ≪ r), ta có thể xấp xỉ ma trận ảnh với sai số nhỏ nhất theo chuẩn Frobenius, giúp nén dung lượng ảnh hiệu quả.",
+    tags: ["svd", "image_compression", "low_rank_approximation"]
+  },
+  {
+    id: "modA_ext_51",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "PCA Intuition",
+    difficulty: "Trung bình",
+    question: "Ý tưởng toán học chủ đạo của thuật toán PCA là gì?",
+    options: [
+      "Tìm một không gian mới sao cho hình chiếu của các điểm dữ liệu lên đó có phương sai (variance) là lớn nhất",
+      "Tìm không gian mới sao cho các điểm dữ liệu trùng nhau",
+      "Tìm không gian mới có số chiều lớn hơn không gian cũ",
+      "Tối thiểu hóa phương sai nội lớp của dữ liệu"
+    ],
+    correctAnswer: 0,
+    explanation: "Tối đa hóa phương sai của hình chiếu tương đương với việc bảo toàn tối đa thông tin và năng lượng phân bố của dữ liệu gốc sau khi giảm chiều.",
+    tags: ["pca", "variance_maximization"]
+  },
+  {
+    id: "modA_ext_52",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Principal Components",
+    difficulty: "Trung bình",
+    question: "Các phương chiếu tối ưu (principal components) tìm được bởi PCA chính là:",
+    options: [
+      "Các hàng của ma trận tiện ích",
+      "Các vector riêng ứng với các trị riêng lớn nhất của ma trận hiệp phương sai của dữ liệu",
+      "Các giá trị suy biến nhỏ nhất",
+      "Các tâm cụm tìm được từ K-means"
+    ],
+    correctAnswer: 1,
+    explanation: "Các thành phần chính là các vector riêng của ma trận hiệp phương sai, đại diện cho các hướng mà dữ liệu biến thiên mạnh mẽ nhất.",
+    tags: ["pca", "eigenvectors", "covariance_matrix"]
+  },
+  {
+    id: "modA_ext_53",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "LDA Objective",
+    difficulty: "Trung bình",
+    question: "Mục tiêu tối ưu hóa của thuật toán LDA là gì?",
+    options: [
+      "Tối đa hóa phương sai nội lớp và tối thiểu hóa phương sai liên lớp",
+      "Tối thiểu hóa phương sai nội lớp (within-class variance) và tối đa hóa phương sai liên lớp (between-class variance) đồng thời",
+      "Tối thiểu hóa khoảng cách Euclid giữa các cụm",
+      "Tối đa hóa chuẩn Frobenius của ma trận trọng số"
+    ],
+    correctAnswer: 1,
+    explanation: "LDA mong muốn hình chiếu của các điểm trong cùng một lớp phải nằm gần nhau (phương sai nội lớp nhỏ) và hình chiếu các lớp khác nhau phải cách xa nhau (phương sai liên lớp lớn).",
+    tags: ["lda", "within_class_variance", "between_class_variance"]
+  },
+  {
+    id: "modA_ext_54",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Multi-class LDA Objective",
+    difficulty: "Khó",
+    question: "Hàm mục tiêu của thuật toán LDA đa lớp (multi-class LDA) dựa trên việc tối đa hóa biểu thức nào?",
+    options: [
+      "trace(Wᵀ S_B W) / trace(Wᵀ S_W W)",
+      "trace(Wᵀ S_W W) / trace(Wᵀ S_B W)",
+      "trace(W S_B Wᵀ)",
+      "S_B - S_W"
+    ],
+    correctAnswer: 0,
+    explanation: "Biểu thức tối ưu J(W) = trace(Wᵀ S_B W) / trace(Wᵀ S_W W) thể hiện tỷ số giữa ma trận hiệp phương sai liên lớp S_B và nội lớp S_W.",
+    tags: ["lda", "trace", "multi_class"]
+  },
+  {
+    id: "modA_ext_55",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "LDA Dimension Bound",
+    difficulty: "Trung bình",
+    question: "Trong bài toán phân loại gồm C lớp dữ liệu, số chiều tối đa của không gian mới sau khi giảm chiều bằng LDA là bao nhiêu?",
+    options: [
+      "C",
+      "C - 1",
+      "Không giới hạn",
+      "Bằng số lượng đặc trưng ban đầu d"
+    ],
+    correctAnswer: 1,
+    explanation: "Hạng (rank) của ma trận hiệp phương sai liên lớp S_B tối đa bằng C - 1, do đó LDA chỉ có thể chiếu dữ liệu về không gian tối đa là C - 1 chiều.",
+    tags: ["lda", "dimension_bound"]
+  },
+  {
+    id: "modA_ext_56",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Set Definition",
+    difficulty: "Dễ",
+    question: "Tập hợp C trong không gian vector được gọi là tập lồi (convex set) nếu với mọi điểm x, y ∈ C, ta luôn có:",
+    options: [
+      "Điểm trung vị của x và y thuộc C",
+      "Đoạn thẳng nối x và y nằm hoàn toàn trong C: θ x + (1-θ) y ∈ C với mọi θ ∈ [0, 1]",
+      "Tổng x + y luôn lớn hơn 0",
+      "Hình tròn đường kính xy nằm trong C"
+    ],
+    correctAnswer: 1,
+    explanation: "Định nghĩa tập lồi là với mọi tổ hợp lồi của hai điểm bất kỳ thuộc tập hợp thì điểm tổ hợp đó cũng phải nằm trong tập hợp.",
+    tags: ["convex_set", "convex_optimization"]
+  },
+  {
+    id: "modA_ext_57",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Set Examples",
+    difficulty: "Dễ",
+    question: "Hình nào sau đây KHÔNG phải là một tập lồi trong không gian hai chiều?",
+    options: [
+      "Hình tròn",
+      "Hình tam giác",
+      "Hình vành khăn (hình tròn bị khoét lỗ ở giữa)",
+      "Hình chữ nhật"
+    ],
+    correctAnswer: 2,
+    explanation: "Hình vành khăn không lồi vì có những cặp điểm nằm trong hình nhưng đoạn thẳng nối chúng lại đi xuyên qua phần lỗ khoét (nằm ngoài tập hợp).",
+    tags: ["convex_set", "geometry"]
+  },
+  {
+    id: "modA_ext_58",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Sublevel Set",
+    difficulty: "Trung bình",
+    question: "Tập dưới mức α (α-sublevel set) của một hàm lồi f(x) định nghĩa là {x | f(x) ≤ α} luôn là:",
+    options: [
+      "Tập lồi",
+      "Tập không lồi",
+      "Tập rỗng",
+      "Tập mở phi tuyến"
+    ],
+    correctAnswer: 0,
+    explanation: "Một tính chất quan trọng của hàm lồi là mọi tập dưới mức của nó đều là tập lồi.",
+    tags: ["convex_function", "sublevel_set"]
+  },
+  {
+    id: "modA_ext_59",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Function Definition",
+    difficulty: "Trung bình",
+    question: "Hàm số f(x) xác định trên tập lồi được gọi là hàm lồi (convex function) nếu với mọi x, y và θ ∈ [0, 1], ta luôn có:",
+    options: [
+      "f(θ x + (1-θ) y) ≥ θ f(x) + (1-θ) f(y)",
+      "f(θ x + (1-θ) y) ≤ θ f(x) + (1-θ) f(y)",
+      "f(θ x + (1-θ) y) = f(x) + f(y)",
+      "f(x) ≤ f(y)"
+    ],
+    correctAnswer: 1,
+    explanation: "Định nghĩa hàm lồi: Giá trị của hàm tại tổ hợp lồi luôn nhỏ hơn hoặc bằng tổ hợp lồi các giá trị của hàm tại hai điểm đó.",
+    tags: ["convex_function"]
+  },
+  {
+    id: "modA_ext_60",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Function Condition",
+    difficulty: "Dễ",
+    question: "Hàm số f(x) có đạo hàm bậc hai f''(x) trên tập số thực. Điều kiện cần và đủ để f(x) là hàm lồi là:",
+    options: [
+      "f''(x) < 0 với mọi x",
+      "f''(x) ≥ 0 với mọi x",
+      "f''(x) = 0 với mọi x",
+      "f'(x) ≥ 0 với mọi x"
+    ],
+    correctAnswer: 1,
+    explanation: "Đạo hàm bậc hai không âm (f''(x) ≥ 0) đảm bảo độ dốc của hàm luôn không giảm, tức là hàm lồi.",
+    tags: ["convex_function", "second_derivative"]
+  },
+  {
+    id: "modA_ext_61",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Optimization Advantage",
+    difficulty: "Dễ",
+    question: "Tại sao các bài toán tối ưu lồi (convex optimization) lại cực kỳ được ưa chuộng và có ý nghĩa quan trọng trong Machine Learning?",
+    options: [
+      "Vì chúng chạy nhanh hơn 100 lần",
+      "Vì đối với bài toán tối ưu lồi, mọi cực tiểu địa phương (local minimum) đều là cực tiểu toàn cục (global minimum) duy nhất",
+      "Vì chúng không cần các điều kiện ràng buộc",
+      "Vì chúng không sử dụng đạo hàm"
+    ],
+    correctAnswer: 1,
+    explanation: "Đây là tính chất cốt lõi của tối ưu lồi, loại bỏ hoàn toàn nỗi lo bị kẹt ở cực tiểu địa phương xấu của các thuật toán tối ưu.",
+    tags: ["convex_optimization", "global_minimum"]
+  },
+  {
+    id: "modA_ext_62",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Convex Optimization Problem",
+    difficulty: "Trung bình",
+    question: "Một bài toán tối ưu lồi tiêu chuẩn có dạng tối thiểu hóa hàm mục tiêu f₀(x) với các ràng buộc như thế nào?",
+    options: [
+      "Các hàm bất phương trình ràng buộc f_i(x) ≤ 0 phải là hàm lồi, và các hàm phương trình ràng buộc h_i(x) = 0 phải là hàm affine (tuyến tính)",
+      "Tất cả các ràng buộc phải là hàm phi tuyến",
+      "Hàm mục tiêu f₀(x) phải là hàm lõm",
+      "Không được có ràng buộc phương trình h_i(x) = 0"
+    ],
+    correctAnswer: 0,
+    explanation: "Ràng buộc f_i(x) ≤ 0 lồi tạo ra tập khả thi lồi, ràng buộc đẳng thức h_i(x) = 0 bắt buộc phải là tuyến tính (affine) để giữ tính lồi.",
+    tags: ["convex_optimization", "constraints"]
+  },
+  {
+    id: "modA_ext_63",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Linear Programming",
+    difficulty: "Dễ",
+    question: "Bài toán Quy hoạch tuyến tính (Linear Programming - LP) là bài toán tối ưu lồi trong đó:",
+    options: [
+      "Hàm mục tiêu là bậc hai, các ràng buộc là phi tuyến",
+      "Hàm mục tiêu và tất cả các hàm ràng buộc đều là hàm tuyến tính (affine)",
+      "Hàm mục tiêu là hàm logarit",
+      "Không có bất kỳ ràng buộc nào"
+    ],
+    correctAnswer: 1,
+    explanation: "Quy hoạch tuyến tính là dạng toán tối ưu lồi đơn giản nhất khi mọi hàm mục tiêu và ràng buộc đều là bậc nhất.",
+    tags: ["linear_programming", "lp"]
+  },
+  {
+    id: "modA_ext_64",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Quadratic Programming",
+    difficulty: "Trung bình",
+    question: "Bài toán Quy hoạch toàn phương (Quadratic Programming - QP) là bài toán tối ưu lồi trong đó:",
+    options: [
+      "Hàm mục tiêu là dạng toàn phương lồi (bậc hai), các hàm ràng buộc là tuyến tính (bộ lọc đa diện)",
+      "Tất cả các hàm đều là bậc hai phi tuyến",
+      "Hàm mục tiêu là bậc nhất, các ràng buộc là bậc hai",
+      "Bài toán phân loại sử dụng mạng neuron đa tầng"
+    ],
+    correctAnswer: 0,
+    explanation: "QP có hàm mục tiêu dạng toàn phương f₀(x) = (1/2) xᵀ P x + qᵀ x (với P nửa xác định dương) và các ràng buộc tuyến tính.",
+    tags: ["quadratic_programming", "qp"]
+  },
+  {
+    id: "modA_ext_65",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Lagrangian Function",
+    difficulty: "Trung bình",
+    question: "Hàm số Lagrange (Lagrangian) của bài toán tối ưu chuẩn kết hợp các thành phần nào?",
+    options: [
+      "Chỉ gồm hàm mục tiêu f₀(x)",
+      "Hàm mục tiêu f₀(x) cộng với tổng các hàm ràng buộc được nhân với các hệ số nhân tử Lagrange (λ và ν)",
+      "Hàm đối ngẫu và hàm chính",
+      "Hàm mất mát và hằng số kiểm soát"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm Lagrange L(x, λ, ν) tích hợp các ràng buộc vào hàm mục tiêu thông qua các hệ số phạt Lagrange.",
+    tags: ["lagrangian", "optimization"]
+  },
+  {
+    id: "modA_ext_66",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Lagrange Dual Function",
+    difficulty: "Khó",
+    question: "Hàm đối ngẫu Lagrange g(λ, ν) luôn có tính chất đặc biệt nào sau đây, bất kể bài toán tối ưu chính (primal problem) có lồi hay không?",
+    options: [
+      "Luôn là một hàm lõm (concave function)",
+      "Luôn là một hàm lồi (convex function)",
+      "Luôn bằng 0",
+      "Luôn là hàm bậc hai đồng nhất"
+    ],
+    correctAnswer: 0,
+    explanation: "Hàm đối ngẫu Lagrange là infimum của các hàm affine theo (λ, ν), do đó nó luôn là hàm lõm bất kể bài toán gốc có lồi hay phức tạp thế nào.",
+    tags: ["lagrange_dual", "concave_function"]
+  },
+  {
+    id: "modA_ext_67",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Weak Duality",
+    difficulty: "Trung bình",
+    question: "Định lý đối ngẫu yếu (Weak Duality) phát biểu rằng giá trị tối ưu của bài toán đối ngẫu d* và bài toán chính p* luôn thỏa mãn:",
+    options: [
+      "d* > p*",
+      "d* ≤ p*",
+      "d* = p*",
+      "d* + p* = 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Đối ngẫu yếu luôn xảy ra: Giá trị tối ưu đối ngẫu d* (chặn dưới) luôn nhỏ hơn hoặc bằng giá trị tối ưu chính p*.",
+    tags: ["weak_duality", "optimization"]
+  },
+  {
+    id: "modA_ext_68",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Strong Duality",
+    difficulty: "Trung bình",
+    question: "Đối ngẫu mạnh (Strong Duality) xảy ra khi nào?",
+    options: [
+      "Khi d* < p*",
+      "Khi d* = p* (khoảng cách đối ngẫu bằng 0)",
+      "Khi λ bằng 0",
+      "Khi bài toán chính không có lời giải"
+    ],
+    correctAnswer: 1,
+    explanation: "Đối ngẫu mạnh là trường hợp lý tưởng khi khoảng cách đối ngẫu d* - p* = 0.",
+    tags: ["strong_duality", "duality_gap"]
+  },
+  {
+    id: "modA_ext_69",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Slater's Condition",
+    difficulty: "Khó",
+    question: "Tiêu chuẩn ràng buộc Slater (Slater's constraint qualification) là điều kiện đủ để:",
+    options: [
+      "Bài toán quy hoạch tuyến tính hội tụ",
+      "Đối ngẫu mạnh xảy ra trong bài toán tối ưu lồi",
+      "Hàm số đạt giá trị cực tiểu bằng 0",
+      "Kiểm tra tính chính xác của gradient"
+    ],
+    correctAnswer: 1,
+    explanation: "Slater qualification phát biểu rằng nếu bài toán chính là lồi và tồn tại một điểm x nằm hoàn toàn trong tập khả thi thì đối ngẫu mạnh xảy ra.",
+    tags: ["slater_condition", "strong_duality"]
+  },
+  {
+    id: "modA_ext_70",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "KKT Conditions",
+    difficulty: "Khó",
+    question: "Hệ điều kiện KKT (Karush-Kuhn-Tucker) trong tối ưu lồi có vai trò gì?",
+    options: [
+      "Là điều kiện cần và đủ để xác định điểm tối ưu toàn cục của bài toán chính và đối ngẫu (khi đối ngẫu mạnh xảy ra)",
+      "Là thuật toán để tính ma trận nghịch đảo nhanh",
+      "Để xấp xỉ đạo hàm phi tuyến",
+      "Để gom cụm dữ liệu văn bản rác"
+    ],
+    correctAnswer: 0,
+    explanation: "Hệ điều kiện KKT là điều kiện cần và đủ cho điểm tối ưu toàn cục của bài toán tối ưu lồi thỏa mãn đối ngẫu mạnh.",
+    tags: ["kkt_conditions", "optimization"]
+  },
+  {
+    id: "modA_ext_71",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Distance to Hyperplane",
+    difficulty: "Dễ",
+    question: "Khoảng cách hình học từ một điểm x₀ tới siêu phẳng wᵀ x + b = 0 được tính bằng công thức nào?",
+    options: [
+      "|wᵀ x₀ + b|",
+      "|wᵀ x₀ + b| / ||w||₂",
+      "||w||₂",
+      "wᵀ x₀ + b"
+    ],
+    correctAnswer: 1,
+    explanation: "Công thức khoảng cách hình học tiêu chuẩn từ một điểm tới siêu phẳng là |wᵀ x₀ + b| / ||w||₂.",
+    tags: ["distance_to_hyperplane", "svm"]
+  },
+  {
+    id: "modA_ext_72",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "SVM Dual Problem Advantage",
+    difficulty: "Trung bình",
+    question: "Tại sao người ta thường ưu tiên giải bài toán đối ngẫu Lagrange của SVM thay vì giải trực tiếp bài toán chính?",
+    options: [
+      "Vì bài toán đối ngẫu có ít ràng buộc hơn",
+      "Vì bài toán đối ngẫu cho phép áp dụng 'thủ thuật hạt nhân' (kernel trick) để giải quyết các bài toán phân loại phi tuyến và nghiệm thu được là vector thưa",
+      "Vì bài toán đối ngẫu không yêu cầu tối ưu",
+      "Vì bài toán đối ngẫu luôn cho độ chính xác cao hơn"
+    ],
+    correctAnswer: 1,
+    explanation: "Bài toán đối ngẫu chỉ chứa tích vô hướng giữa các điểm dữ liệu (x_iᵀ x_j), cho phép thay thế trực tiếp bằng hàm hạt nhân K(x_i, x_j).",
+    tags: ["svm_dual", "kernel_trick"]
+  },
+  {
+    id: "modA_ext_73",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Complementary Slackness in SVM",
+    difficulty: "Khó",
+    question: "Trong SVM lề mềm, điều kiện lỏng lẻo bù trừ (complementary slackness) của hệ KKT chỉ ra rằng với các điểm dữ liệu nằm ĐÚNG PHÍA ngoài đường biên lề (y_n (wᵀ x_n + b) > 1), nhân tử Lagrange λ_n tương ứng sẽ:",
+    options: [
+      "Bằng hằng số C",
+      "Bằng 0 (không đóng góp vào việc tạo dựng w)",
+      "Lớn hơn C",
+      "Nhận giá trị âm"
+    ],
+    correctAnswer: 1,
+    explanation: "Theo điều kiện complementary slackness, các điểm nằm ngoài biên lề có λ_n = 0 nên không tham gia cấu thành vector trọng số w. Chỉ có các support vectors mới có λ_n > 0.",
+    tags: ["complementary_slackness", "kkt_conditions", "svm"]
   }
 ];

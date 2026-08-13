@@ -12,7 +12,7 @@
 **Web app ôn thi trắc nghiệm tương tác dành cho kỳ thi đầu vào Chương trình AI Thực chiến — Vingroup / VinUni.**  
 Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toàn trên LocalStorage
 
-[🚀 Xem Demo](https://github.com/trungKoiKa/vinuni-ai-prep) · [📚 Kho câu hỏi](#-kho-câu-hỏi--351-câu) · [🐛 Báo lỗi](https://github.com/trungKoiKa/vinuni-ai-prep/issues) · [✨ Đề xuất tính năng](https://github.com/trungKoiKa/vinuni-ai-prep/issues)
+[🚀 Xem Demo](https://github.com/trungKoiKa/vinuni-ai-prep) · [📚 Kho câu hỏi](#-kho-câu-hỏi--411-câu) · [🐛 Báo lỗi](https://github.com/trungKoiKa/vinuni-ai-prep/issues) · [✨ Đề xuất tính năng](https://github.com/trungKoiKa/vinuni-ai-prep/issues)
 
 </div>
 
@@ -22,7 +22,7 @@ Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toà
 
 - [Giới thiệu](#-giới-thiệu)
 - [Tính năng](#-tính-năng)
-- [Kho câu hỏi — 351 câu](#-kho-câu-hỏi--351-câu)
+- [Kho câu hỏi — 411 câu](#-kho-câu-hỏi--411-câu)
 - [Tech Stack](#-tech-stack)
 - [Cấu trúc dự án](#-cấu-trúc-dự-án)
 - [Cài đặt & Chạy local](#-cài-đặt--chạy-local)
@@ -81,15 +81,15 @@ Frontend-only · Không backend · Không đăng nhập · Lưu trữ hoàn toà
 
 ---
 
-## 📝 Kho câu hỏi — 351 câu
+## 📝 Kho câu hỏi — 411 câu
 
 | Module | Chủ đề | Số câu | Mức độ |
 |:------:|:-------|:------:|:------:|
-| **A** | Toán & Tư duy định lượng (Ma trận, Định thức, Gradient, Backpropagation, SGD, Closed-form...) | 95 | Dễ → Khó |
-| **B** | Lập trình & Xử lý dữ liệu (Python, NumPy, Pandas, BoW, One-Hot, Preprocessing) | 65 | Dễ → Khó |
-| **C** | Kiến thức AI & Sản phẩm AI (ML, KNN, K-Means, Naive Bayes, Linear/Logistic, Softmax, MLP, RAG, Transformer...) | 140 | Dễ → Khó |
+| **A** | Toán & Tư duy định lượng (Ma trận, SVD, PCA, LDA, Tối ưu lồi, KKT, Duality, SVM Dual...) | 123 | Dễ → Khó |
+| **B** | Lập trình & Xử lý dữ liệu (Python, NumPy, Pandas, BoW, Preprocessing, Scikit-Learn APIs) | 67 | Dễ → Khó |
+| **C** | Kiến thức AI & Sản phẩm AI (ML, Recommender Systems, SVM/Kernel, KNN, K-Means, Naive Bayes, MLP, RAG, Transformer...) | 170 | Dễ → Khó |
 | **D** | Logic, Đạo đức & Hành vi AI | 51 | Dễ → Khó |
-| **Tổng** | | **351** | |
+| **Tổng** | | **411** | |
 
 ---
 
