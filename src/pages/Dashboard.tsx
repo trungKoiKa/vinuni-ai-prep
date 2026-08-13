@@ -45,16 +45,16 @@ export const Dashboard: React.FC = () => {
         </span>
       </div>
 
-      <div className="relative overflow-hidden bg-gradient-to-r from-primary/90 via-primary to-accent rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-primary/15">
+      <div className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-500/20">
         <div className="relative z-10 max-w-2xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-indigo-200 border border-indigo-400/20">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Chương trình AI Thực chiến — VinUni / Vingroup</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
             Sẵn sàng chinh phục vòng đánh giá năng lực AI
           </h1>
-          <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
             Hệ thống ôn luyện trắc nghiệm 4 module trọng tâm, thi thử 90 phút theo chuẩn cấu hình thực tế và theo dõi tiến độ học tập thông minh.
           </p>
 
@@ -70,7 +70,7 @@ export const Dashboard: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="bg-white/10 hover:bg-white/20 text-white border-white/20"
+              className="bg-white/10 hover:bg-white/20 text-white border-white/30"
               onClick={() => navigate("/practice")}
               icon={<PenTool className="w-5 h-5" />}
             >
@@ -79,7 +79,7 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
