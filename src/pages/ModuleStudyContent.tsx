@@ -5,6 +5,7 @@ import { modulesData } from "../data/modules";
 import type { ModuleId } from "../types/question";
 import { Card } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
+import { MathText } from "../components/ui/MathText";
 import { ArrowLeft, BookOpen, PenTool, Lightbulb, AlertTriangle, Code } from "lucide-react";
 
 export const ModuleStudyContent: React.FC = () => {
@@ -64,7 +65,7 @@ export const ModuleStudyContent: React.FC = () => {
           {guide.title}
         </h1>
         <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-3xl">
-          {guide.overview}
+          <MathText text={guide.overview} />
         </p>
       </div>
 
@@ -76,9 +77,9 @@ export const ModuleStudyContent: React.FC = () => {
               {topic.title}
             </h2>
 
-            <p className="text-sm sm:text-base text-text-primary leading-relaxed">
-              {topic.summary}
-            </p>
+            <div className="text-sm sm:text-base text-text-primary leading-relaxed">
+              <MathText text={topic.summary} />
+            </div>
 
             {topic.keyFormulas && topic.keyFormulas.length > 0 && (
               <div className="p-4 rounded-xl bg-primary/5 border border-primary/15 space-y-2">
@@ -86,9 +87,11 @@ export const ModuleStudyContent: React.FC = () => {
                   <Lightbulb className="w-4 h-4" />
                   <span>Công thức & Nguyên lý cốt lõi</span>
                 </div>
-                <ul className="list-disc list-inside text-sm text-text-primary space-y-1 font-mono">
+                <ul className="list-disc list-inside text-sm text-text-primary space-y-1.5 font-mono">
                   {topic.keyFormulas.map((f, i) => (
-                    <li key={i}>{f}</li>
+                    <li key={i}>
+                      <MathText text={f} />
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -114,7 +117,9 @@ export const ModuleStudyContent: React.FC = () => {
                 </div>
                 <ul className="list-disc list-inside text-sm text-text-primary space-y-1">
                   {topic.commonPitfalls.map((p, i) => (
-                    <li key={i}>{p}</li>
+                    <li key={i}>
+                      <MathText text={p} />
+                    </li>
                   ))}
                 </ul>
               </div>

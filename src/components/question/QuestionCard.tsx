@@ -3,6 +3,7 @@ import type { Question } from "../../types/question";
 import { Badge } from "../ui/Badge";
 import { AnswerOption } from "./AnswerOption";
 import { ExplanationBox } from "./ExplanationBox";
+import { MathText } from "../ui/MathText";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 
 interface QuestionCardProps {
@@ -36,9 +37,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
     while ((match = codeBlockRegex.exec(text)) !== null) {
       if (match.index > lastIndex) {
+        const textChunk = text.substring(lastIndex, match.index);
         parts.push(
           <span key={`text-${lastIndex}`} className="whitespace-pre-line">
-            {text.substring(lastIndex, match.index)}
+            <MathText text={textChunk} />
           </span>
         );
       }
@@ -54,9 +56,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     }
 
     if (lastIndex < text.length) {
+      const textChunk = text.substring(lastIndex);
       parts.push(
         <span key={`text-${lastIndex}`} className="whitespace-pre-line">
-          {text.substring(lastIndex)}
+          <MathText text={textChunk} />
         </span>
       );
     }

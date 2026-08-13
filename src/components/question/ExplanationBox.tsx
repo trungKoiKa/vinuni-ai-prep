@@ -1,5 +1,6 @@
 import React from "react";
 import { Lightbulb } from "lucide-react";
+import { MathText } from "../ui/MathText";
 
 interface ExplanationBoxProps {
   explanation: string;
@@ -12,9 +13,9 @@ export const ExplanationBox: React.FC<ExplanationBoxProps> = ({ explanation }) =
         <Lightbulb className="w-5 h-5 shrink-0" />
         <span>Lời giải & Giải thích chi tiết</span>
       </div>
-      <p className="text-sm leading-relaxed text-text-primary pl-7">
-        {explanation}
-      </p>
+      <div className="text-sm leading-relaxed text-text-primary pl-7">
+        <MathText text={explanation} />
+      </div>
     </div>
   );
 };

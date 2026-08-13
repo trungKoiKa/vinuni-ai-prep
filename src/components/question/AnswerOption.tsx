@@ -1,6 +1,7 @@
 import React from "react";
 import { clsx } from "clsx";
 import { Check, X } from "lucide-react";
+import { MathText } from "../ui/MathText";
 
 interface AnswerOptionProps {
   index: number;
@@ -58,7 +59,7 @@ export const AnswerOption: React.FC<AnswerOptionProps> = ({
       </span>
 
       <span className="flex-1 text-sm sm:text-base leading-relaxed text-text-primary">
-        {optionText}
+        <MathText text={optionText} />
       </span>
 
       {showResult && isSubmitted && (
