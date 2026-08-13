@@ -34,7 +34,7 @@ export const Practice: React.FC = () => {
 
   // activeBatchIndex: 0..N-1 for fixed batches, or -1 for "50 câu chưa làm"
   const [activeBatchIndex, setActiveBatchIndex] = useState<number>(0);
-  const [isShuffled, setIsShuffled] = useState<boolean>(false);
+  const [isShuffled, setIsShuffled] = useState<boolean>(true);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, number | null>>({});
