@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { allQuestions } from "../data/questions";
 import type { Question } from "../types/question";
 import type { MockTestResult, QuestionAttempt } from "../types/progress";
-import { prepareQuestionSet } from "../lib/shuffle";
+import { generateMockTest100 } from "../lib/shuffle";
 import { calculateTestScore } from "../lib/scoring";
 import { useProgress } from "../context/ProgressContext";
 import { useTimer } from "../hooks/useTimer";
@@ -30,13 +30,8 @@ export const MockTest: React.FC = () => {
   const startTimeRef = useRef<number>(Date.now());
 
   useEffect(() => {
-    const modA = prepareQuestionSet(allQuestions.filter((q) => q.module === "A"));
-    const modB = prepareQuestionSet(allQuestions.filter((q) => q.module === "B"));
-    const modC = prepareQuestionSet(allQuestions.filter((q) => q.module === "C"));
-    const modD = prepareQuestionSet(allQuestions.filter((q) => q.module === "D"));
-
-    const combined = [...modA, ...modB, ...modC, ...modD];
-    setQuestions(combined);
+    const testSet = generateMockTest100(allQuestions, progress);
+    setQuestions(testSet);
     startTimeRef.current = Date.now();
   }, []);
 
