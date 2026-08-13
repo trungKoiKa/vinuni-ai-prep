@@ -676,4 +676,159 @@ export const moduleBQuestions: Question[] = [
     explanation: "Tham số index=False trong to_csv() loại bỏ cột chỉ số dòng khi ghi ra file.",
     tags: ["pandas", "io", "csv"]
   },
+
+  // ── 9 New Module B Questions (modB_57 -> modB_65) ────────────────────────
+  {
+    id: "modB_57",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Bag of Words",
+    difficulty: "Dễ",
+    question: "Phương pháp Bag of Words (BoW) biểu diễn một văn bản dưới dạng một vector đặc trưng dựa trên:",
+    options: [
+      "Thứ tự ngữ pháp của các từ trong câu",
+      "Tần suất xuất hiện (hoặc sự hiện diện) của các từ trong văn bản dựa trên một từ điển định sẵn",
+      "Độ dài ký tự của văn bản",
+      "Nghĩa ngữ nghĩa sâu sắc của câu"
+    ],
+    correctAnswer: 1,
+    explanation: "Bag of Words bỏ qua thứ tự từ và cấu trúc ngữ pháp, chỉ đếm số lần xuất hiện của các từ thuộc một bộ từ điển xác định để tạo vector đặc trưng.",
+    tags: ["nlp", "bow", "feature_engineering"]
+  },
+  {
+    id: "modB_58",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Bag of Visual Words",
+    difficulty: "Trung bình",
+    question: "Khi áp dụng Bag of Words cho hình ảnh (Bag of Visual Words), các 'từ' được định nghĩa là:",
+    options: [
+      "Các từ tiếng Anh mô tả bức ảnh",
+      "Các vùng ảnh nhỏ đặc trưng (visual patches) được gom cụm lại thành các từ thị giác",
+      "Các pixel riêng lẻ của ảnh",
+      "Các kênh màu RGB"
+    ],
+    correctAnswer: 1,
+    explanation: "Bag of Visual Words trích chọn các patch nhỏ từ ảnh (như mắt, mũi với mặt người, bánh xe với xe hơi), gom cụm chúng để tạo thành một 'từ điển thị giác'.",
+    tags: ["computer_vision", "bovw"]
+  },
+  {
+    id: "modB_59",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Normalization",
+    difficulty: "Dễ",
+    question: "Chuẩn hóa vector đặc trưng (feature normalization) bằng cách chia vector cho chuẩn L₂ (||x||₂) giúp:",
+    options: [
+      "Biến mọi phần tử của vector thành số nguyên",
+      "Đưa độ dài (chuẩn L2) của vector đặc trưng về bằng 1",
+      "Tăng số chiều của vector đặc trưng",
+      "Loại bỏ hoàn toàn các phần tử bằng 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Phép chuẩn hóa x' = x / ||x||₂ đưa vector về độ dài đơn vị (||x'||₂ = 1), giúp triệt tiêu ảnh hưởng của độ dài văn bản hoặc độ sáng ảnh.",
+    tags: ["normalization", "preprocessing"]
+  },
+  {
+    id: "modB_60",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Scikit-Learn KNN",
+    difficulty: "Trung bình",
+    question: "Trong scikit-learn, để tự định nghĩa trọng số cho KNN dựa trên khoảng cách (ví dụ sử dụng hàm mũ), ta truyền tham số nào vào `weights`?",
+    options: [
+      "weights = 'distance'",
+      "weights = 'uniform'",
+      "Một hàm số tự định nghĩa (custom function)",
+      "weights = 'exponential'"
+    ],
+    correctAnswer: 2,
+    explanation: "scikit-learn cho phép truyền một hàm tự định nghĩa vào tham số `weights` để tự tính trọng số theo khoảng cách.",
+    tags: ["scikit_learn", "knn", "python"]
+  },
+  {
+    id: "modB_61",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "One-Hot Encoding",
+    difficulty: "Dễ",
+    question: "Mã hóa one-hot (one-hot encoding) biểu diễn nhãn cụm y_i của điểm x_i trong K-means dưới dạng:",
+    options: [
+      "Một số thực duy nhất từ 1 đến K",
+      "Một vector hàng có K phần tử, trong đó phần tử ứng với cụm của điểm đó bằng 1, các phần tử còn lại bằng 0",
+      "Một chuỗi ký tự",
+      "Một ma trận đường chéo"
+    ],
+    correctAnswer: 1,
+    explanation: "Mã hóa one-hot biểu diễn nhãn dưới dạng vector nhị phân chỉ có duy nhất một phần tử bằng 1.",
+    tags: ["one_hot_encoding", "preprocessing"]
+  },
+  {
+    id: "modB_62",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Scikit-Learn Logistic Regression",
+    difficulty: "Dễ",
+    question: "Trong scikit-learn, lớp nào được sử dụng để chạy mô hình hồi quy Logistic?",
+    options: [
+      "sklearn.linear_model.LinearRegression",
+      "sklearn.linear_model.LogisticRegression",
+      "sklearn.neighbors.KNeighborsClassifier",
+      "sklearn.naive_bayes.MultinomialNB"
+    ],
+    correctAnswer: 1,
+    explanation: "Lớp `LogisticRegression` trong module `linear_model` của scikit-learn được dùng cho hồi quy Logistic.",
+    tags: ["scikit_learn", "logistic_regression", "python"]
+  },
+  {
+    id: "modB_63",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Stable Softmax",
+    difficulty: "Trung bình",
+    question: "Trong lập trình Python thực tế, làm thế nào để tránh hiện tượng tràn số (overflow) khi tính toán hàm Softmax?",
+    options: [
+      "Sử dụng kiểu dữ liệu float128",
+      "Trừ đi giá trị lớn nhất của vector điểm số trước khi tính số mũ: z_i' = z_i - max(z)",
+      "Chia toàn bộ vector z cho 100",
+      "Bỏ qua các điểm số có giá trị dương"
+    ],
+    correctAnswer: 1,
+    explanation: "Tính eᶻ với z lớn rất dễ gây tràn số. Việc trừ đi max(z) (stable softmax) không làm thay đổi kết quả của hàm softmax và giữ các số mũ luôn ≤ 0.",
+    tags: ["stable_softmax", "numerical_stability", "python"]
+  },
+  {
+    id: "modB_64",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Scikit-Learn Softmax",
+    difficulty: "Trung bình",
+    question: "Để chạy hồi quy Softmax bằng lớp `LogisticRegression` của scikit-learn, ta cần cấu hình các tham số nào?",
+    options: [
+      "weights = 'distance'",
+      "multi_class = 'multinomial' và solver = 'lbfgs'",
+      "kernel = 'rbf'",
+      "C = 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Mặc định scikit-learn dùng kỹ thuật one-vs-rest cho bài toán đa lớp. Để kích hoạt hồi quy Softmax thực sự, ta phải set `multi_class='multinomial'` và dùng thuật toán tối ưu hỗ trợ như `'lbfgs'`.",
+    tags: ["scikit_learn", "softmax", "python"]
+  },
+  {
+    id: "modB_65",
+    module: "B",
+    moduleName: "Lập trình & Xử lý dữ liệu",
+    topic: "Weight Initialization",
+    difficulty: "Trung bình",
+    question: "Trong lập trình MLP bằng numpy, tại sao ta cần khởi tạo ngẫu nhiên các trọng số W với giá trị nhỏ (ví dụ nhân với 0.01) thay vì khởi tạo tất cả bằng 0?",
+    options: [
+      "Khởi tạo bằng 0 sẽ làm tràn bộ nhớ máy tính",
+      "Để phá vỡ tính đối xứng (symmetry breaking), giúp các neuron ở cùng một tầng học các đặc trưng khác nhau thay vì cập nhật giống hệt nhau",
+      "Để tăng tốc độ học lên cực đại ngay từ epoch đầu tiên",
+      "Để hàm kích hoạt ReLU hoạt động hiệu quả hơn"
+    ],
+    correctAnswer: 1,
+    explanation: "Nếu khởi tạo tất cả trọng số bằng 0, các neuron ở tầng ẩn sẽ nhận cùng một tín hiệu đầu vào và có gradient giống hệt nhau, khiến chúng cập nhật y hệt nhau và mạng neuron mất đi năng lực biểu diễn đa dạng.",
+    tags: ["weight_initialization", "symmetry_breaking", "mlp"]
+  }
 ];

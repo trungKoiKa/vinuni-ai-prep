@@ -1207,5 +1207,257 @@ export const moduleAQuestions: Question[] = [
     correctAnswer: 2,
     explanation: "Theo kết quả giải bài toán tối ưu MAP cho Bernoulli-Beta, nghiệm MAP thu được là (n + α - 1) / ((n + m) + α + β - 2).",
     tags: ["map", "beta_distribution"]
+  },
+
+  // ── 15 New Module A Questions (modA_ext_31 -> modA_ext_45) ────────────────
+  {
+    id: "modA_ext_31",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Closed-form Solution",
+    difficulty: "Khó",
+    question: "Nghiệm dạng đóng (closed-form solution) của bài toán hồi quy tuyến tính tối thiểu hóa hàm mất mát (không có regularization) là:",
+    options: [
+      "w = (X Xᵀ)⁻¹ X y",
+      "w = (X Xᵀ)† X y",
+      "w = X y",
+      "w = (Xᵀ X)⁻¹ y"
+    ],
+    correctAnswer: 1,
+    explanation: "Nghiệm tổng quát là w = (X Xᵀ)† X y sử dụng giả nghịch đảo Moore-Penrose, phòng trường hợp ma trận X Xᵀ không khả nghịch.",
+    tags: ["linear_regression", "closed_form"]
+  },
+  {
+    id: "modA_ext_32",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Ridge Regression",
+    difficulty: "Trung bình",
+    question: "Nghiệm của hồi quy Ridge giúp tránh ma trận không khả nghịch nhờ cộng thêm thành phần nào vào ma trận X Xᵀ?",
+    options: [
+      "Cộng thêm ma trận đơn vị I nhân với tham số λ",
+      "Nhân ma trận với hằng số N",
+      "Trừ đi một ma trận ngẫu nhiên",
+      "Thay thế các phần tử trên đường chéo bằng 0"
+    ],
+    correctAnswer: 0,
+    explanation: "Nghiệm của hồi quy Ridge là w = (X Xᵀ + λ I)⁻¹ X y. Ma trận (X Xᵀ + λ I) luôn là ma trận xác định dương và khả nghịch với mọi λ > 0.",
+    tags: ["ridge_regression", "matrix_inverse"]
+  },
+  {
+    id: "modA_ext_33",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Voronoi Diagram",
+    difficulty: "Trung bình",
+    question: "Voronoi diagram trong toán học liên quan đến K-means như thế nào?",
+    options: [
+      "Nó định nghĩa cách tính đạo hàm của tâm cụm",
+      "Nó mô tả việc phân chia không gian thành các vùng (đa giác/đa diện) dựa trên khoảng cách tới điểm tâm gần nhất",
+      "Nó là một dạng của mạng neuron",
+      "Nó dùng để chuẩn hóa vector đặc trưng"
+    ],
+    correctAnswer: 1,
+    explanation: "Voronoi diagram phân chia không gian thành các đa giác/đa diện lãnh hải bao quanh các tâm cụm, điểm bất kỳ trong đa diện đó sẽ gần tâm cụm đó hơn các tâm khác.",
+    tags: ["voronoi", "k_means", "geometry"]
+  },
+  {
+    id: "modA_ext_34",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient Descent Objective",
+    difficulty: "Dễ",
+    question: "Mục tiêu chính của thuật toán Gradient Descent (GD) là gì?",
+    options: [
+      "Tìm cực trị của một hàm số bằng cách đi ngược hướng với vector gradient",
+      "Tìm cực tiểu của một hàm mất mát bằng cách cập nhật tham số theo hướng ngược với hướng của gradient ∇J(θ)",
+      "Tính toán trực tiếp nghiệm dạng đóng của mô hình",
+      "Tăng tốc độ học của mạng neuron lên vô hạn"
+    ],
+    correctAnswer: 1,
+    explanation: "GD là thuật toán tối ưu hóa lặp, tìm cực tiểu bằng cách đi ngược hướng gradient (hướng dốc nhất lên trên) của hàm mục tiêu.",
+    tags: ["gradient_descent", "optimization"]
+  },
+  {
+    id: "modA_ext_35",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Gradient Descent Formula",
+    difficulty: "Dễ",
+    question: "Công thức cập nhật tham số trong thuật toán Gradient Descent cơ bản là:",
+    options: [
+      "θ = θ + η ∇J(θ)",
+      "θ = θ - η ∇J(θ)",
+      "θ = η ∇J(θ)",
+      "θ = θ - ∇J(θ) / η"
+    ],
+    correctAnswer: 1,
+    explanation: "Công thức cập nhật: θ_{t+1} = θ_t - η ∇J(θ), trong đó η là tốc độ học (learning rate).",
+    tags: ["gradient_descent", "formula"]
+  },
+  {
+    id: "modA_ext_36",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Learning Rate",
+    difficulty: "Dễ",
+    question: "Tốc độ học (learning rate) η trong Gradient Descent kiểm soát điều gì?",
+    options: [
+      "Độ lớn của bước nhảy sau mỗi lần cập nhật tham số",
+      "Số lượng đặc trưng đầu vào",
+      "Kích thước của tập dữ liệu huấn luyện",
+      "Số lượng tầng ẩn trong mạng neuron"
+    ],
+    correctAnswer: 0,
+    explanation: "Tốc độ học η quyết định độ dài của bước cập nhật. Nếu η quá lớn có thể gây phân kỳ, quá nhỏ sẽ làm hội tụ rất chậm.",
+    tags: ["learning_rate", "gradient_descent"]
+  },
+  {
+    id: "modA_ext_37",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Local Minimum",
+    difficulty: "Trung bình",
+    question: "Hiện tượng gì xảy ra khi hòn bi lăn xuống thung lũng trong GD nhưng gặp phải một hố nhỏ trên sườn dốc?",
+    options: [
+      "Nó sẽ vượt qua dễ dàng để xuống đáy thung lũng",
+      "Nó có thể bị kẹt lại ở hố nhỏ đó, tương ứng với việc rơi vào cực tiểu địa phương (local minimum)",
+      "Nó sẽ nảy ngược lên đỉnh dốc",
+      "Nó dừng hoạt động lập tức"
+    ],
+    correctAnswer: 1,
+    explanation: "Các hố nhỏ trên sườn dốc tương ứng với cực tiểu địa phương. GD thông thường rất dễ bị kẹt tại các điểm này và không tìm được cực tiểu toàn cục.",
+    tags: ["local_minimum", "gradient_descent"]
+  },
+  {
+    id: "modA_ext_38",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Momentum",
+    difficulty: "Trung bình",
+    question: "Thuật toán Gradient Descent với Momentum giải quyết nhược điểm gì của GD thông thường?",
+    options: [
+      "Giúp giảm số lượng tham số cần tối ưu",
+      "Tích lũy vận tốc từ các bước cập nhật trước để giúp vượt qua các cực tiểu địa phương nông và giảm dao động zigzag ở các sườn dốc hẹp",
+      "Loại bỏ hoàn toàn sự phụ thuộc vào tốc độ học",
+      "Tự động tính toán gradient xấp xỉ chính xác"
+    ],
+    correctAnswer: 1,
+    explanation: "Momentum mô phỏng quán tính vật lý, giúp hòn bi tích lũy đà lăn để vượt qua dốc thoai thoải và lao nhanh hơn về phía cực tiểu toàn cục.",
+    tags: ["momentum", "gradient_descent"]
+  },
+  {
+    id: "modA_ext_39",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "NAG",
+    difficulty: "Khó",
+    question: "Đặc điểm cải tiến của thuật toán Nesterov Accelerated Gradient (NAG) so với Momentum thông thường là gì?",
+    options: [
+      "NAG không cần tính gradient của hàm số",
+      "NAG tính gradient tại vị trí dự đoán tương lai (θ - γ v_old) thay vì vị trí hiện tại, giúp phanh kịp thời khi sắp vượt qua cực tiểu",
+      "NAG có tốc độ học thay đổi ngẫu nhiên",
+      "NAG loại bỏ hoàn toàn tham số quán tính γ"
+    ],
+    correctAnswer: 1,
+    explanation: "NAG có cơ chế đi trước một bước để tính gradient tại điểm tiếp theo ước lượng bằng quán tính, giúp hướng đi mượt mà và hội tụ nhanh hơn.",
+    tags: ["nag", "momentum", "optimization"]
+  },
+  {
+    id: "modA_ext_40",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "SGD vs Batch GD",
+    difficulty: "Trung bình",
+    question: "Sự khác biệt cốt lõi giữa Batch Gradient Descent và Stochastic Gradient Descent (SGD) là gì?",
+    options: [
+      "Batch GD chạy nhanh hơn SGD rất nhiều",
+      "Batch GD tính toán gradient dựa trên toàn bộ tập dữ liệu huấn luyện ở mỗi bước; SGD chỉ tính gradient dựa trên duy nhất một điểm dữ liệu ngẫu nhiên tại mỗi bước",
+      "SGD luôn cho nghiệm chính xác tuyệt đối hơn Batch GD",
+      "Batch GD không cần khai báo tốc độ học"
+    ],
+    correctAnswer: 1,
+    explanation: "SGD giảm thiểu khối lượng tính toán ở mỗi bước bằng cách chỉ sử dụng một điểm dữ liệu duy nhất, rất hữu ích cho tập dữ liệu khổng lồ.",
+    tags: ["sgd", "batch_gd"]
+  },
+  {
+    id: "modA_ext_41",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Mini-batch GD",
+    difficulty: "Dễ",
+    question: "Mini-batch Gradient Descent hoạt động như thế nào?",
+    options: [
+      "Tính toán gradient dựa trên một nhóm nhỏ dữ liệu (batch) có kích thước k mẫu (1 < k < N)",
+      "Chỉ cập nhật một nửa số lượng trọng số",
+      "Chỉ sử dụng 10 mẫu dữ liệu cho toàn bộ quá trình huấn luyện",
+      "Huấn luyện luân phiên giữa KNN và Gradient Descent"
+    ],
+    correctAnswer: 0,
+    explanation: "Mini-batch GD là sự dung hòa giữa Batch GD và SGD, tính gradient trên một nhóm nhỏ mẫu dữ liệu (thường từ 32 đến 512 mẫu) để tận dụng sức mạnh tính toán song song của GPU.",
+    tags: ["mini_batch_gd"]
+  },
+  {
+    id: "modA_ext_42",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "ReLU Derivative",
+    difficulty: "Dễ",
+    question: "Đạo hàm của hàm kích hoạt ReLU f(z) = max(z, 0) tại điểm z > 0 là:",
+    options: ["0", "1", "z", "0.5"],
+    correctAnswer: 1,
+    explanation: "Đạo hàm của ReLU là 1 khi z > 0, và bằng 0 khi z < 0.",
+    tags: ["relu", "derivative"]
+  },
+  {
+    id: "modA_ext_43",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Backpropagation",
+    difficulty: "Trung bình",
+    question: "Thuật toán lan truyền ngược (Backpropagation) thực chất là ứng dụng của quy tắc toán học nào để tính gradient của hàm mất mát theo từng trọng số trong mạng?",
+    options: [
+      "Quy tắc tích",
+      "Quy tắc chuỗi (Chain Rule) cho đạo hàm hàm hợp",
+      "Quy tắc đạo hàm riêng của ma trận nghịch đảo",
+      "Định lý giới hạn trung tâm"
+    ],
+    correctAnswer: 1,
+    explanation: "Backpropagation truyền lỗi ngược từ tầng cuối cùng về các tầng trước bằng cách áp dụng liên tiếp quy tắc chuỗi để tính đạo hàm riêng cho các trọng số ở tầng sâu.",
+    tags: ["backpropagation", "chain_rule"]
+  },
+  {
+    id: "modA_ext_44",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Hadamard Product",
+    difficulty: "Trung bình",
+    question: "Ký hiệu ∘ (tích Hadamard) trong công thức tính toán Backpropagation đại diện cho phép toán nào?",
+    options: [
+      "Phép nhân ma trận thông thường",
+      "Phép nhân từng phần tử tương ứng của hai ma trận/vector có cùng kích thước (element-wise product)",
+      "Phép cộng ma trận",
+      "Phép nhân tích vô hướng"
+    ],
+    correctAnswer: 1,
+    explanation: "Tích Hadamard (Hadamard product) ký hiệu ∘ đại diện cho phép nhân từng thành phần tương ứng của hai vector/ma trận.",
+    tags: ["hadamard_product", "matrix_operations"]
+  },
+  {
+    id: "modA_ext_45",
+    module: "A",
+    moduleName: "Toán & Tư duy định lượng",
+    topic: "Matrix Shape in MLP",
+    difficulty: "Dễ",
+    question: "Trong lan truyền thuận của MLP, ma trận đặc trưng đầu vào X có shape (N, d₀) nhân với ma trận trọng số W₁ có shape (d₀, d₁) sẽ cho ra ma trận Z₁ có kích thước bao nhiêu?",
+    options: [
+      "(d₀, d₁)",
+      "(N, d₁)",
+      "(N, d₀)",
+      "(d₁, N)"
+    ],
+    correctAnswer: 1,
+    explanation: "Phép nhân ma trận kích thước (N, d₀) nhân với (d₀, d₁) cho ra ma trận có kích thước (N, d₁) theo quy tắc nhân ma trận.",
+    tags: ["matrix_multiplication", "mlp"]
   }
 ];

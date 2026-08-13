@@ -772,4 +772,1298 @@ export const moduleCQuestions: Question[] = [
     explanation: "Giá cả và bảo hành là dữ liệu doanh nghiệp cần chính xác và cập nhật, nên chọn RAG.",
     tags: ["system_design", "smarthome"]
   },
+
+  // ── 76 New Module C Questions (modC_65 -> modC_140) ──────────────────────
+  {
+    id: "modC_65",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Định nghĩa Machine Learning",
+    difficulty: "Dễ",
+    question: "Theo định nghĩa của Tom Mitchell, một chương trình máy tính được gọi là học hỏi từ kinh nghiệm E thông qua nhiệm vụ T và phép đánh giá hiệu năng P nếu:",
+    options: [
+      "Hiệu năng trên nhiệm vụ T, đo bởi P, cải thiện nhờ kinh nghiệm E",
+      "Nhiệm vụ T tự động thay đổi sau mỗi lần đo bởi P",
+      "Kinh nghiệm E tăng lên khi P giảm đi",
+      "Hiệu năng luôn đạt 100% độ chính xác"
+    ],
+    correctAnswer: 0,
+    explanation: "Đây là định nghĩa kinh điển của Machine Learning: Máy tính tự cải thiện hiệu năng thực hiện nhiệm vụ T thông qua trải nghiệm và tích lũy dữ liệu E.",
+    tags: ["machine_learning", "definition"]
+  },
+  {
+    id: "modC_66",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Tập dữ liệu",
+    difficulty: "Dễ",
+    question: "Tập dữ liệu dùng để huấn luyện mô hình được gọi là:",
+    options: [
+      "Test set",
+      "Validation set",
+      "Training set",
+      "Public set"
+    ],
+    correctAnswer: 2,
+    explanation: "Training set (tập huấn luyện) là tập dữ liệu chính thức dùng để tìm ra các tham số cho mô hình.",
+    tags: ["dataset", "training_set"]
+  },
+  {
+    id: "modC_67",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Tập dữ liệu",
+    difficulty: "Dễ",
+    question: "Tập dữ liệu nào được sử dụng để đánh giá hiệu năng cuối cùng của mô hình sau khi đã hoàn thành quá trình huấn luyện?",
+    options: [
+      "Training set",
+      "Validation set",
+      "Test set",
+      "Raw set"
+    ],
+    correctAnswer: 2,
+    explanation: "Test set (tập kiểm tra) hoàn toàn độc lập và không được dùng trong quá trình huấn luyện, chỉ dùng để đánh giá khách quan khả năng tổng quát hóa của mô hình.",
+    tags: ["dataset", "test_set"]
+  },
+  {
+    id: "modC_68",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Bài toán ML",
+    difficulty: "Dễ",
+    question: "Bài toán dự đoán một giá trị liên tục (ví dụ: dự đoán giá nhà, nhiệt độ) thuộc loại bài toán nào trong học máy?",
+    options: [
+      "Phân loại (Classification)",
+      "Hồi quy (Regression)",
+      "Phân cụm (Clustering)",
+      "Giảm chiều dữ liệu"
+    ],
+    correctAnswer: 1,
+    explanation: "Bài toán dự đoán đầu ra là một số thực liên tục được gọi là bài toán hồi quy (Regression).",
+    tags: ["regression", "supervised_learning"]
+  },
+  {
+    id: "modC_69",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Bài toán ML",
+    difficulty: "Dễ",
+    question: "Bài toán phân chia dữ liệu thành các nhóm riêng biệt dựa trên độ tương đồng mà không biết trước nhãn của dữ liệu là bài toán gì?",
+    options: [
+      "Học có giám sát (Supervised Learning)",
+      "Học không giám sát (Unsupervised Learning) - cụ thể là Phân cụm (Clustering)",
+      "Học bán giám sát (Semi-supervised Learning)",
+      "Học củng cố (Reinforcement Learning)"
+    ],
+    correctAnswer: 1,
+    explanation: "Phân cụm là một bài toán tiêu biểu của học không giám sát, trong đó dữ liệu không có nhãn sẵn và máy tính tự gom cụm các điểm gần nhau.",
+    tags: ["clustering", "unsupervised_learning"]
+  },
+  {
+    id: "modC_70",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Bài toán ML",
+    difficulty: "Dễ",
+    question: "Học bán giám sát (Semi-supervised Learning) là gì?",
+    options: [
+      "Là phương pháp học máy không cần bất kỳ dữ liệu nào",
+      "Là phương pháp kết hợp một lượng nhỏ dữ liệu gán nhãn và một lượng lớn dữ liệu chưa gán nhãn để huấn luyện mô hình",
+      "Là phương pháp máy tính tự tương tác với môi trường để nhận phần thưởng",
+      "Là việc chỉ huấn luyện một nửa mô hình"
+    ],
+    correctAnswer: 1,
+    explanation: "Học bán giám sát tận dụng nguồn dữ liệu chưa gán nhãn dồi dào kết hợp với lượng dữ liệu gán nhãn ít ỏi để tăng hiệu năng học.",
+    tags: ["semi_supervised_learning"]
+  },
+  {
+    id: "modC_71",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Tư duy ML",
+    difficulty: "Trung bình",
+    question: "Sự khác biệt chính giữa Học máy (Machine Learning) và Lập trình truyền thống là gì?",
+    options: [
+      "Lập trình truyền thống đưa dữ liệu và thuật toán vào để ra kết quả; Học máy đưa dữ liệu và kết quả vào để tìm ra thuật toán/mô hình",
+      "Học máy không cần máy tính để thực thi",
+      "Lập trình truyền thống chạy nhanh hơn",
+      "Học máy chỉ dùng để xử lý hình ảnh"
+    ],
+    correctAnswer: 0,
+    explanation: "Học máy cho phép máy tính tự rút ra quy luật (mô hình/thuật toán) từ dữ liệu thực tế và kết quả quan sát được thay vì con người phải tự viết ra các luật cứng (rule-based).",
+    tags: ["machine_learning", "paradigm"]
+  },
+  {
+    id: "modC_72",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Loss Function",
+    difficulty: "Dễ",
+    question: "Hàm mất mát (loss function) trong Machine Learning có vai trò gì?",
+    options: [
+      "Đo lường mức độ sai lệch giữa đầu ra dự đoán của mô hình và đầu ra thực tế",
+      "Tự động tăng độ chính xác của mô hình",
+      "Để lưu trữ các đặc trưng của dữ liệu",
+      "Xác định kích thước của tập dữ liệu huấn luyện"
+    ],
+    correctAnswer: 0,
+    explanation: "Hàm mất mát đo lường sự 'mất mát' hay sai số của mô hình. Mục tiêu huấn luyện là tìm tham số để tối thiểu hóa hàm mất mát này.",
+    tags: ["loss_function"]
+  },
+  {
+    id: "modC_73",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Feature Vector",
+    difficulty: "Dễ",
+    question: "Vector đặc trưng (feature vector) trong Machine Learning là gì?",
+    options: [
+      "Một ảnh thô chưa qua xử lý",
+      "Một vector số thực đại diện cho các thuộc tính đặc trưng của một điểm dữ liệu",
+      "Một hàm số tuyến tính",
+      "Một nhãn phân loại dữ liệu"
+    ],
+    correctAnswer: 1,
+    explanation: "Mỗi điểm dữ liệu được biểu diễn dưới dạng một vector số thực có kích thước cố định, phản ánh các thông tin đặc trưng của dữ liệu đó.",
+    tags: ["feature_vector"]
+  },
+  {
+    id: "modC_74",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Feature Vector",
+    difficulty: "Trung bình",
+    question: "Tại sao dữ liệu thô cần được trích chọn đặc trưng và chuyển đổi thành vector đặc trưng trước khi đưa vào mô hình học máy?",
+    options: [
+      "Vì các mô hình học máy hoạt động dựa trên các phép toán ma trận/vector yêu cầu dữ liệu đầu vào phải có kích thước nhất định và đồng nhất",
+      "Để giảm dung lượng lưu trữ xuống 0",
+      "Để bảo mật thông tin khách hàng",
+      "Để máy tính không bị lỗi phần cứng"
+    ],
+    correctAnswer: 0,
+    explanation: "Dữ liệu thực tế (như ảnh, văn bản) có kích thước thô khác nhau hoặc chứa nhiều nhiễu. Việc trích chọn đặc trưng đưa chúng về định dạng vector đồng nhất giúp mô hình tính toán được.",
+    tags: ["feature_extraction"]
+  },
+  {
+    id: "modC_75",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Transfer Learning",
+    difficulty: "Trung bình",
+    question: "Kỹ thuật học chuyển tiếp (transfer learning) cho bài toán phân loại ảnh hoạt động theo cơ chế nào?",
+    options: [
+      "Huấn luyện lại toàn bộ một mạng neuron lớn từ đầu với dữ liệu mới",
+      "Sử dụng một mạng neuron đã được huấn luyện trên tập dữ liệu rất lớn làm bộ trích chọn đặc trưng (feature extractor) bằng cách lấy đầu ra của một tầng ẩn",
+      "Chuyển dữ liệu huấn luyện từ máy tính này sang máy tính khác",
+      "Chuyển nhãn phân loại thành các vector đặc trưng thưa"
+    ],
+    correctAnswer: 1,
+    explanation: "Học chuyển tiếp tận dụng mạng lớn đã học được các đặc trưng cơ bản (như cạnh, góc, hình dạng) để trích xuất đặc trưng cho dữ liệu mới, tiết kiệm thời gian huấn luyện và lượng dữ liệu cần thiết.",
+    tags: ["transfer_learning", "deep_learning"]
+  },
+  {
+    id: "modC_76",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Regression",
+    difficulty: "Dễ",
+    question: "Mô hình hồi quy tuyến tính (Linear Regression) giả định mối quan hệ giữa đầu ra y và đầu vào x là một hàm:",
+    options: [
+      "Hàm phi tuyến phức tạp",
+      "Hàm tuyến tính theo các tham số trọng số w",
+      "Hàm bậc hai của x",
+      "Hàm số mũ"
+    ],
+    correctAnswer: 1,
+    explanation: "Hồi quy tuyến tính giả định đầu ra là hàm tuyến tính theo các trọng số w (y = xᵀ w).",
+    tags: ["linear_regression"]
+  },
+  {
+    id: "modC_77",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Regression",
+    difficulty: "Dễ",
+    question: "Sai số dự đoán e_i của điểm dữ liệu thứ i trong hồi quy tuyến tính được định nghĩa là:",
+    options: [
+      "e_i = y_i + y_{pred_i}",
+      "e_i = y_i - y_{pred_i}",
+      "e_i = y_i · y_{pred_i}",
+      "e_i = (y_i)² - (y_{pred_i})²"
+    ],
+    correctAnswer: 1,
+    explanation: "Sai số e_i là hiệu số giữa giá trị thực tế y_i và giá trị dự đoán y_{pred_i}.",
+    tags: ["linear_regression", "error"]
+  },
+  {
+    id: "modC_78",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Regression",
+    difficulty: "Dễ",
+    question: "Hàm mất mát thông dụng nhất của hồi quy tuyến tính là:",
+    options: [
+      "Tổng trị tuyệt đối của sai số (L1 loss)",
+      "Một nửa trung bình bình phương sai số (Mean Squared Error - MSE)",
+      "Hàm entropy chéo",
+      "Hàm mất mát bản lề (hinge loss)"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm mất mát thông dụng là L(w) = (1/(2N)) ∑ (y_i - x_iᵀ w)², chính là một nửa trung bình của tổng bình phương các sai số dự đoán.",
+    tags: ["mse", "loss_function"]
+  },
+  {
+    id: "modC_79",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Regression",
+    difficulty: "Trung bình",
+    question: "Tại sao hệ số 1/(2N) được thêm vào hàm mất mát của hồi quy tuyến tính?",
+    options: [
+      "Để làm nghiệm của bài toán tối ưu thay đổi linh hoạt",
+      "Để tính toán trung bình sai số độc lập với số lượng mẫu N, tránh tràn số khi N lớn và triệt tiêu hệ số 2 khi đạo hàm bậc hai",
+      "Để loại bỏ hoàn toàn hiện tượng overfitting",
+      "Để chuyển mô hình thành phân loại nhị phân"
+    ],
+    correctAnswer: 1,
+    explanation: "Hệ số 1/N giúp trung bình hóa sai số để không bị phụ thuộc vào số lượng dữ liệu, hệ số 1/2 giúp triệt tiêu số 2 khi tính gradient của hàm bình phương.",
+    tags: ["linear_regression", "loss_function"]
+  },
+  {
+    id: "modC_80",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Bias Trick",
+    difficulty: "Dễ",
+    question: "Thủ thuật gộp hệ số điều chỉnh (bias trick) trong hồi quy tuyến tính thực hiện việc gì?",
+    options: [
+      "Coi như hệ số bias b luôn bằng 0",
+      "Thêm một đặc trưng x_0 = 1 vào vector đặc trưng x và ghép b vào vector trọng số w",
+      "Nhân thêm hằng số b vào tất cả các đặc trưng",
+      "Loại bỏ hoàn toàn các đặc trưng có giá trị nhỏ"
+    ],
+    correctAnswer: 1,
+    explanation: "Thủ thuật này đưa mô hình f(x) = xᵀ w + b về dạng thuần tuyến tính f(x) = x̄ᵀ w̄ giúp tinh giản công thức toán học và lập trình tiện lợi hơn.",
+    tags: ["bias_trick", "linear_regression"]
+  },
+  {
+    id: "modC_81",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Regression",
+    difficulty: "Trung bình",
+    question: "Hồi quy tuyến tính có thể áp dụng cho các mô hình phi tuyến với đặc trưng x không? Ví dụ: y = w₁ x + w₂ x² + w₃ sin(x) + b",
+    options: [
+      "Không thể, vì mối quan hệ của x là phi tuyến",
+      "Có thể, vì mô hình vẫn tuyến tính đối với vector tham số trọng số w",
+      "Chỉ áp dụng được khi x là số âm",
+      "Chỉ áp dụng được khi không có bias b"
+    ],
+    correctAnswer: 1,
+    explanation: "Hồi quy tuyến tính chỉ yêu cầu tính tuyến tính đối với tham số w cần tối ưu, không yêu cầu tính tuyến tính đối với biến đầu vào x.",
+    tags: ["linear_regression", "polynomial_regression"]
+  },
+  {
+    id: "modC_82",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Ridge Regression",
+    difficulty: "Dễ",
+    question: "Hồi quy Ridge (Ridge Regression) là mô hình hồi quy tuyến tính thêm thành phần kiểm soát nào vào hàm mất mát?",
+    options: [
+      "L1 regularization: ||w||₁",
+      "L2 regularization: ||w||₂²",
+      "Hàm entropy chéo",
+      "Hằng số điều chỉnh bias"
+    ],
+    correctAnswer: 1,
+    explanation: "Hồi quy Ridge thêm số hạng kiểm soát ||w||₂² vào hàm mất mát để kiểm soát độ lớn các hệ số trong vector trọng số w, giúp giảm quá khớp.",
+    tags: ["ridge_regression", "l2_regularization"]
+  },
+  {
+    id: "modC_83",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Overfitting",
+    difficulty: "Dễ",
+    question: "Hiện tượng quá khớp (Overfitting) xảy ra khi mô hình:",
+    options: [
+      "Hoạt động kém trên cả tập huấn luyện và tập kiểm tra",
+      "Hoạt động cực kỳ tốt trên tập huấn luyện nhưng hoạt động rất kém trên tập dữ liệu kiểm tra mới",
+      "Có số lượng tham số quá ít",
+      "Chưa được huấn luyện đủ số vòng lặp"
+    ],
+    correctAnswer: 1,
+    explanation: "Quá khớp là hiện tượng mô hình quá phức tạp, ghi nhớ máy móc nhiễu của dữ liệu huấn luyện và mất đi khả năng tổng quát hóa trên dữ liệu thực tế mới.",
+    tags: ["overfitting"]
+  },
+  {
+    id: "modC_84",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Underfitting",
+    difficulty: "Dễ",
+    question: "Hiện tượng chưa khớp (Underfitting) xảy ra khi nào?",
+    options: [
+      "Mô hình hoạt động tốt trên tập huấn luyện nhưng kém trên tập kiểm tra",
+      "Mô hình quá đơn giản, không học được quy luật của dữ liệu dẫn đến kết quả kém trên cả tập huấn luyện lẫn tập kiểm tra",
+      "Mô hình có quá nhiều tầng ẩn phi tuyến",
+      "Tốc độ học của mô hình quá lớn"
+    ],
+    correctAnswer: 1,
+    explanation: "Chưa khớp xảy ra khi năng lực biểu diễn của mô hình quá yếu so với độ phức tạp của dữ liệu thực tế.",
+    tags: ["underfitting"]
+  },
+  {
+    id: "modC_85",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Regularization",
+    difficulty: "Trung bình",
+    question: "Để kiểm soát hiện tượng quá khớp, phương pháp kiểm soát (Regularization) hoạt động bằng cách:",
+    options: [
+      "Tăng thêm số lượng đặc trưng phi tuyến của mô hình",
+      "Thêm một số hạng phạt (penalty term) phụ thuộc vào tham số w vào hàm mất mát để hạn chế độ lớn của các tham số",
+      "Loại bỏ hoàn toàn tập kiểm tra khỏi quá trình đánh giá",
+      "Giảm số lượng dữ liệu huấn luyện xuống tối đa"
+    ],
+    correctAnswer: 1,
+    explanation: "Regularization cộng thêm số hạng phạt R(w) vào hàm mất mát để kìm hãm sự tăng trưởng quá mức của các hệ số trọng số, từ đó giảm độ phức tạp của mô hình.",
+    tags: ["regularization"]
+  },
+  {
+    id: "modC_86",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "L1 vs L2 Regularization",
+    difficulty: "Trung bình",
+    question: "Sự khác biệt chính giữa kiểm soát L1 (Lasso) và kiểm soát L2 (Ridge) trong hồi quy là gì?",
+    options: [
+      "L2 triệt tiêu hoàn toàn các đặc trưng, L1 thì không",
+      "L1 (Lasso) có xu hướng tạo ra nghiệm thưa (nhiều hệ số trong w bằng 0), giúp lựa chọn đặc trưng; L2 (Ridge) chỉ làm các hệ số nhỏ đi nhưng ít khi bằng 0 thực sự",
+      "L1 tính toán nhanh hơn L2 rất nhiều",
+      "L2 không thể dùng cho các bài toán hồi quy đa thức"
+    ],
+    correctAnswer: 1,
+    explanation: "Kiểm soát L1 (||w||₁) tạo ra nghiệm thưa (sparsity) hữu ích cho việc lọc đặc trưng quan trọng, còn L2 (||w||₂²) giữ lại tất cả các đặc trưng nhưng thu nhỏ giá trị của chúng.",
+    tags: ["l1_regularization", "l2_regularization", "lasso", "ridge"]
+  },
+  {
+    id: "modC_87",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Hyperparameters",
+    difficulty: "Trung bình",
+    question: "Hằng số điều chỉnh λ (regularization parameter) trong Regularization nên được lựa chọn như thế nào?",
+    options: [
+      "Luôn chọn λ bằng 0",
+      "Là một số dương nhỏ, được tìm thông qua quá trình xác thực chéo (cross-validation)",
+      "Càng lớn càng tốt để mô hình đơn giản tối đa",
+      "Luôn chọn λ bằng số lượng mẫu N"
+    ],
+    correctAnswer: 1,
+    explanation: "λ điều phối mức cân bằng giữa sai số huấn luyện và độ lớn của tham số. Thường được chọn là các giá trị dương nhỏ thông qua kỹ thuật cross-validation.",
+    tags: ["hyperparameter", "cross_validation"]
+  },
+  {
+    id: "modC_88",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Cross-validation",
+    difficulty: "Dễ",
+    question: "Kỹ thuật xác thực chéo (Cross-validation) thường được dùng để:",
+    options: [
+      "Huấn luyện mô hình nhanh hơn",
+      "Lựa chọn các siêu tham số (hyperparameters) tối ưu cho mô hình và đánh giá khả năng tổng quát hóa một cách khách quan",
+      "Loại bỏ nhiễu ra khỏi dữ liệu thô",
+      "Thay thế hoàn toàn cho tập huấn luyện"
+    ],
+    correctAnswer: 1,
+    explanation: "Cross-validation chia nhỏ tập huấn luyện thành nhiều phần để huấn luyện và kiểm thử chéo, giúp chọn ra các siêu tham số (như bậc đa thức d, tham số λ) tốt nhất.",
+    tags: ["cross_validation"]
+  },
+  {
+    id: "modC_89",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Hyperparameters",
+    difficulty: "Dễ",
+    question: "Trong hồi quy đa thức, bậc d của đa thức đóng vai trò là:",
+    options: [
+      "Tham số mô hình (model parameter)",
+      "Siêu tham số (hyperparameter)",
+      "Hệ số điều chỉnh (bias)",
+      "Hàm mất mát"
+    ],
+    correctAnswer: 1,
+    explanation: "Bậc d của đa thức là tham số cấu trúc mô hình cần được thiết lập trước khi huấn luyện, do đó nó là một siêu tham số.",
+    tags: ["hyperparameter"]
+  },
+  {
+    id: "modC_90",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN",
+    difficulty: "Dễ",
+    question: "Thuật toán K lân cận (K-Nearest Neighbors - KNN) thuộc loại học máy nào?",
+    options: [
+      "Học không giám sát",
+      "Học có giám sát",
+      "Học củng cố",
+      "Học bán giám sát"
+    ],
+    correctAnswer: 1,
+    explanation: "KNN là một thuật toán học có giám sát đơn giản, sử dụng dữ liệu đã gán nhãn để dự đoán nhãn cho dữ liệu mới.",
+    tags: ["knn", "supervised_learning"]
+  },
+  {
+    id: "modC_91",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN",
+    difficulty: "Trung bình",
+    question: "Tại sao thuật toán KNN còn được gọi là thuật toán 'lười học' (lazy learning) hay 'instance-based learning'?",
+    options: [
+      "Vì thuật toán này chạy rất chậm trong mọi pha",
+      "Vì pha huấn luyện gần như không học gì từ dữ liệu mà chỉ ghi nhớ máy móc toàn bộ dữ liệu, mọi tính toán được đẩy sang pha kiểm tra",
+      "Vì thuật toán này không cần máy tính mạnh để chạy",
+      "Vì KNN chỉ bầu chọn ngẫu nhiên"
+    ],
+    correctAnswer: 1,
+    explanation: "KNN không xây dựng một mô hình toán học tổng quát trong pha huấn luyện, nó chỉ lưu trữ dữ liệu và thực hiện tính toán khoảng cách khi có mẫu dữ liệu mới cần dự đoán.",
+    tags: ["knn", "lazy_learning"]
+  },
+  {
+    id: "modC_92",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN Classification",
+    difficulty: "Dễ",
+    question: "Trong KNN phân loại, nhãn của điểm kiểm tra được quyết định bởi phương pháp nào?",
+    options: [
+      "Bầu chọn đa số (majority voting) từ K điểm lân cận gần nhất",
+      "Lấy nhãn của điểm xa nhất",
+      "Lấy trung bình cộng các nhãn",
+      "Giải bài toán tối ưu lồi"
+    ],
+    correctAnswer: 0,
+    explanation: "Với bài toán phân loại, nhãn của điểm mới được xác định bằng cách đếm xem trong K điểm gần nhất, nhãn nào xuất hiện nhiều nhất (bầu chọn đa số).",
+    tags: ["knn", "majority_voting"]
+  },
+  {
+    id: "modC_93",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN",
+    difficulty: "Trung bình",
+    question: "Khi sử dụng KNN với K = 1 (1NN), mô hình có nguy cơ cao gặp phải hiện tượng gì?",
+    options: [
+      "Underfitting (chưa khớp)",
+      "Overfitting (quá khớp)",
+      "Triệt tiêu gradient",
+      "Hội tụ chậm"
+    ],
+    correctAnswer: 1,
+    explanation: "Khi K = 1, ranh giới phân loại rất chi tiết và nhạy cảm với nhiễu, dẫn đến nguy cơ quá khớp rất cao trên tập huấn luyện.",
+    tags: ["knn", "overfitting"]
+  },
+  {
+    id: "modC_94",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Distance Metrics",
+    difficulty: "Dễ",
+    question: "Khoảng cách mặc định thường được dùng trong thuật toán KNN để đo độ gần nhau giữa các vector đặc trưng là:",
+    options: [
+      "Khoảng cách Manhattan (L1 norm)",
+      "Khoảng cách Euclid (L2 norm)",
+      "Độ tương tự Cosine",
+      "Khoảng cách Chebyshev"
+    ],
+    correctAnswer: 1,
+    explanation: "Khoảng cách Euclid (L₂ norm) là khoảng cách tiêu chuẩn và phổ biến nhất được dùng trong KNN.",
+    tags: ["knn", "euclidean_distance"]
+  },
+  {
+    id: "modC_95",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Weighted KNN",
+    difficulty: "Trung bình",
+    question: "Để cải tiến KNN bằng cách đánh trọng số (`weights = 'distance'`), điểm lân cận gần hơn sẽ được:",
+    options: [
+      "Đánh trọng số thấp hơn",
+      "Đánh trọng số cao hơn (thường tỉ lệ nghịch với khoảng cách)",
+      "Bỏ qua không bầu chọn",
+      "Gán trọng số bằng 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Việc đánh trọng số nghịch đảo khoảng cách giúp các điểm thực sự gần điểm kiểm tra đóng vai trò quyết định lớn hơn các điểm ở xa hơn.",
+    tags: ["knn", "weighted_knn"]
+  },
+  {
+    id: "modC_96",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN Regression",
+    difficulty: "Trung bình",
+    question: "KNN có thể áp dụng cho bài toán hồi quy (regression) không?",
+    options: [
+      "Không, KNN chỉ dùng cho phân loại",
+      "Có thể, bằng cách lấy trung bình cộng (có thể kèm trọng số) đầu ra của K điểm lân cận gần nhất",
+      "Chỉ áp dụng được khi dữ liệu có 1 chiều",
+      "Có thể, bằng cách giải phương trình dạng đóng"
+    ],
+    correctAnswer: 1,
+    explanation: "Đầu ra dự đoán của điểm mới trong KNN hồi quy là trung bình cộng đầu ra của các lân cận gần nó nhất: y = ∑ (w_i y_i) / ∑ w_i.",
+    tags: ["knn", "regression"]
+  },
+  {
+    id: "modC_97",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN Limitations",
+    difficulty: "Trung bình",
+    question: "Một nhược điểm lớn của thuật toán KNN khi làm việc với tập dữ liệu lớn là gì?",
+    options: [
+      "Thời gian huấn luyện quá lâu",
+      "Bộ nhớ lưu trữ và thời gian tính toán ở pha kiểm tra cực kỳ lớn do phải tính khoảng cách tới mọi điểm dữ liệu huấn luyện",
+      "KNN không thể xử lý dữ liệu nhiều lớp",
+      "KNN đòi hỏi cấu hình tham số rất phức tạp"
+    ],
+    correctAnswer: 1,
+    explanation: "Vì là thuật toán instance-based, KNN phải giữ lại toàn bộ dữ liệu huấn luyện và thực hiện tính toán lặp đi lặp lại hàng triệu phép tính khoảng cách mỗi khi dự đoán, gây tốn tài nguyên.",
+    tags: ["knn", "limitations"]
+  },
+  {
+    id: "modC_98",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "KNN Properties",
+    difficulty: "Trung bình",
+    question: "KNN hoạt động tốt mà không cần giả định gì về điều nào sau đây?",
+    options: [
+      "Kích thước của vector đặc trưng",
+      "Phân phối xác xuất của các nhãn dữ liệu",
+      "Số lượng cụm dữ liệu",
+      "Hàm mất mát phi tuyến"
+    ],
+    correctAnswer: 1,
+    explanation: "KNN là thuật toán phi tham số (non-parametric), không yêu cầu bất kỳ giả định nào về phân phối xác suất của dữ liệu.",
+    tags: ["knn", "non_parametric"]
+  },
+  {
+    id: "modC_99",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means",
+    difficulty: "Dễ",
+    question: "Thuật toán phân cụm K-means (K-means clustering) thuộc nhóm học máy nào?",
+    options: [
+      "Học có giám sát",
+      "Học không giám sát",
+      "Học bán giám sát",
+      "Học củng cố"
+    ],
+    correctAnswer: 1,
+    explanation: "K-means là một thuật toán phân cụm điển hình của học không giám sát, hoạt động trên dữ liệu không có nhãn sẵn.",
+    tags: ["k_means", "unsupervised_learning"]
+  },
+  {
+    id: "modC_100",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Objective",
+    difficulty: "Trung bình",
+    question: "Mục tiêu của thuật toán phân cụm K-means là gì?",
+    options: [
+      "Tìm một siêu phẳng phân chia dữ liệu làm hai phần",
+      "Phân chia dữ liệu thành K cụm sao cho tổng bình phương khoảng cách từ mỗi điểm đến tâm cụm của nó là nhỏ nhất",
+      "Dự đoán một giá trị liên tục",
+      "Xác định nhãn của dữ liệu dựa trên đa số"
+    ],
+    correctAnswer: 1,
+    explanation: "K-means tìm cách tối thiểu hóa hàm mất mát là tổng bình phương khoảng cách từ các điểm dữ liệu tới các tâm cụm tương ứng.",
+    tags: ["k_means", "clustering"]
+  },
+  {
+    id: "modC_101",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Steps",
+    difficulty: "Trung bình",
+    question: "Hai bước lặp cốt lõi được thực hiện luân phiên trong thuật toán K-means là gì?",
+    options: [
+      "Bước gán nhãn (Y) và Bước cập nhật tâm cụm (M)",
+      "Bước chuẩn hóa dữ liệu và Bước giảm chiều dữ liệu",
+      "Bước tính khoảng cách và Bước tính đạo hàm riêng",
+      "Bước tính cực đại và Bước lấy log"
+    ],
+    correctAnswer: 0,
+    explanation: "K-means hoạt động bằng cách cố định M để tìm Y tối ưu (gán nhãn cho các điểm vào tâm gần nhất), rồi cố định Y để tìm M tối ưu (cập nhật tâm cụm bằng trung bình cộng các điểm trong cụm).",
+    tags: ["k_means", "algorithm_steps"]
+  },
+  {
+    id: "modC_102",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Update",
+    difficulty: "Dễ",
+    question: "Tâm cụm m_j mới ở mỗi vòng lặp K-means được cập nhật bằng công thức nào?",
+    options: [
+      "Lấy ngẫu nhiên một điểm trong cụm",
+      "Trung bình cộng (mean) của toàn bộ các điểm dữ liệu được gán vào cụm j đó",
+      "Trung vị của các điểm trong cụm",
+      "Lấy điểm xa nhất trong cụm"
+    ],
+    correctAnswer: 1,
+    explanation: "Tên gọi K-means bắt nguồn từ việc tâm cụm được tính bằng trung bình cộng (mean) của tất cả các điểm thuộc cụm đó ở bước cập nhật.",
+    tags: ["k_means", "centroid_update"]
+  },
+  {
+    id: "modC_103",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Convergence",
+    difficulty: "Dễ",
+    question: "Thuật toán K-means dừng lại (hội tụ) khi nào?",
+    options: [
+      "Khi số vòng lặp đạt 1000000",
+      "Khi việc phân cụm dữ liệu ở vòng lặp hiện tại không có sự thay đổi (các tâm cụm không đổi vị trí)",
+      "Khi hàm mất mát bằng 0",
+      "Khi tất cả các cụm có số lượng điểm bằng nhau"
+    ],
+    correctAnswer: 1,
+    explanation: "K-means dừng lại khi thuật toán đã hội tụ, tức là việc gán nhãn không còn thay đổi và vị trí các tâm cụm đã cố định.",
+    tags: ["k_means", "convergence"]
+  },
+  {
+    id: "modC_104",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Limitations",
+    difficulty: "Trung bình",
+    question: "Một trong những hạn chế lớn nhất của thuật toán K-means là:",
+    options: [
+      "Độ phức tạp thuật toán quá cao",
+      "Kết quả cuối cùng phụ thuộc rất nhiều vào cách khởi tạo các tâm cụm ban đầu và số lượng cụm K phải được xác định trước",
+      "Không thể hoạt động trên Python",
+      "Chỉ phân cụm được dữ liệu văn bản"
+    ],
+    correctAnswer: 1,
+    explanation: "K-means dễ bị rơi vào nghiệm tối ưu địa phương tùy thuộc vào vị trí khởi tạo tâm cụm ban đầu, và người dùng bắt buộc phải khai báo trước số cụm K.",
+    tags: ["k_means", "limitations"]
+  },
+  {
+    id: "modC_105",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Elbow Method",
+    difficulty: "Trung bình",
+    question: "Phương pháp nào thường được dùng để gợi ý lựa chọn số lượng cụm K tối ưu cho thuật toán K-means?",
+    options: [
+      "Phương pháp khuỷu tay (Elbow method)",
+      "Phương pháp nhân tử Lagrange",
+      "Kiểm tra gradient",
+      "Xác thực chéo L1"
+    ],
+    correctAnswer: 0,
+    explanation: "Phương pháp Elbow quan sát sự thay đổi của hàm mất mát theo K, điểm gập khúc (giống khuỷu tay) thường được chọn làm K tối ưu.",
+    tags: ["elbow_method", "k_means"]
+  },
+  {
+    id: "modC_106",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "K-Means Applications",
+    difficulty: "Trung bình",
+    question: "Ứng dụng nào sau đây KHÔNG phải là ứng dụng trực tiếp của thuật toán K-means?",
+    options: [
+      "Nén ảnh phi tổn hao (Lossless image compression)",
+      "Phân cụm chữ số viết tay (MNIST)",
+      "Tách vật thể trong ảnh (Image segmentation)",
+      "Nén lượng tử hóa màu sắc trong ảnh (Color quantization)"
+    ],
+    correctAnswer: 0,
+    explanation: "K-means được dùng để nén màu ảnh nhưng đây là nén có mất mát dữ liệu (lossy compression) vì các pixel bị thay thế hoàn toàn bằng màu của tâm cụm gần nhất.",
+    tags: ["k_means", "applications"]
+  },
+  {
+    id: "modC_107",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes",
+    difficulty: "Dễ",
+    question: "Bộ phân loại Naive Bayes (Naive Bayes Classifier - NBC) hoạt động dựa trên định lý nào?",
+    options: [
+      "Định lý giới hạn trung tâm",
+      "Định lý Bayes và giả thiết độc lập ngây thơ giữa các đặc trưng",
+      "Định lý Slater",
+      "Định lý Lagrange"
+    ],
+    correctAnswer: 1,
+    explanation: "NBC kết hợp định lý Bayes và một giả thiết cực kỳ mạnh mẽ (ngây thơ) là các thành phần của vector đặc trưng độc lập với nhau khi biết nhãn lớp.",
+    tags: ["naive_bayes", "bayes_theorem"]
+  },
+  {
+    id: "modC_108",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes Assumption",
+    difficulty: "Dễ",
+    question: "Giả thiết 'ngây thơ' (naive) trong bộ phân loại Naive Bayes là gì?",
+    options: [
+      "Giả thiết dữ liệu luôn sạch và không có nhiễu",
+      "Giả thiết các đặc trưng x_i độc lập với nhau khi biết trước nhãn lớp c",
+      "Giả thiết mô hình luôn đạt độ chính xác 100%",
+      "Giả thiết dữ liệu tuân theo phân phối chuẩn một chiều"
+    ],
+    correctAnswer: 1,
+    explanation: "Giả thiết độc lập này giúp đơn giản hóa việc tính xác suất đồng thời p(x|c) thành tích các xác suất thành phần p(x_i|c), giúp tính toán cực nhanh.",
+    tags: ["naive_bayes", "independence_assumption"]
+  },
+  {
+    id: "modC_109",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes Trick",
+    difficulty: "Trung bình",
+    question: "Hàm logarit được áp dụng vào công thức Naive Bayes nhằm mục đích gì?",
+    options: [
+      "Để biến phép nhân các xác suất thành phép cộng các log xác suất, tránh hiện tượng tràn số dưới (underflow)",
+      "Để làm tăng xác suất hậu nghiệm",
+      "Để đưa dữ liệu về phân phối chuẩn",
+      "Để chuyển bài toán thành phân loại phi tuyến"
+    ],
+    correctAnswer: 0,
+    explanation: "Tích của nhiều xác suất nhỏ tiến gần về 0 gây tràn số dưới trong máy tính. Áp dụng log giúp tính toán dạng tổng tuyến tính ổn định hơn.",
+    tags: ["naive_bayes", "log_likelihood"]
+  },
+  {
+    id: "modC_110",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Multinomial Naive Bayes",
+    difficulty: "Trung bình",
+    question: "Trong phân loại văn bản, mô hình Multinomial Naive Bayes thường được dùng khi:",
+    options: [
+      "Chúng ta chỉ quan tâm từ đó có xuất hiện trong văn bản hay không (0 hoặc 1)",
+      "Chúng ta quan tâm đến tần suất xuất hiện (số lần xuất hiện) của từ trong văn bản",
+      "Đặc trưng đầu vào là các số thực liên tục",
+      "Văn bản đã được giảm chiều dữ liệu bằng PCA"
+    ],
+    correctAnswer: 1,
+    explanation: "Multinomial Naive Bayes phù hợp với dữ liệu dạng đếm tần suất xuất hiện của từ (BoW).",
+    tags: ["multinomial_nb", "nlp"]
+  },
+  {
+    id: "modC_111",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Bernoulli Naive Bayes",
+    difficulty: "Trung bình",
+    question: "Mô hình Bernoulli Naive Bayes khác với Multinomial Naive Bayes ở điểm nào?",
+    options: [
+      "Chỉ quan tâm đến sự xuất hiện (1) hay không xuất hiện (0) của từ trong văn bản, thay vì tần suất",
+      "Chỉ áp dụng cho phân loại ảnh",
+      "Bernoulli cho kết quả luôn tốt hơn Multinomial",
+      "Không cần sử dụng bộ từ điển làm đặc trưng"
+    ],
+    correctAnswer: 0,
+    explanation: "Bernoulli NB sử dụng vector đặc trưng nhị phân biểu thị sự tồn tại của từ, không quan tâm từ đó xuất hiện bao nhiêu lần.",
+    tags: ["bernoulli_nb", "nlp"]
+  },
+  {
+    id: "modC_112",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Laplace Smoothing",
+    difficulty: "Trung bình",
+    question: "Kỹ thuật làm mềm Laplace (Laplace smoothing) được sử dụng trong Naive Bayes nhằm giải quyết vấn đề gì?",
+    options: [
+      "Vấn đề ma trận không khả nghịch",
+      "Vấn đề một từ mới chưa từng xuất hiện trong tập huấn luyện của một lớp khiến xác suất thành phần bằng 0, dẫn đến tích xác suất đồng thời bằng 0",
+      "Vấn đề Overfitting của mô hình",
+      "Vấn đề thiếu bộ nhớ lưu trữ"
+    ],
+    correctAnswer: 1,
+    explanation: "Nếu một từ chưa xuất hiện trong tập huấn luyện của lớp c, p(x_i|c) = 0 sẽ kéo theo p(x|c) = 0. Làm mềm Laplace cộng thêm một hằng số nhỏ vào tử và mẫu để tránh xác suất bằng 0.",
+    tags: ["laplace_smoothing", "naive_bayes"]
+  },
+  {
+    id: "modC_113",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes Advantages",
+    difficulty: "Dễ",
+    question: "Ưu điểm nổi bật nhất của bộ phân loại Naive Bayes là gì?",
+    options: [
+      "Thời gian huấn luyện và kiểm tra cực kỳ nhanh và hoạt động tốt ngay cả với ít dữ liệu huấn luyện (nếu giả thiết độc lập thỏa mãn)",
+      "Tạo ra ranh giới phân loại phi tuyến phức tạp",
+      "Không nhạy cảm với hiện tượng quá khớp",
+      "Khả năng tự động trích chọn đặc trưng từ ảnh thô"
+    ],
+    correctAnswer: 0,
+    explanation: "NBC tính toán độc lập các tham số nên tốc độ cực nhanh, rất hiệu quả cho phân loại văn bản và lọc thư rác.",
+    tags: ["naive_bayes", "advantages"]
+  },
+  {
+    id: "modC_114",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Gaussian Naive Bayes",
+    difficulty: "Dễ",
+    question: "Mô hình Naive Bayes nào phù hợp khi các đặc trưng đầu vào là các số thực liên tục (ví dụ: chiều cao, cân nặng)?",
+    options: [
+      "Multinomial Naive Bayes",
+      "Bernoulli Naive Bayes",
+      "Gaussian Naive Bayes",
+      "Laplace Naive Bayes"
+    ],
+    correctAnswer: 2,
+    explanation: "Gaussian Naive Bayes giả định các đặc trưng liên tục tuân theo phân phối chuẩn trong mỗi lớp để tính xác suất.",
+    tags: ["gaussian_nb"]
+  },
+  {
+    id: "modC_115",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes Complexity",
+    difficulty: "Dễ",
+    question: "Độ phức tạp huấn luyện của Naive Bayes chủ yếu nằm ở phép toán nào?",
+    options: [
+      "Phép nhân ma trận nghịch đảo",
+      "Phép đếm tần suất xuất hiện và tính toán các xác suất điều kiện độc lập",
+      "Phép tính trị riêng ma trận",
+      "Các vòng lặp gradient descent phức tạp"
+    ],
+    correctAnswer: 1,
+    explanation: "Huấn luyện Naive Bayes thực chất chỉ là việc đếm tần suất xuất hiện của các từ/đặc trưng và tính tỷ lệ xác suất tương ứng, do đó cực kỳ đơn giản và nhanh chóng.",
+    tags: ["naive_bayes", "complexity"]
+  },
+  {
+    id: "modC_116",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Naive Bayes Limitations",
+    difficulty: "Trung bình",
+    question: "Khi giả thiết độc lập giữa các đặc trưng bị vi phạm nghiêm trọng trong thực tế, hiệu năng của Naive Bayes sẽ như thế nào?",
+    options: [
+      "Luôn luôn tăng lên",
+      "Có xu hướng giảm đi rõ rệt do mô hình không phản ánh đúng mối quan hệ giữa các đặc trưng",
+      "Không bị ảnh hưởng gì",
+      "Làm cho mô hình bị underfitting tuyệt đối"
+    ],
+    correctAnswer: 1,
+    explanation: "Giả thiết độc lập là cốt lõi của NBC. Nếu các đặc trưng phụ thuộc mạnh vào nhau, mô hình sẽ ước lượng sai lệch xác suất hậu nghiệm.",
+    tags: ["naive_bayes", "limitations"]
+  },
+  {
+    id: "modC_117",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "PLA",
+    difficulty: "Dễ",
+    question: "Thuật toán học Perceptron (PLA) được thiết kế cho loại bài toán nào?",
+    options: [
+      "Hồi quy tuyến tính phi hệ số",
+      "Phân loại nhị phân khi dữ liệu của hai lớp là tách biệt tuyến tính (linearly separable)",
+      "Phân cụm dữ liệu phi tuyến",
+      "Hệ thống gợi ý dựa trên người dùng"
+    ],
+    correctAnswer: 1,
+    explanation: "PLA là một trong những thuật toán học máy đầu tiên, giải quyết bài toán phân loại nhị phân khi dữ liệu có thể chia cắt hoàn toàn bằng một đường thẳng hoặc siêu phẳng.",
+    tags: ["pla", "perceptron"]
+  },
+  {
+    id: "modC_118",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "PLA Activation",
+    difficulty: "Dễ",
+    question: "Hàm kích hoạt (activation function) được sử dụng trong thuật toán PLA cơ bản là:",
+    options: [
+      "Hàm Sigmoid",
+      "Hàm Sign (hàm dấu: sgn(s))",
+      "Hàm ReLU",
+      "Hàm Tanh"
+    ],
+    correctAnswer: 1,
+    explanation: "PLA sử dụng hàm sgn(s) để đưa ra đầu ra nhị phân cứng là 1 (nếu s ≥ 0) hoặc -1 (nếu s < 0).",
+    tags: ["pla", "activation_function"]
+  },
+  {
+    id: "modC_119",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "PLA Update Rule",
+    difficulty: "Trung bình",
+    question: "Khi một điểm dữ liệu (x_i, y_i) bị phân loại lỗi trong PLA, công thức cập nhật trọng số w là:",
+    options: [
+      "w = w - η y_i x_i",
+      "w = w + η y_i x_i",
+      "w = y_i x_i",
+      "w = w + η x_i"
+    ],
+    correctAnswer: 1,
+    explanation: "Công thức cập nhật của PLA khi phát hiện điểm lỗi là w = w + η y_i x_i để xoay siêu phẳng về phía phân loại đúng điểm đó.",
+    tags: ["pla", "update_rule"]
+  },
+  {
+    id: "modC_120",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "PLA Convergence",
+    difficulty: "Trung bình",
+    question: "Thuật toán PLA cơ bản có đảm bảo hội tụ (break vòng lặp) khi dữ liệu KHÔNG tách biệt tuyến tính không?",
+    options: [
+      "Có, luôn hội tụ sau tối đa 100 vòng lặp",
+      "Không, thuật toán sẽ lặp vô hạn và không bao giờ dừng lại",
+      "Có, nếu ta chọn tốc độ học η cực kỳ nhỏ",
+      "Không, trừ khi ta loại bỏ hệ số bias b"
+    ],
+    correctAnswer: 1,
+    explanation: "Định lý hội tụ PLA chỉ chứng minh được PLA sẽ dừng sau một số bước hữu hạn nếu dữ liệu tách biệt tuyến tính. Nếu dữ liệu có nhiễu chồng lấn, PLA sẽ lặp vô hạn.",
+    tags: ["pla", "convergence"]
+  },
+  {
+    id: "modC_121",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Pocket Algorithm",
+    difficulty: "Trung bình",
+    question: "Thuật toán Pocket (Pocket Algorithm) cải tiến PLA như thế nào khi dữ liệu không tách biệt tuyến tính?",
+    options: [
+      "Nó lưu giữ nghiệm tốt nhất (phân loại lỗi ít nhất) trong một 'túi' và trả về nghiệm này khi hết số vòng lặp",
+      "Nó chia nhỏ dữ liệu thành các túi nhỏ",
+      "Nó tự động chuyển đổi dữ liệu thành phi tuyến",
+      "Nó loại bỏ các điểm phân loại sai"
+    ],
+    correctAnswer: 0,
+    explanation: "Pocket algorithm giải quyết hạn chế của PLA bằng cách giữ lại bộ trọng số tốt nhất tìm thấy trong suốt quá trình chạy lặp.",
+    tags: ["pocket_algorithm", "pla"]
+  },
+  {
+    id: "modC_122",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Logistic Regression",
+    difficulty: "Dễ",
+    question: "Mô hình hồi quy Logistic (Logistic Regression) thường được dùng cho bài toán nào?",
+    options: [
+      "Bài toán hồi quy liên tục",
+      "Bài toán phân loại (thường là phân loại nhị phân)",
+      "Bài toán phân cụm không giám sát",
+      "Giảm chiều dữ liệu hình ảnh"
+    ],
+    correctAnswer: 1,
+    explanation: "Dù tên có chữ 'hồi quy', hồi quy Logistic thực tế là bộ phân loại nhị phân đưa ra đầu ra dưới dạng xác suất thuộc về một lớp.",
+    tags: ["logistic_regression", "classification"]
+  },
+  {
+    id: "modC_123",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Sigmoid Function",
+    difficulty: "Dễ",
+    question: "Hàm kích hoạt Sigmoid (hay logistic function) có công thức toán học là gì và miền giá trị của nó là bao nhiêu?",
+    options: [
+      "f(s) = e^s / (1 + e^s), miền giá trị [-1, 1]",
+      "f(s) = 1 / (1 + e⁻ˢ), miền giá trị (0, 1)",
+      "f(s) = max(0, s), miền giá trị [0, +∞)",
+      "f(s) = s, miền giá trị ℝ"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm sigmoid chuyển đổi mọi giá trị thực s thành một giá trị xác suất nằm trong khoảng (0, 1) thông qua công thức 1 / (1 + e⁻ˢ).",
+    tags: ["sigmoid", "activation_function"]
+  },
+  {
+    id: "modC_124",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Cross-Entropy Loss",
+    difficulty: "Trung bình",
+    question: "Hàm mất mát được sử dụng để huấn luyện hồi quy Logistic là:",
+    options: [
+      "Hàm mất mát sai số bình phương (MSE)",
+      "Hàm mất mát entropy chéo (Cross-Entropy Loss / Binary Cross-Entropy)",
+      "Hàm mất mát bản lề (hinge loss)",
+      "Hàm vết trace"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm mất mát của hồi quy logistic được xây dựng từ bài toán tối đa hóa log-likelihood (MLE), đổi dấu và lấy trung bình thu được hàm Cross-Entropy.",
+    tags: ["cross_entropy", "loss_function"]
+  },
+  {
+    id: "modC_125",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Logistic Regression SGD",
+    difficulty: "Trung bình",
+    question: "Công thức cập nhật trọng số w bằng thuật toán SGD trong hồi quy Logistic là:",
+    options: [
+      "w = w - η (a_i - y_i) x_i",
+      "w = w + η (a_i - y_i) x_i",
+      "w = w - η y_i x_i",
+      "w = w - η a_i x_i"
+    ],
+    correctAnswer: 0,
+    explanation: "Công thức cập nhật SGD cho hồi quy logistic là w = w - η (a_i - y_i) x_i, trông rất giống công thức của hồi quy tuyến tính nhưng a_i là đầu ra của hàm sigmoid.",
+    tags: ["logistic_regression", "sgd"]
+  },
+  {
+    id: "modC_126",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Weight Decay",
+    difficulty: "Trung bình",
+    question: "Khi tích hợp kỹ thuật suy giảm trọng số (weight decay) với tham số λ vào hồi quy Logistic, hàm mất mát thay đổi thế nào?",
+    options: [
+      "Cộng thêm số hạng phạt L1: λ ||w||₁",
+      "Cộng thêm số hạng phạt L2: (λ/2) ||w||₂²",
+      "Trừ đi một hằng số λ",
+      "Chia toàn bộ hàm mất mát cho λ"
+    ],
+    correctAnswer: 1,
+    explanation: "Weight decay cộng thêm một đại lượng tỷ lệ với bình phương chuẩn L2 để kìm hãm độ lớn của trọng số w, hạn chế overfitting.",
+    tags: ["weight_decay", "l2_regularization"]
+  },
+  {
+    id: "modC_127",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Linear Models Comparison",
+    difficulty: "Trung bình",
+    question: "Mối quan hệ giữa hồi quy tuyến tính, PLA và hồi quy Logistic khi biểu diễn dưới dạng mạng neuron nhân tạo là gì?",
+    options: [
+      "Chúng có cấu trúc kết nối khác nhau hoàn toàn",
+      "Chúng đều là các mô hình tuyến tính đơn tầng, sự khác biệt chỉ nằm ở việc lựa chọn hàm kích hoạt (activation function)",
+      "Chúng chỉ chạy được trên tập dữ liệu MNIST",
+      "Chúng không sử dụng trọng số w"
+    ],
+    correctAnswer: 1,
+    explanation: "Cả ba mô hình đều tính tổng trọng số s = xᵀ w + b. Hồi quy tuyến tính dùng hàm kích hoạt f(s) = s, PLA dùng f(s) = sgn(s), Hồi quy Logistic dùng f(s) = sigmoid(s).",
+    tags: ["linear_models", "activation_function"]
+  },
+  {
+    id: "modC_128",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Softmax Regression",
+    difficulty: "Dễ",
+    question: "Hồi quy Softmax (Softmax Regression) mở rộng hồi quy Logistic cho loại bài toán nào?",
+    options: [
+      "Bài toán phân loại đa lớp (Multi-class classification, C > 2 nhãn loại trừ lẫn nhau)",
+      "Bài toán phân cụm phi tuyến",
+      "Bài toán hồi quy nhiều biến đầu ra liên tục",
+      "Bài toán giảm chiều dữ liệu MNIST"
+    ],
+    correctAnswer: 0,
+    explanation: "Hồi quy Softmax (hay Multinomial Logistic Regression) là phiên bản tổng quát hóa của hồi quy logistic phục vụ phân loại nhiều lớp.",
+    tags: ["softmax_regression", "multi_class"]
+  },
+  {
+    id: "modC_129",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Softmax Function",
+    difficulty: "Dễ",
+    question: "Hàm Softmax biến đổi một vector điểm số (scores) z thành vector xác suất a thỏa mãn điều kiện nào?",
+    options: [
+      "Các phần tử của a lớn hơn 1",
+      "Mỗi phần tử a_i nằm trong khoảng (0, 1) và tổng các phần tử của vector a bằng 1",
+      "Tất cả các phần tử bằng nhau",
+      "Độ dài vector bằng 1"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm softmax chuẩn hóa vector điểm số thành phân phối xác suất hợp lệ: a_i = e^(z_i) / ∑ e^(z_j).",
+    tags: ["softmax", "probability"]
+  },
+  {
+    id: "modC_130",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Categorical Cross-Entropy",
+    difficulty: "Trung bình",
+    question: "Hàm mất mát dùng cho hồi quy Softmax là gì?",
+    options: [
+      "Hàm sai số bình phương trung bình (MSE)",
+      "Hàm mất mát entropy chéo đa lớp (Categorical Cross-Entropy Loss)",
+      "Hàm mất mát bản lề đa lớp",
+      "Hàm Kullback-Leibler"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm mất mát là trung bình cộng của entropy chéo giữa phân phối xác suất thực tế (dạng one-hot) và xác suất dự đoán bởi softmax.",
+    tags: ["categorical_cross_entropy", "loss_function"]
+  },
+  {
+    id: "modC_131",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Softmax Decision Boundary",
+    difficulty: "Trung bình",
+    question: "Đường ranh giới phân loại (decision boundary) tạo bởi hồi quy Softmax giữa các lớp có dạng hình học gì?",
+    options: [
+      "Các đường cong bậc hai phức tạp",
+      "Các đường thẳng/siêu phẳng tuyến tính",
+      "Các hình tròn đồng tâm",
+      "Các đa giác lồi phi tuyến"
+    ],
+    correctAnswer: 1,
+    explanation: "Hồi quy Softmax chỉ tạo ra các đường ranh giới tuyến tính trong không gian đặc trưng.",
+    tags: ["softmax_regression", "decision_boundary"]
+  },
+  {
+    id: "modC_132",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "MLP Motivation",
+    difficulty: "Dễ",
+    question: "Mạng neuron đa tầng (Multilayer Perceptron - MLP) được thiết kế để giải quyết hạn chế lớn nào của các mô hình tuyến tính đơn tầng?",
+    options: [
+      "Hạn chế về tốc độ tính toán",
+      "Không phân loại được dữ liệu không tách biệt tuyến tính phi tuyến (ví dụ bài toán cổng XOR)",
+      "Không chạy được trên thư viện numpy",
+      "Không hỗ trợ Regularization"
+    ],
+    correctAnswer: 1,
+    explanation: "Các mô hình tuyến tính đơn tầng như PLA hay Logistic Regression không thể phân loại được dữ liệu phi tuyến (như XOR). MLP với các tầng ẩn phi tuyến giải quyết được bài toán này.",
+    tags: ["mlp", "non_linear"]
+  },
+  {
+    id: "modC_133",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "MLP Architecture",
+    difficulty: "Dễ",
+    question: "Một mạng MLP cơ bản gồm những loại tầng (layer) nào?",
+    options: [
+      "Tầng đầu vào (Input layer), Tầng ẩn (Hidden layer), và Tầng đầu ra (Output layer)",
+      "Tầng tích chập, Tầng gộp, và Tầng kết nối đầy đủ",
+      "Tầng chuẩn hóa, Tầng giảm chiều, và Tầng phân cụm",
+      "Tầng tuyến tính và Tầng đối ngẫu"
+    ],
+    correctAnswer: 0,
+    explanation: "MLP tiêu chuẩn gồm 1 tầng đầu vào, 1 hoặc nhiều tầng ẩn trung gian và 1 tầng đầu ra.",
+    tags: ["mlp", "neural_network_layers"]
+  },
+  {
+    id: "modC_134",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Activation Functions Role",
+    difficulty: "Trung bình",
+    question: "Tại sao các tầng ẩn trong mạng neuron bắt buộc phải sử dụng hàm kích hoạt phi tuyến (non-linear activation function)?",
+    options: [
+      "Để mô hình chạy chậm lại và chính xác hơn",
+      "Vì nếu dùng hàm kích hoạt tuyến tính, tổ hợp các tầng tuyến tính cũng chỉ tương đương với một tầng tuyến tính duy nhất, làm mất đi năng lực học các quan hệ phi tuyến phức tạp",
+      "Để tránh hiện tượng bùng nổ gradient",
+      "Để mô hình không cần dùng bias"
+    ],
+    correctAnswer: 1,
+    explanation: "Tích của các ma trận trọng số tuyến tính liên tiếp chỉ là một ma trận tuyến tính khác. Hàm kích hoạt phi tuyến ở mỗi tầng ẩn giúp mạng neuron xấp xỉ được các hàm phi tuyến bất kỳ.",
+    tags: ["mlp", "activation_function"]
+  },
+  {
+    id: "modC_135",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "ReLU",
+    difficulty: "Dễ",
+    question: "Hàm kích hoạt ReLU (Rectified Linear Unit) có công thức là gì?",
+    options: [
+      "f(z) = 1 / (1 + e⁻ᶻ)",
+      "f(z) = max(0, z)",
+      "f(z) = tanh(z)",
+      "f(z) = eᶻ"
+    ],
+    correctAnswer: 1,
+    explanation: "Hàm ReLU trả về chính z nếu z > 0, và trả về 0 nếu z ≤ 0.",
+    tags: ["relu", "activation_function"]
+  },
+  {
+    id: "modC_136",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "ReLU Advantages",
+    difficulty: "Trung bình",
+    question: "Ưu điểm lớn nhất của hàm kích hoạt ReLU so với Sigmoid và Tanh là gì?",
+    options: [
+      "ReLU luôn trả về giá trị nằm trong khoảng (0, 1)",
+      "ReLU tính toán cực kỳ đơn giản, nhanh chóng và giúp giảm thiểu hiện tượng biến mất gradient (vanishing gradient) khi z dương",
+      "ReLU có đạo hàm bằng 1 ở mọi điểm",
+      "ReLU giúp mô hình không bị quá khớp"
+    ],
+    correctAnswer: 1,
+    explanation: "ReLU chỉ dùng phép so sánh max(0, z) nên tốc độ tính toán cực nhanh, đồng thời đạo hàm bằng 1 khi z > 0 giúp truyền gradient hiệu quả qua nhiều tầng mạng.",
+    tags: ["relu", "advantages"]
+  },
+  {
+    id: "modC_137",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Backpropagation Order",
+    difficulty: "Dễ",
+    question: "Trong thuật toán Backpropagation, tầng nào được tính toán gradient đầu tiên?",
+    options: [
+      "Tầng đầu vào (Input layer)",
+      "Tầng ẩn đầu tiên (First hidden layer)",
+      "Tầng đầu ra (Output layer)",
+      "Tất cả các tầng tính toán đồng thời"
+    ],
+    correctAnswer: 2,
+    explanation: "Tầng đầu ra ảnh hưởng trực tiếp tới hàm mất mát nên gradient của nó được tính trước tiên, sau đó sai số mới được lan truyền ngược dần về các tầng ẩn phía trước.",
+    tags: ["backpropagation"]
+  },
+  {
+    id: "modC_138",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Dropout",
+    difficulty: "Trung bình",
+    question: "Kỹ thuật Dropout hoạt động thế nào để kiểm soát hiện tượng quá khớp trong mạng neuron đa tầng?",
+    options: [
+      "Xóa bỏ vĩnh viễn một nửa số điểm dữ liệu huấn luyện",
+      "Tại mỗi bước huấn luyện, tắt ngẫu nhiên một tỷ lệ p các neuron trong mạng, ép các neuron còn lại phải tự học các đặc trưng độc lập và mạnh mẽ",
+      "Chuyển các hàm kích hoạt phi tuyến về dạng tuyến tính",
+      "Tự động giảm tốc độ học về 0"
+    ],
+    correctAnswer: 1,
+    explanation: "Dropout vô hiệu hóa ngẫu nhiên các kết nối neuron trong quá trình lan truyền thuận và ngược của mỗi batch huấn luyện, ngăn chặn việc các neuron đồng thích nghi (co-adaptation) quá mức.",
+    tags: ["dropout", "regularization"]
+  },
+  {
+    id: "modC_139",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Weight Decay",
+    difficulty: "Dễ",
+    question: "Kỹ thuật suy giảm trọng số (weight decay) trong mạng neuron hoạt động tương đương với hình thức kiểm soát nào?",
+    options: [
+      "L1 regularization",
+      "L2 regularization",
+      "Elastic Net",
+      "Làm mềm Laplace"
+    ],
+    correctAnswer: 1,
+    explanation: "Suy giảm trọng số chính là L2 regularization, phạt bình phương độ lớn trọng số để giữ các liên kết neuron không quá mạnh mẽ, giảm thiểu overfitting.",
+    tags: ["weight_decay", "l2_regularization"]
+  },
+  {
+    id: "modC_140",
+    module: "C",
+    moduleName: "Kiến thức AI & Sản phẩm AI",
+    topic: "Learning Rate Decay",
+    difficulty: "Trung bình",
+    question: "Tốc độ học suy giảm (learning rate decay) được áp dụng nhằm mục đích gì trong huấn luyện mạng neuron?",
+    options: [
+      "Làm giảm dần tốc độ học theo thời gian huấn luyện giúp mô hình hội tụ ổn định hơn ở các vòng lặp cuối thay vì dao động quanh cực tiểu",
+      "Để tăng tốc độ huấn luyện ở những epoch cuối cùng",
+      "Để tắt bớt các neuron phân loại sai",
+      "Để loại bỏ hoàn toàn nhiễu trong dữ liệu"
+    ],
+    correctAnswer: 0,
+    explanation: "Ở các epoch cuối, khi mô hình đã gần cực tiểu, tốc độ học lớn dễ làm tham số nhảy vượt qua điểm tối ưu. Việc giảm dần learning rate giúp mô hình tiến sát và hội tụ tại cực tiểu một cách êm ái hơn.",
+    tags: ["learning_rate_decay", "optimization"]
+  }
 ];
