@@ -1545,15 +1545,15 @@ export const moduleCQuestions: Question[] = [
     "moduleName": "Kiến thức AI & Sản phẩm AI",
     "topic": "Linear Regression",
     "difficulty": "Dễ",
-    "question": "Sai số dự đoán e_i của điểm dữ liệu thứ i trong hồi quy tuyến tính được định nghĩa là:",
+    "question": "Sai số dự đoán $e_i$ của điểm dữ liệu thứ $i$ trong hồi quy tuyến tính được định nghĩa là:",
     "options": [
-      "e_i = y_i + y_{pred_i}",
-      "e_i = (y_i)² - (y_{pred_i})²",
-      "e_i = y_i · y_{pred_i}",
-      "e_i = y_i - y_{pred_i}"
+      "$e_i = y_i + \\hat{y}_i$",
+      "$e_i = y_i^2 - \\hat{y}_i^2$",
+      "$e_i = y_i \\cdot \\hat{y}_i$",
+      "$e_i = y_i - \\hat{y}_i$"
     ],
     "correctAnswer": 3,
-    "explanation": "Sai số e_i là hiệu số giữa giá trị thực tế y_i và giá trị dự đoán y_{pred_i}.",
+    "explanation": "Sai số dự đoán $e_i$ là hiệu số giữa giá trị thực tế $y_i$ và giá trị dự đoán $\\hat{y}_i$ (tức $e_i = y_i - \\hat{y}_i$).",
     "tags": [
       "linear_regression",
       "error"
@@ -2381,15 +2381,15 @@ export const moduleCQuestions: Question[] = [
     "moduleName": "Kiến thức AI & Sản phẩm AI",
     "topic": "PLA Update Rule",
     "difficulty": "Trung bình",
-    "question": "Khi một điểm dữ liệu (x_i, y_i) bị phân loại lỗi trong PLA, công thức cập nhật trọng số w là:",
+    "question": "Khi một điểm dữ liệu $(x_i, y_i)$ bị phân loại lỗi trong thuật toán Perceptron (PLA), công thức cập nhật trọng số $w$ là:",
     "options": [
-      "w = w - η y_i x_i",
-      "w = w + η x_i",
-      "w = y_i x_i",
-      "w = w + η y_i x_i"
+      "$w = w - \\eta y_i x_i$",
+      "$w = w + \\eta x_i$",
+      "$w = y_i x_i$",
+      "$w = w + \\eta y_i x_i$"
     ],
     "correctAnswer": 3,
-    "explanation": "Công thức cập nhật của PLA khi phát hiện điểm lỗi là w = w + η y_i x_i để xoay siêu phẳng về phía phân loại đúng điểm đó.",
+    "explanation": "Công thức cập nhật của PLA khi phát hiện điểm lỗi là $w = w + \\eta y_i x_i$ để xoay siêu phẳng về phía phân loại đúng điểm đó.",
     "tags": [
       "pla",
       "update_rule"
@@ -2501,15 +2501,15 @@ export const moduleCQuestions: Question[] = [
     "moduleName": "Kiến thức AI & Sản phẩm AI",
     "topic": "Logistic Regression SGD",
     "difficulty": "Trung bình",
-    "question": "Công thức cập nhật trọng số w bằng thuật toán SGD trong hồi quy Logistic là:",
+    "question": "Công thức cập nhật trọng số $w$ bằng thuật toán Stochastic Gradient Descent (SGD) trong hồi quy Logistic là:",
     "options": [
-      "w = w - η a_i x_i",
-      "w = w + η (a_i - y_i) x_i",
-      "w = w - η y_i x_i",
-      "w = w - η (a_i - y_i) x_i"
+      "$w = w - \\eta a_i x_i$",
+      "$w = w + \\eta (a_i - y_i) x_i$",
+      "$w = w - \\eta y_i x_i$",
+      "$w = w - \\eta (a_i - y_i) x_i$"
     ],
     "correctAnswer": 3,
-    "explanation": "Công thức cập nhật SGD cho hồi quy logistic là w = w - η (a_i - y_i) x_i, trông rất giống công thức của hồi quy tuyến tính nhưng a_i là đầu ra của hàm sigmoid.",
+    "explanation": "Công thức cập nhật SGD cho hồi quy Logistic là $w = w - \\eta (a_i - y_i) x_i$, trông tương tự công thức của hồi quy tuyến tính nhưng $a_i = \\sigma(w^T x_i)$ là đầu ra của hàm Sigmoid.",
     "tags": [
       "logistic_regression",
       "sgd"
