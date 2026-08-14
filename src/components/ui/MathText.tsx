@@ -85,15 +85,28 @@ export function convertSlashFractions(text: string): string {
 }
 
 /**
+ * Automatically converts unescaped subscript math variables like x_i, y_i, z_i, w_i, a_i, u_i, v_i, x_0, x_n, S_W, S_B, a_ij, a_ii, a_n
+ * into KaTeX math notation $x_i$, $y_i$, $z_i$, etc.
+ */
+export function convertMathVariables(text: string): string {
+  if (!text) return "";
+  if (text.trim().startsWith("```") || text.includes("np.array") || text.includes("def ") || text.includes("k_means") || text.includes("get_dummies")) return text;
+
+  // Replace standalone x_i, y_i, z_i, w_i, a_i, u_i, v_i, x_0, x_1, x_n, S_W, S_B, a_ij, a_ii, a_n, e_i not inside $
+  return text.replace(/(?<!\$|\w)([a-zA-Z])_([a-zA-Z0-9]+)(?!\$|\w)/g, (_m, v, s) => `$${v}_{${s}}$`);
+}
+
+/**
  * Parses text into plain text segments and LaTeX math segments.
  */
 function parseMathSegments(rawText: string): Segment[] {
   if (!rawText) return [];
 
-  // Preprocess matrices, systems of equations, and slash fractions
+  // Preprocess matrices, systems of equations, slash fractions, and math variables
   let text = convertBracketMatrices(rawText);
   text = convertSystemsOfEquations(text);
   text = convertSlashFractions(text);
+  text = convertMathVariables(text);
 
   const segments: Segment[] = [];
   const regex = /(\$\$[\s\S]+?\$\$|\$[\s\S]+?\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\))/g;
