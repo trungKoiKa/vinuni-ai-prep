@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { getQuestionsByModule } from "../data/questions";
 import type { ModuleId, Question } from "../types/question";
 import { useProgress } from "../context/ProgressContext";
 import { selectSmartQuestions, shuffleArray } from "../lib/shuffle";
+import { practiceSessionStore, resolveQuestions, type AnswerMap } from "../lib/sessionStore";
 import { QuestionCard } from "../components/question/QuestionCard";
 import { QuestionNavigator } from "../components/question/QuestionNavigator";
 import { QuestionPager } from "../components/question/QuestionPager";
@@ -17,14 +18,29 @@ import { Info, Eye, EyeOff, Shuffle, RefreshCw, Layers, ListTodo } from "lucide-
 
 const BATCH_SIZE = 50;
 
+function loadSavedPractice(moduleKey: string) {
+  const saved = practiceSessionStore.get(moduleKey);
+  const questions = saved && resolveQuestions(saved.questionIds);
+  if (!saved || !questions) return null;
+  return { ...saved, questions, currentIndex: Math.min(saved.currentIndex, questions.length - 1) };
+}
+
 export const Practice: React.FC = () => {
   const { moduleId } = useParams<{ moduleId?: string }>();
-  const { progress, recordAnswer, toggleBookmark } = useProgress();
 
   const validModuleId: ModuleId | undefined =
     moduleId && ["A", "B", "C", "D"].includes(moduleId.toUpperCase())
       ? (moduleId.toUpperCase() as ModuleId)
       : undefined;
+
+  // Remount per module so each module restores its own saved session.
+  return <PracticeSession key={validModuleId ?? "ALL"} validModuleId={validModuleId} />;
+};
+
+const PracticeSession: React.FC<{ validModuleId?: ModuleId }> = ({ validModuleId }) => {
+  const { progress, recordAnswer, toggleBookmark } = useProgress();
+  const moduleKey = validModuleId ?? "ALL";
+  const [saved] = useState(() => loadSavedPractice(moduleKey));
 
   // Base question pool for the selected module
   const fullModulePool = useMemo(
@@ -39,17 +55,27 @@ export const Practice: React.FC = () => {
   );
 
   // activeBatchIndex: 0..N-1 for fixed batches, or -1 for "50 câu chưa làm"
-  const [activeBatchIndex, setActiveBatchIndex] = useState<number>(0);
-  const [isShuffled, setIsShuffled] = useState<boolean>(true);
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [userAnswers, setUserAnswers] = useState<Record<string, number | null>>({});
+  const [activeBatchIndex, setActiveBatchIndex] = useState<number>(saved?.batchIndex ?? 0);
+  const [isShuffled, setIsShuffled] = useState<boolean>(saved?.isShuffled ?? true);
+  const [questions, setQuestions] = useState<Question[]>(saved?.questions ?? []);
+  const [currentIndex, setCurrentIndex] = useState<number>(saved?.currentIndex ?? 0);
+  const [userAnswers, setUserAnswers] = useState<AnswerMap>(saved?.answers ?? {});
+
+  // Batch/shuffle combination the current question list was built for; a restored
+  // session already has its list, so the loader below skips it.
+  const loadedConfigRef = useRef<string | null>(
+    saved ? `${saved.batchIndex}|${saved.isShuffled}` : null
+  );
   const [showExplanation, setShowExplanation] = useState<boolean>(
     progress.settings.showExplanationImmediately
   );
 
   // Load questions for the selected batch / mode
   useEffect(() => {
+    const config = `${activeBatchIndex}|${isShuffled}`;
+    if (loadedConfigRef.current === config) return;
+    loadedConfigRef.current = config;
+
     let currentPool: Question[];
 
     if (activeBatchIndex === -1) {
@@ -69,7 +95,19 @@ export const Practice: React.FC = () => {
     setQuestions(currentPool);
     setCurrentIndex(0);
     setUserAnswers({});
-  }, [validModuleId, activeBatchIndex, isShuffled, fullModulePool]);
+  }, [activeBatchIndex, isShuffled, fullModulePool]);
+
+  // Remember the batch, question order, position and answers for next visit.
+  useEffect(() => {
+    if (questions.length === 0) return;
+    practiceSessionStore.set(moduleKey, {
+      batchIndex: activeBatchIndex,
+      isShuffled,
+      questionIds: questions.map((q) => q.id),
+      currentIndex,
+      answers: userAnswers,
+    });
+  }, [moduleKey, activeBatchIndex, isShuffled, questions, currentIndex, userAnswers]);
 
   const handleToggleShuffle = () => {
     setIsShuffled((prev) => !prev);
