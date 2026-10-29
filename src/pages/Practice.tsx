@@ -4,7 +4,7 @@ import { getQuestionsByModule } from "../data/questions";
 import type { ModuleId, Question } from "../types/question";
 import { useProgress } from "../context/ProgressContext";
 import { selectSmartQuestions, shuffleArray } from "../lib/shuffle";
-import { practiceSessionStore, resolveQuestions, type AnswerMap } from "../lib/sessionStore";
+import { getOptionOrders, practiceSessionStore, resolveQuestions, type AnswerMap } from "../lib/sessionStore";
 import { QuestionCard } from "../components/question/QuestionCard";
 import { QuestionNavigator } from "../components/question/QuestionNavigator";
 import { QuestionPager } from "../components/question/QuestionPager";
@@ -20,7 +20,7 @@ const BATCH_SIZE = 50;
 
 function loadSavedPractice(moduleKey: string) {
   const saved = practiceSessionStore.get(moduleKey);
-  const questions = saved && resolveQuestions(saved.questionIds);
+  const questions = saved && resolveQuestions(saved.questionIds, saved.optionOrders);
   if (!saved || !questions) return null;
   return { ...saved, questions, currentIndex: Math.min(saved.currentIndex, questions.length - 1) };
 }
@@ -104,6 +104,7 @@ const PracticeSession: React.FC<{ validModuleId?: ModuleId }> = ({ validModuleId
       batchIndex: activeBatchIndex,
       isShuffled,
       questionIds: questions.map((q) => q.id),
+      optionOrders: getOptionOrders(questions),
       currentIndex,
       answers: userAnswers,
     });

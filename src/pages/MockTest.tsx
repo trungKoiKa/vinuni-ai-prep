@@ -5,7 +5,7 @@ import type { Question } from "../types/question";
 import type { MockTestResult, QuestionAttempt, UserProgress } from "../types/progress";
 import { generateMockTest100 } from "../lib/shuffle";
 import { calculateTestScore, formatTime } from "../lib/scoring";
-import { mockSessionStore, resolveQuestions, type AnswerMap, type MockSession } from "../lib/sessionStore";
+import { getOptionOrders, mockSessionStore, resolveQuestions, type AnswerMap, type MockSession } from "../lib/sessionStore";
 import { useProgress } from "../context/ProgressContext";
 import { useTimer } from "../hooks/useTimer";
 import { toast } from "sonner";
@@ -27,7 +27,7 @@ interface ActiveExam {
 function loadSavedExam(): ActiveExam | null {
   const session = mockSessionStore.get();
   if (!session) return null;
-  const questions = resolveQuestions(session.questionIds);
+  const questions = resolveQuestions(session.questionIds, session.optionOrders);
   if (!questions) {
     mockSessionStore.clear();
     return null;
@@ -41,6 +41,7 @@ function createExam(progress: UserProgress): ActiveExam {
   const session: MockSession = {
     id: "attempt_" + now,
     questionIds: questions.map((q) => q.id),
+    optionOrders: getOptionOrders(questions),
     answers: {},
     currentIndex: 0,
     startedAt: now,
