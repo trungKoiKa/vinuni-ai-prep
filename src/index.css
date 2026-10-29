@@ -1,48 +1,120 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.75rem;
+  --background: #F7F8FC;
+  --foreground: #171A2B;
+  --card: #FFFFFF;
+  --card-foreground: #171A2B;
+  --popover: #FFFFFF;
+  --popover-foreground: #171A2B;
+  --primary: #4F5FF0;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F3FA;
+  --secondary-foreground: #171A2B;
+  --muted: #F1F3FA;
+  --muted-foreground: #5B6178;
+  --accent: #F1F3FA;
+  --accent-foreground: #171A2B;
+  --destructive: #DC2626;
+  --border: #E5E7F0;
+  --input: #E5E7F0;
+  --ring: #4F5FF0;
+  --brand: #8B5CF6;
+  --success: #16A34A;
+  --warning: #D97706;
+  --chart-1: #4F5FF0;
+  --chart-2: #8B5CF6;
+  --chart-3: #16A34A;
+  --chart-4: #D97706;
+  --chart-5: #DC2626;
+}
+
+.dark {
+  --background: #0B0F19;
+  --foreground: #F3F4F8;
+  --card: #131826;
+  --card-foreground: #F3F4F8;
+  --popover: #131826;
+  --popover-foreground: #F3F4F8;
+  --primary: #6C7CFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1B2233;
+  --secondary-foreground: #F3F4F8;
+  --muted: #1B2233;
+  --muted-foreground: #9AA1B8;
+  --accent: #1B2233;
+  --accent-foreground: #F3F4F8;
+  --destructive: #F87171;
+  --border: #232B3E;
+  --input: #232B3E;
+  --ring: #6C7CFF;
+  --brand: #A78BFA;
+  --success: #4ADE80;
+  --warning: #FBBF24;
+  --chart-1: #6C7CFF;
+  --chart-2: #A78BFA;
+  --chart-3: #4ADE80;
+  --chart-4: #FBBF24;
+  --chart-5: #F87171;
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
 
 @layer base {
-  :root {
-    --bg-base: #F7F8FC;
-    --bg-surface: #FFFFFF;
-    --bg-surface-hover: #F1F3FA;
-    --border: #E5E7F0;
-    --text-primary: #171A2B;
-    --text-secondary: #5B6178;
-    --primary: #4F5FF0;
-    --primary-hover: #3E4CD6;
-    --accent: #8B5CF6;
-    --success: #16A34A;
-    --danger: #DC2626;
-    --warning: #D97706;
-  }
-
-  .dark {
-    --bg-base: #0B0F19;
-    --bg-surface: #131826;
-    --bg-surface-hover: #1B2233;
-    --border: #232B3E;
-    --text-primary: #F3F4F8;
-    --text-secondary: #9AA1B8;
-    --primary: #6C7CFF;
-    --primary-hover: #5A6BFF;
-    --accent: #A78BFA;
-    --success: #4ADE80;
-    --danger: #F87171;
-    --warning: #FBBF24;
+  * {
+    @apply border-border outline-ring/50;
   }
 
   body {
-    background-color: var(--bg-base);
-    color: var(--text-primary);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-background text-foreground font-sans min-h-screen;
     transition: background-color 150ms ease, color 150ms ease;
-    min-height: 100vh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }
 
-/* Custom scrollbar and animations */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

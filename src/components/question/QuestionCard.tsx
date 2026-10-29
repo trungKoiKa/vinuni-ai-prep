@@ -1,10 +1,13 @@
 import React from "react";
 import type { Question } from "../../types/question";
-import { Badge } from "../ui/Badge";
+import { DifficultyBadge } from "./DifficultyBadge";
 import { AnswerOption } from "./AnswerOption";
 import { ExplanationBox } from "./ExplanationBox";
 import { MathText } from "../ui/MathText";
 import { Bookmark, BookmarkCheck } from "lucide-react";
+import { cn } from "cn";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 interface QuestionCardProps {
   question: Question;
@@ -47,7 +50,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       parts.push(
         <div
           key={`code-${match.index}`}
-          className="my-3 p-4 rounded-xl bg-slate-900 text-slate-100 font-mono text-xs sm:text-sm overflow-x-auto border border-slate-800 shadow-inner"
+          className="my-3 p-4 rounded-lg bg-slate-900 text-slate-100 font-mono text-xs sm:text-sm overflow-x-auto border border-slate-800 shadow-inner"
         >
           <pre className="m-0 leading-relaxed font-mono">{match[1]}</pre>
         </div>
@@ -68,64 +71,55 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   };
 
   return (
-    <div className="bg-bg-surface border border-border-color rounded-2xl p-5 sm:p-7 shadow-xs space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-color pb-4">
-        <div className="flex items-center gap-2">
+    <Card className="gap-0 py-0">
+      <CardHeader className="flex flex-wrap items-center justify-between gap-3 border-b px-5 sm:px-7 py-4 [.border-b]:pb-4">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="font-bold text-sm text-primary">
             Câu {questionNumber}/{totalQuestions}
           </span>
-          <span className="text-text-secondary">•</span>
-          <span className="text-xs font-semibold text-text-secondary">
-            {question.moduleName}
-          </span>
-          <span className="text-text-secondary">•</span>
-          <Badge difficulty={question.difficulty} />
+          <span className="text-muted-foreground">•</span>
+          <span className="text-xs font-semibold text-muted-foreground">{question.moduleName}</span>
+          <span className="text-muted-foreground">•</span>
+          <DifficultyBadge difficulty={question.difficulty} />
         </div>
 
-        <button
+        <Button
+          variant="outline"
+          size="sm"
           onClick={onToggleBookmark}
-          className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl border transition-colors ${
-            isBookmarked
-              ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30"
-              : "bg-bg-surface-hover text-text-secondary border-border-color hover:text-text-primary"
-          }`}
-        >
-          {isBookmarked ? (
-            <>
-              <BookmarkCheck className="w-4 h-4 fill-amber-500 text-amber-500" />
-              <span>Đã đánh dấu</span>
-            </>
-          ) : (
-            <>
-              <Bookmark className="w-4 h-4" />
-              <span>Đánh dấu</span>
-            </>
+          aria-pressed={isBookmarked}
+          className={cn(
+            isBookmarked &&
+              "border-warning/30 bg-warning/10 text-warning hover:bg-warning/15 hover:text-warning dark:border-warning/30 dark:bg-warning/10"
           )}
-        </button>
-      </div>
+        >
+          {isBookmarked ? <BookmarkCheck className="fill-current" /> : <Bookmark />}
+          {isBookmarked ? "Đã đánh dấu" : "Đánh dấu"}
+        </Button>
+      </CardHeader>
 
-      <div className="text-base sm:text-lg font-semibold text-text-primary leading-relaxed">
-        {renderQuestionText(question.question)}
-      </div>
+      <CardContent className="px-5 sm:px-7 py-6 space-y-6">
+        <div className="text-base sm:text-lg font-semibold leading-relaxed">
+          {renderQuestionText(question.question)}
+        </div>
 
-      <div className="space-y-3 pt-2">
-        {question.options.map((optText, idx) => (
-          <AnswerOption
-            key={idx}
-            index={idx}
-            optionText={optText}
-            isSelected={selectedAnswer === idx}
-            isSubmitted={isSubmitted || showExplanation}
-            isCorrect={idx === question.correctAnswer}
-            showResult={showExplanation}
-            onSelect={() => onSelectAnswer(idx)}
-          />
-        ))}
-      </div>
+        <div className="space-y-3">
+          {question.options.map((optText, idx) => (
+            <AnswerOption
+              key={idx}
+              index={idx}
+              optionText={optText}
+              isSelected={selectedAnswer === idx}
+              isSubmitted={isSubmitted || showExplanation}
+              isCorrect={idx === question.correctAnswer}
+              showResult={showExplanation}
+              onSelect={() => onSelectAnswer(idx)}
+            />
+          ))}
+        </div>
 
-      {showExplanation && (
-        <ExplanationBox explanation={question.explanation} />
-      )}
-    </div>
+        {showExplanation && <ExplanationBox explanation={question.explanation} />}
+      </CardContent>
+    </Card>
   );
 };

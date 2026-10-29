@@ -1,7 +1,8 @@
 import React from "react";
 import type { LucideIcon } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
-import { Button } from "./Button";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface EmptyStateProps {
   icon?: LucideIcon;
@@ -19,17 +20,15 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   onAction,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center text-center p-8 md:p-12 bg-bg-surface border border-border-color rounded-2xl">
-      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
-        <Icon className="w-8 h-8" />
-      </div>
-      <h3 className="text-lg font-bold text-text-primary mb-2">{title}</h3>
-      <p className="text-sm text-text-secondary max-w-md mb-6">{description}</p>
-      {actionText && onAction && (
-        <Button variant="primary" onClick={onAction}>
-          {actionText}
-        </Button>
-      )}
-    </div>
+    <Card>
+      <CardContent className="flex flex-col items-center justify-center text-center py-6 md:py-10">
+        <div className="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+          <Icon className="size-8" />
+        </div>
+        <h3 className="text-lg font-bold mb-2">{title}</h3>
+        <p className="text-sm text-muted-foreground max-w-md mb-6">{description}</p>
+        {actionText && onAction && <Button onClick={onAction}>{actionText}</Button>}
+      </CardContent>
+    </Card>
   );
 };

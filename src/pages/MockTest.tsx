@@ -7,19 +7,20 @@ import { generateMockTest100 } from "../lib/shuffle";
 import { calculateTestScore } from "../lib/scoring";
 import { useProgress } from "../context/ProgressContext";
 import { useTimer } from "../hooks/useTimer";
-import { useToast } from "../hooks/useToast";
+import { toast } from "sonner";
 import { QuestionCard } from "../components/question/QuestionCard";
 import { QuestionNavigator } from "../components/question/QuestionNavigator";
 import { ExamTimer } from "../components/exam/ExamTimer";
 import { SubmitConfirmModal } from "../components/exam/SubmitConfirmModal";
-import { Button } from "../components/ui/Button";
-import { ToastContainer } from "../components/ui/Toast";
-import { Info, ArrowLeft, ArrowRight, Send } from "lucide-react";
+import { QuestionPager } from "../components/question/QuestionPager";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Info, Send } from "lucide-react";
 
 export const MockTest: React.FC = () => {
   const navigate = useNavigate();
   const { progress, addMockTestResult, toggleBookmark } = useProgress();
-  const { toasts, addToast, removeToast } = useToast();
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -75,17 +76,17 @@ export const MockTest: React.FC = () => {
   }, [isExamSubmitted, questions, userAnswers, addMockTestResult, navigate]);
 
   const handleTimerExpire = useCallback(() => {
-    addToast("Đã hết thời gian 90 phút! Hệ thống tự động nộp bài thi.", "error");
+    toast.error("Đã hết thời gian 90 phút! Hệ thống tự động nộp bài thi.");
     handleSubmitExam();
-  }, [addToast, handleSubmitExam]);
+  }, [handleSubmitExam]);
 
   const handle10MinWarning = useCallback(() => {
-    addToast("Cảnh báo: Bạn còn 10 phút để hoàn thành bài thi!", "warning");
-  }, [addToast]);
+    toast.warning("Cảnh báo: Bạn còn 10 phút để hoàn thành bài thi!");
+  }, []);
 
   const handle5MinWarning = useCallback(() => {
-    addToast("Cảnh báo khẩn cấp: Bạn chỉ còn 5 phút nữa!", "error");
-  }, [addToast]);
+    toast.error("Cảnh báo khẩn cấp: Bạn chỉ còn 5 phút nữa!");
+  }, []);
 
   const { remainingSec } = useTimer({
     initialSeconds: durationSec,
@@ -120,38 +121,34 @@ export const MockTest: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in relative">
-      <ToastContainer toasts={toasts} onRemove={removeToast} />
+    <div className="space-y-6 animate-in fade-in duration-200">
+      <Alert variant="warning">
+        <Info />
+        <AlertDescription>
+          <span>
+            <strong>Lưu ý:</strong> Nội dung dùng để luyện tập, không phải đề thi chính thức.
+          </span>
+        </AlertDescription>
+      </Alert>
 
-      <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-medium">
-        <Info className="w-5 h-5 shrink-0" />
-        <span>
-          <strong>Lưu ý:</strong> Nội dung dùng để luyện tập, không phải đề thi chính thức.
-        </span>
-      </div>
+      <Card className="sticky top-16 z-20 py-4 bg-card/90 backdrop-blur-md">
+        <CardContent className="px-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 className="text-lg font-bold">Đề Thi Mô Phỏng 90 Phút</h1>
+            <p className="text-xs text-muted-foreground">
+              {answeredCount}/{questions.length} câu đã trả lời
+            </p>
+          </div>
 
-      <div className="sticky top-16 z-20 bg-bg-surface/90 backdrop-blur-md border border-border-color p-4 rounded-2xl flex items-center justify-between shadow-sm">
-        <div>
-          <h1 className="text-lg font-bold text-text-primary">
-            Đề Thi Mô Phỏng 90 Phút
-          </h1>
-          <p className="text-xs text-text-secondary">
-            {answeredCount}/{questions.length} câu đã trả lời
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <ExamTimer remainingSec={remainingSec} />
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => setIsSubmitModalOpen(true)}
-            icon={<Send className="w-4 h-4" />}
-          >
-            Nộp bài
-          </Button>
-        </div>
-      </div>
+          <div className="flex items-center gap-3">
+            <ExamTimer remainingSec={remainingSec} />
+            <Button size="sm" onClick={() => setIsSubmitModalOpen(true)}>
+              <Send />
+              Nộp bài
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
         <div className="lg:col-span-3 space-y-6">
@@ -167,32 +164,12 @@ export const MockTest: React.FC = () => {
             isSubmitted={false}
           />
 
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-bg-surface border border-border-color">
-            <Button
-              variant="outline"
-              size="md"
-              onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
-              disabled={currentIndex === 0}
-              icon={<ArrowLeft className="w-4 h-4" />}
-            >
-              Câu trước
-            </Button>
-
-            <span className="text-xs font-semibold text-text-secondary">
-              Câu {currentIndex + 1} / {questions.length}
-            </span>
-
-            <Button
-              variant="primary"
-              size="md"
-              onClick={() => setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1))}
-              disabled={currentIndex === questions.length - 1}
-              icon={<ArrowRight className="w-4 h-4" />}
-              iconPosition="right"
-            >
-              Câu tiếp
-            </Button>
-          </div>
+          <QuestionPager
+            currentIndex={currentIndex}
+            total={questions.length}
+            onPrev={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
+            onNext={() => setCurrentIndex((prev) => Math.min(questions.length - 1, prev + 1))}
+          />
         </div>
 
         <div className="lg:col-span-1">

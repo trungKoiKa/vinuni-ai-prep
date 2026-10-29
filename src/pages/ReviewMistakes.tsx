@@ -1,23 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useProgress } from "../context/ProgressContext";
 import { getQuestionById } from "../data/questions";
 import type { Question } from "../types/question";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
-import { Badge } from "../components/ui/Badge";
+import { PageHeader } from "../components/layout/PageHeader";
+import { FilterBar } from "../components/layout/FilterBar";
 import { EmptyState } from "../components/ui/EmptyState";
-import { ExplanationBox } from "../components/question/ExplanationBox";
 import { MathText } from "../components/ui/MathText";
-import {
-  CheckCircle2,
-  BookmarkCheck,
-  RotateCcw,
-  Search,
-  Check,
-  Eye,
-  EyeOff,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { AnswerOption } from "../components/question/AnswerOption";
+import { DifficultyBadge } from "../components/question/DifficultyBadge";
+import { ExplanationBox } from "../components/question/ExplanationBox";
+import { Button } from "@/components/ui/button";
+import { Card, CardAction, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { CheckCircle2, BookmarkCheck, RotateCcw, Eye, EyeOff } from "lucide-react";
 
 export const ReviewMistakes: React.FC = () => {
   const { progress, markAsMastered, recordAnswer } = useProgress();
@@ -56,28 +51,17 @@ export const ReviewMistakes: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-color pb-4">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-            Ôn Lại Câu Sai ({mistakeQuestions.length} câu)
-          </h1>
-          <p className="text-xs sm:text-sm text-text-secondary mt-1">
-            Xem lại các câu hỏi bạn từng làm sai, làm lại trắc nghiệm hoặc đánh dấu "Đã nhớ" để hoàn thành.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigate("/practice")}
-            icon={<RotateCcw className="w-4 h-4" />}
-          >
+    <div className="space-y-8 animate-in fade-in duration-200">
+      <PageHeader
+        title={`Ôn Lại Câu Sai (${mistakeQuestions.length} câu)`}
+        description={`Xem lại các câu hỏi bạn từng làm sai, làm lại trắc nghiệm hoặc đánh dấu "Đã nhớ" để hoàn thành.`}
+        actions={
+          <Button variant="outline" size="sm" onClick={() => navigate("/practice")}>
+            <RotateCcw />
             Luyện tập tiếp
           </Button>
-        </div>
-      </div>
+        }
+      />
 
       {mistakeQuestions.length === 0 ? (
         <EmptyState
@@ -89,115 +73,71 @@ export const ReviewMistakes: React.FC = () => {
         />
       ) : (
         <>
-          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-bg-surface border border-border-color">
-            <div className="relative flex-1 min-w-[240px]">
-              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-text-secondary" />
-              <input
-                type="text"
-                placeholder="Tìm kiếm nội dung câu sai..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-sm rounded-xl border border-border-color bg-bg-surface-hover text-text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-
-            <div className="flex items-center gap-1.5 overflow-x-auto">
-              {["ALL", "A", "B", "C", "D"].map((mod) => (
-                <button
-                  key={mod}
-                  onClick={() => setSelectedModule(mod)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-                    selectedModule === mod
-                      ? "bg-primary text-white border-primary"
-                      : "bg-bg-surface-hover text-text-secondary border-border-color"
-                  }`}
-                >
-                  {mod === "ALL" ? `Tất cả (${mistakeQuestions.length})` : `Module ${mod}`}
-                </button>
-              ))}
-            </div>
-          </div>
+          <FilterBar
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            searchPlaceholder="Tìm kiếm nội dung câu sai..."
+            options={["ALL", "A", "B", "C", "D"].map((mod) => ({
+              value: mod,
+              label: mod === "ALL" ? `Tất cả (${mistakeQuestions.length})` : `Module ${mod}`,
+            }))}
+            selected={selectedModule}
+            onSelectedChange={setSelectedModule}
+          />
 
           <div className="space-y-6">
             {filteredMistakes.map((q, qIdx) => {
               const isRevealed = revealedIds.includes(q.id);
               const selectedAns = userAnswers[q.id] ?? null;
+              const isAnswered = selectedAns !== null || isRevealed;
 
               return (
-                <Card key={q.id} className="p-6 space-y-5">
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-color pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-rose-500">
-                        Câu sai #{qIdx + 1}
-                      </span>
-                      <span className="text-text-secondary">•</span>
-                      <span className="text-xs font-semibold text-text-secondary">
-                        {q.moduleName}
-                      </span>
-                      <span className="text-text-secondary">•</span>
-                      <Badge difficulty={q.difficulty} />
+                <Card key={q.id}>
+                  <CardHeader className="border-b">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-bold text-destructive">Câu sai #{qIdx + 1}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-xs font-semibold text-muted-foreground">{q.moduleName}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <DifficultyBadge difficulty={q.difficulty} />
+                    </div>
+                    <CardAction>
+                      <Button variant="outline" size="sm" onClick={() => markAsMastered(q.id)}>
+                        <BookmarkCheck className="text-success" />
+                        Đánh dấu "Đã nhớ"
+                      </Button>
+                    </CardAction>
+                  </CardHeader>
+
+                  <CardContent className="space-y-5">
+                    <h3 className="text-base sm:text-lg font-semibold leading-relaxed">
+                      <MathText text={q.question} />
+                    </h3>
+
+                    <div className="space-y-2.5">
+                      {q.options.map((optText, optIdx) => (
+                        <AnswerOption
+                          key={optIdx}
+                          index={optIdx}
+                          optionText={optText}
+                          isSelected={selectedAns === optIdx}
+                          isSubmitted={isAnswered}
+                          isCorrect={optIdx === q.correctAnswer}
+                          showResult={isAnswered}
+                          onSelect={() => handleRetryAnswer(q, optIdx)}
+                        />
+                      ))}
                     </div>
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => markAsMastered(q.id)}
-                      icon={<BookmarkCheck className="w-4 h-4 text-emerald-500" />}
-                    >
-                      Đánh dấu "Đã nhớ"
-                    </Button>
-                  </div>
+                    {isAnswered && <ExplanationBox explanation={q.explanation} />}
+                  </CardContent>
 
-                  <h3 className="text-base sm:text-lg font-semibold text-text-primary leading-relaxed">
-                    <MathText text={q.question} />
-                  </h3>
-
-                  <div className="space-y-2.5">
-                    {q.options.map((optText, optIdx) => {
-                      const isCorrect = optIdx === q.correctAnswer;
-                      const isChosen = selectedAns === optIdx;
-
-                      let style = "border-border-color bg-bg-surface hover:bg-bg-surface-hover";
-                      if (selectedAns !== null || isRevealed) {
-                        if (isCorrect) {
-                          style = "border-emerald-500 bg-emerald-500/10 text-emerald-950 dark:text-emerald-100 font-medium";
-                        } else if (isChosen && !isCorrect) {
-                          style = "border-rose-500 bg-rose-500/10 text-rose-950 dark:text-rose-100 font-medium";
-                        }
-                      }
-
-                      return (
-                        <button
-                          key={optIdx}
-                          onClick={() => handleRetryAnswer(q, optIdx)}
-                          disabled={selectedAns !== null || isRevealed}
-                          className={`w-full text-left p-3.5 rounded-xl border text-sm flex items-center justify-between transition-colors ${style}`}
-                        >
-                          <MathText text={optText} />
-                          {(selectedAns !== null || isRevealed) && isCorrect && (
-                            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 shrink-0 ml-2">
-                              <Check className="w-4 h-4" /> Đáp án đúng
-                            </span>
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => toggleReveal(q.id)}
-                      icon={isRevealed ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    >
+                  <CardFooter>
+                    <Button variant="ghost" size="sm" onClick={() => toggleReveal(q.id)}>
+                      {isRevealed ? <EyeOff /> : <Eye />}
                       {isRevealed ? "Ẩn giải thích" : "Xem lời giải chi tiết"}
                     </Button>
-                  </div>
-
-                  {(isRevealed || selectedAns !== null) && (
-                    <ExplanationBox explanation={q.explanation} />
-                  )}
+                  </CardFooter>
                 </Card>
               );
             })}
