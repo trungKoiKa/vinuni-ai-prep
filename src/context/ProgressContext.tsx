@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import type { UserProgress, MockTestResult, UserSettings } from "../types/progress";
 import { storage, initialProgress } from "../lib/storage";
+import { clearAllSessions } from "../lib/sessionStore";
 
 interface ProgressContextType {
   progress: UserProgress;
@@ -100,6 +101,7 @@ export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const resetProgress = useCallback(() => {
     storage.clear();
+    clearAllSessions();
     setProgress(initialProgress);
   }, []);
 
