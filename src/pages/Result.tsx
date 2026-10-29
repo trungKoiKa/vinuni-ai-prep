@@ -30,7 +30,7 @@ interface MetricCardProps {
 const MetricCard: React.FC<MetricCardProps> = ({ icon: Icon, iconClassName, label, value }) => (
   <Card className="py-4">
     <CardContent className="px-4 flex items-center gap-3">
-      <div className={cn("p-3 rounded-xl", iconClassName)}>
+      <div className={cn("p-3 rounded-md", iconClassName)}>
         <Icon className="size-6" />
       </div>
       <div>
@@ -60,47 +60,48 @@ export const Result: React.FC = () => {
 
   const minutesUsed = Math.floor(result.timeUsedSec / 60);
   const secondsUsed = result.timeUsedSec % 60;
+  const passed = result.scorePercent >= 70;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-200 max-w-5xl mx-auto">
       {/* Header Banner */}
-      <div className="rounded-xl bg-linear-to-br from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/20 text-white p-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-around gap-8 shadow-sm">
-        <div className="space-y-3 max-w-md">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-semibold">
-            <Trophy className="size-4" />
-            <span>Kết Quả Bài Thi Mô Phỏng 90 Phút</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {result.scorePercent >= 70 ? "Chúc mừng bạn đã ĐẠT!" : "Cố gắng hơn ở lần sau!"}
-          </h1>
-          <p className="text-slate-200 text-sm leading-relaxed">
-            Bạn đã hoàn thành bài thi với điểm số <strong>{result.scorePercent}%</strong>. Hãy xem lại các câu sai bên dưới để củng cố kiến thức.
-          </p>
+      <Card className="py-0 gap-0 overflow-hidden">
+        <CardContent className="p-0 grid sm:grid-cols-[1fr_auto]">
+          <div className="p-6 sm:p-8 space-y-3 border-l-4 border-primary">
+            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              <Trophy className="size-4" />
+              Kết quả bài thi mô phỏng 90 phút
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              {passed ? "Chúc mừng bạn đã ĐẠT!" : "Cố gắng hơn ở lần sau!"}
+            </h1>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
+              Bạn đã hoàn thành bài thi với điểm số <strong className="text-foreground">{result.scorePercent}%</strong>. Hãy xem lại các câu sai bên dưới để củng cố kiến thức.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2">
-            <Button className="bg-brand hover:bg-brand/90 text-white" onClick={() => navigate("/mock-test")}>
-              <RotateCcw />
-              Làm lại bài thi
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/30 dark:bg-white/10 dark:hover:bg-white/20 dark:border-white/30"
-              onClick={() => navigate("/review")}
-            >
-              <BookOpen />
-              Ôn lại câu sai
-            </Button>
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Button onClick={() => navigate("/mock-test")}>
+                <RotateCcw />
+                Làm lại bài thi
+              </Button>
+              <Button variant="outline" onClick={() => navigate("/review")}>
+                <BookOpen />
+                Ôn lại câu sai
+              </Button>
+            </div>
           </div>
-        </div>
 
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-white/10 backdrop-blur-md border border-white/10 size-44 shrink-0 shadow-2xl">
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Điểm số</span>
-          <span className="text-5xl font-black text-amber-300 my-1">{result.scorePercent}%</span>
-          <span className="text-xs font-medium text-slate-300">
-            {result.correctCount}/{result.totalQuestions} câu đúng
-          </span>
-        </div>
-      </div>
+          <div className="flex flex-col items-center justify-center gap-1 p-6 sm:px-10 bg-muted border-t sm:border-t-0 sm:border-l">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Điểm số</span>
+            <span className={cn("text-6xl font-extrabold tabular-nums", passed ? "text-success" : "text-destructive")}>
+              {result.scorePercent}%
+            </span>
+            <span className="text-xs font-medium text-muted-foreground">
+              {result.correctCount}/{result.totalQuestions} câu đúng
+            </span>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Summary Metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

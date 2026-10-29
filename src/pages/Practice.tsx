@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Info, Eye, EyeOff, Shuffle, RefreshCw, Layers, Sparkles } from "lucide-react";
+import { Info, Eye, EyeOff, Shuffle, RefreshCw, Layers, ListTodo } from "lucide-react";
 
 const BATCH_SIZE = 50;
 
@@ -178,7 +178,7 @@ export const Practice: React.FC = () => {
               value="-1"
               className="text-xs font-semibold text-success border-success/20 bg-success/10 hover:bg-success/20 hover:text-success data-[state=on]:bg-success data-[state=on]:text-white"
             >
-              <Sparkles />
+              <ListTodo />
               50 câu chưa làm
             </ToggleGroupItem>
 

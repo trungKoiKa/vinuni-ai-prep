@@ -20,7 +20,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Sun, Trash2, Sliders, Sparkles, Save } from "lucide-react";
+import { Sun, Trash2, Sliders, Save } from "lucide-react";
 
 interface SettingRowProps {
   htmlFor: string;
@@ -207,10 +207,7 @@ export const Settings: React.FC = () => {
 
       <Card className="py-6">
         <CardContent className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-2 text-sm font-bold">
-            <Sparkles className="size-4 text-primary" />
-            <span>VinUni AI Prep v1.0.0</span>
-          </div>
+          <div className="text-sm font-bold">VinUni AI Prep v1.0.0</div>
           <p className="text-xs text-muted-foreground">
             Phát triển frontend-only demo dành cho ứng viên kỳ thi đầu vào Chương trình AI Thực chiến Vingroup / VinUni.
           </p>

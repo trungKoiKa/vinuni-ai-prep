@@ -73,11 +73,11 @@ export const ModuleList: React.FC = () => {
           const percent = Math.round((answeredMod / modQuestions.length) * 100);
 
           return (
-            <Card key={mod.id} className="justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+            <Card key={mod.id} className="justify-between transition-colors hover:border-primary/30">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div
-                    className="size-12 rounded-xl flex items-center justify-center shadow-xs"
+                    className="size-12 rounded-md flex items-center justify-center"
                     style={{ backgroundColor: `${mod.color}15`, color: mod.color }}
                   >
                     {iconMap[mod.iconName]}
