@@ -48,7 +48,7 @@ export const ModuleStudyContent: React.FC = () => {
         ))}
       </nav>
 
-      <div className="p-6 rounded-3xl bg-linear-to-r from-card to-muted border space-y-3">
+      <div className="p-6 rounded-lg bg-card border border-l-4 border-l-primary space-y-3">
         <Badge variant="soft" className="px-3 py-1 font-bold">
           <BookOpen />
           Tài liệu ôn tập chuẩn hóa

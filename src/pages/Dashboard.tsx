@@ -9,7 +9,6 @@ import { allQuestions } from "../data/questions";
 import { formatTimeInHoursAndMins } from "../lib/scoring";
 import { progressColor } from "../lib/progressColor";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -19,7 +18,6 @@ import {
   BookmarkCheck,
   Award,
   Clock,
-  Sparkles,
   ArrowRight,
   RotateCcw,
   PenTool,
@@ -60,10 +58,10 @@ interface QuickLinkProps {
 }
 
 const QuickLink: React.FC<QuickLinkProps> = ({ to, icon: Icon, iconClassName, title, description }) => (
-  <Link to={to} className="group rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
-    <Card className="py-5 h-full transition-all duration-200 group-hover:-translate-y-0.5 group-hover:bg-accent group-hover:shadow-md">
+  <Link to={to} className="group rounded-lg outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
+    <Card className="py-5 h-full transition-colors group-hover:bg-accent group-hover:border-primary/30">
       <CardContent className="px-5 flex items-center gap-4">
-        <div className={cn("size-12 rounded-xl flex items-center justify-center shrink-0", iconClassName)}>
+        <div className={cn("size-12 rounded-md flex items-center justify-center shrink-0", iconClassName)}>
           <Icon className="size-6" />
         </div>
         <div>
@@ -101,38 +99,30 @@ export const Dashboard: React.FC = () => {
         </AlertDescription>
       </Alert>
 
-      <div className="relative overflow-hidden bg-linear-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-500/20">
-        <div className="relative z-10 max-w-2xl space-y-4">
-          <Badge className="px-3 py-1 gap-2 bg-white/10 backdrop-blur-md text-indigo-200 border-indigo-400/20 [&>svg]:size-3.5">
-            <Sparkles className="text-amber-300" />
-            Chương trình AI Thực chiến — VinUni / Vingroup
-          </Badge>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+      <Card className="py-0 gap-0 overflow-hidden">
+        <CardContent className="p-6 sm:p-8 border-l-4 border-primary space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            AI Thực chiến · VinUni / Vingroup
+          </p>
+          <h1 className="max-w-2xl text-2xl sm:text-4xl font-extrabold tracking-tight text-balance">
             Sẵn sàng chinh phục vòng đánh giá năng lực AI
           </h1>
-          <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-            Hệ thống ôn luyện trắc nghiệm 4 module trọng tâm, thi thử 90 phút theo chuẩn cấu hình thực tế và theo dõi tiến độ học tập thông minh.
+          <p className="max-w-2xl text-muted-foreground text-sm sm:text-base leading-relaxed">
+            Hệ thống ôn luyện trắc nghiệm 4 module trọng tâm, thi thử 90 phút theo chuẩn cấu hình thực tế và theo dõi tiến độ học tập.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <Button size="lg" className="bg-brand hover:bg-brand/90 text-white" onClick={() => navigate("/mock-test")}>
-              <Clock className="size-5" />
+            <Button size="lg" onClick={() => navigate("/mock-test")}>
+              <Clock />
               Thi thử ngay (90 phút)
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/30 dark:bg-white/10 dark:hover:bg-white/20 dark:border-white/30"
-              onClick={() => navigate("/practice")}
-            >
-              <PenTool className="size-5" />
+            <Button variant="outline" size="lg" onClick={() => navigate("/practice")}>
+              <PenTool />
               Luyện tập theo Module
             </Button>
           </div>
-        </div>
-
-        <div className="absolute -bottom-10 -right-10 size-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
-      </div>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         <StatTile
@@ -259,7 +249,7 @@ export const Dashboard: React.FC = () => {
         <QuickLink
           to="/mock-test"
           icon={Clock}
-          iconClassName="bg-brand/10 text-brand"
+          iconClassName="bg-warning/10 text-warning"
           title="Đề mô phỏng 90 phút"
           description="Tự động xáo trộn câu hỏi, tính giờ như thi thật"
         />

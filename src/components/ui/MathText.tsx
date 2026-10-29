@@ -202,7 +202,7 @@ export const MathText: React.FC<MathTextProps> = ({ text, className = "" }) => {
         } catch (e) {
           console.error("KaTeX rendering error:", e);
           return (
-            <span key={idx} className="font-mono text-xs text-amber-600">
+            <span key={idx} className="font-mono text-xs text-warning">
               {seg.content}
             </span>
           );
