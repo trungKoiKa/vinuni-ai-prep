@@ -16,18 +16,18 @@ export const ModuleScoreChart: React.FC<ModuleScoreChartProps> = ({ moduleScores
         return (
           <div key={mod.id} className="space-y-1.5">
             <div className="flex items-center justify-between text-xs sm:text-sm font-medium">
-              <span className="flex items-center gap-2 text-text-primary">
+              <span className="flex items-center gap-2 text-foreground">
                 <span
                   className="w-3 h-3 rounded-full inline-block"
                   style={{ backgroundColor: mod.color }}
                 />
                 <span className="font-semibold">{mod.code}:</span> {mod.name}
               </span>
-              <span className="text-text-secondary">
+              <span className="text-muted-foreground">
                 {data.correct}/{data.total} câu ({percent}%)
               </span>
             </div>
-            <div className="w-full bg-bg-surface-hover border border-border-color rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-muted border border-border rounded-full h-3 overflow-hidden">
               <div
                 className="h-full transition-all duration-500 ease-out rounded-full"
                 style={{

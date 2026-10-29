@@ -1,13 +1,18 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import type { LucideIcon } from "lucide-react";
+import { cn } from "cn";
 import { useProgress } from "../context/ProgressContext";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
-import { ProgressBar } from "../components/ui/ProgressBar";
 import { ScoreTrendChart } from "../components/charts/ScoreTrendChart";
 import { modulesData } from "../data/modules";
 import { allQuestions } from "../data/questions";
 import { formatTimeInHoursAndMins } from "../lib/scoring";
+import { progressColor } from "../lib/progressColor";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import {
   CheckCircle2,
   XCircle,
@@ -20,6 +25,55 @@ import {
   PenTool,
   Info,
 } from "lucide-react";
+
+interface StatTileProps {
+  label: string;
+  value: React.ReactNode;
+  valueClassName?: string;
+  footer: React.ReactNode;
+  footerClassName?: string;
+}
+
+const StatTile: React.FC<StatTileProps> = ({ label, value, valueClassName, footer, footerClassName }) => (
+  <Card className="py-5 gap-0">
+    <CardContent className="px-5 flex flex-col justify-between h-full">
+      <div className="text-xs text-muted-foreground font-medium">{label}</div>
+      <div className={cn("mt-2 text-2xl font-bold", valueClassName)}>{value}</div>
+      <div
+        className={cn(
+          "mt-1 text-[11px] text-muted-foreground flex items-center gap-1 [&>svg]:size-3.5",
+          footerClassName
+        )}
+      >
+        {footer}
+      </div>
+    </CardContent>
+  </Card>
+);
+
+interface QuickLinkProps {
+  to: string;
+  icon: LucideIcon;
+  iconClassName: string;
+  title: string;
+  description: string;
+}
+
+const QuickLink: React.FC<QuickLinkProps> = ({ to, icon: Icon, iconClassName, title, description }) => (
+  <Link to={to} className="group rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
+    <Card className="py-5 h-full transition-all duration-200 group-hover:-translate-y-0.5 group-hover:bg-accent group-hover:shadow-md">
+      <CardContent className="px-5 flex items-center gap-4">
+        <div className={cn("size-12 rounded-xl flex items-center justify-center shrink-0", iconClassName)}>
+          <Icon className="size-6" />
+        </div>
+        <div>
+          <h3 className="font-bold text-sm">{title}</h3>
+          <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
+        </div>
+      </CardContent>
+    </Card>
+  </Link>
+);
 
 export const Dashboard: React.FC = () => {
   const { progress } = useProgress();
@@ -37,21 +91,23 @@ export const Dashboard: React.FC = () => {
   );
 
   return (
-    <div className="space-y-8 animate-fade-in">
-      <div className="flex items-center gap-3 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-medium">
-        <Info className="w-5 h-5 shrink-0" />
-        <span>
-          <strong>Lưu ý quan trọng:</strong> Nội dung dùng để luyện tập, không phải đề thi chính thức.
-        </span>
-      </div>
+    <div className="space-y-8 animate-in fade-in duration-200">
+      <Alert variant="warning">
+        <Info />
+        <AlertDescription>
+          <span>
+            <strong>Lưu ý quan trọng:</strong> Nội dung dùng để luyện tập, không phải đề thi chính thức.
+          </span>
+        </AlertDescription>
+      </Alert>
 
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-500/20">
+      <div className="relative overflow-hidden bg-linear-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-500/20">
         <div className="relative z-10 max-w-2xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-indigo-200 border border-indigo-400/20">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>Chương trình AI Thực chiến — VinUni / Vingroup</span>
-          </div>
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+          <Badge className="px-3 py-1 gap-2 bg-white/10 backdrop-blur-md text-indigo-200 border-indigo-400/20 [&>svg]:size-3.5">
+            <Sparkles className="text-amber-300" />
+            Chương trình AI Thực chiến — VinUni / Vingroup
+          </Badge>
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
             Sẵn sàng chinh phục vòng đánh giá năng lực AI
           </h1>
           <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
@@ -59,102 +115,104 @@ export const Dashboard: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => navigate("/mock-test")}
-              icon={<Clock className="w-5 h-5" />}
-            >
+            <Button size="lg" className="bg-brand hover:bg-brand/90 text-white" onClick={() => navigate("/mock-test")}>
+              <Clock className="size-5" />
               Thi thử ngay (90 phút)
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="bg-white/10 hover:bg-white/20 text-white border-white/30"
+              className="bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/30 dark:bg-white/10 dark:hover:bg-white/20 dark:border-white/30"
               onClick={() => navigate("/practice")}
-              icon={<PenTool className="w-5 h-5" />}
             >
+              <PenTool className="size-5" />
               Luyện tập theo Module
             </Button>
           </div>
         </div>
 
-        <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 size-64 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Đã trả lời</div>
-          <div className="mt-2 text-2xl font-bold text-text-primary">
-            {answeredCount}
-            <span className="text-xs font-normal text-text-secondary">/{totalQuestions}</span>
-          </div>
-          <div className="mt-1 text-[11px] text-emerald-500 font-medium flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>{Math.round((answeredCount / totalQuestions) * 100)}% tổng số</span>
-          </div>
-        </Card>
-
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Câu sai cần ôn</div>
-          <div className="mt-2 text-2xl font-bold text-rose-500">{incorrectCount}</div>
-          <div className="mt-1 text-[11px] text-text-secondary flex items-center gap-1">
-            <XCircle className="w-3.5 h-3.5 text-rose-500" />
-            <span>Xem ở Ôn lại câu sai</span>
-          </div>
-        </Card>
-
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Đã ghi nhớ</div>
-          <div className="mt-2 text-2xl font-bold text-emerald-500">{masteredCount}</div>
-          <div className="mt-1 text-[11px] text-emerald-500 font-medium flex items-center gap-1">
-            <BookmarkCheck className="w-3.5 h-3.5" />
-            <span>Hoàn thành ghi nhớ</span>
-          </div>
-        </Card>
-
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Số bài thi thử</div>
-          <div className="mt-2 text-2xl font-bold text-primary">{mockCount}</div>
-          <div className="mt-1 text-[11px] text-text-secondary">Đã hoàn thành</div>
-        </Card>
-
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Điểm cao nhất</div>
-          <div className="mt-2 text-2xl font-bold text-amber-500">
-            {highestScore}%
-          </div>
-          <div className="mt-1 text-[11px] text-text-secondary flex items-center gap-1">
-            <Award className="w-3.5 h-3.5 text-amber-500" />
-            <span>Đề mô phỏng</span>
-          </div>
-        </Card>
-
-        <Card className="flex flex-col justify-between">
-          <div className="text-xs text-text-secondary font-medium">Thời gian ôn</div>
-          <div className="mt-2 text-lg font-bold text-text-primary">
-            {formatTimeInHoursAndMins(progress.totalStudyTimeSec)}
-          </div>
-          <div className="mt-1 text-[11px] text-text-secondary flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5" />
-            <span>Tích lũy</span>
-          </div>
-        </Card>
+        <StatTile
+          label="Đã trả lời"
+          value={
+            <>
+              {answeredCount}
+              <span className="text-xs font-normal text-muted-foreground">/{totalQuestions}</span>
+            </>
+          }
+          footerClassName="text-success font-medium"
+          footer={
+            <>
+              <CheckCircle2 />
+              {Math.round((answeredCount / totalQuestions) * 100)}% tổng số
+            </>
+          }
+        />
+        <StatTile
+          label="Câu sai cần ôn"
+          value={incorrectCount}
+          valueClassName="text-destructive"
+          footer={
+            <>
+              <XCircle className="text-destructive" />
+              Xem ở Ôn lại câu sai
+            </>
+          }
+        />
+        <StatTile
+          label="Đã ghi nhớ"
+          value={masteredCount}
+          valueClassName="text-success"
+          footerClassName="text-success font-medium"
+          footer={
+            <>
+              <BookmarkCheck />
+              Hoàn thành ghi nhớ
+            </>
+          }
+        />
+        <StatTile label="Số bài thi thử" value={mockCount} valueClassName="text-primary" footer="Đã hoàn thành" />
+        <StatTile
+          label="Điểm cao nhất"
+          value={`${highestScore}%`}
+          valueClassName="text-warning"
+          footer={
+            <>
+              <Award className="text-warning" />
+              Đề mô phỏng
+            </>
+          }
+        />
+        <StatTile
+          label="Thời gian ôn"
+          value={formatTimeInHoursAndMins(progress.totalStudyTimeSec)}
+          valueClassName="text-lg"
+          footer={
+            <>
+              <Clock />
+              Tích lũy
+            </>
+          }
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="space-y-5">
-          <div className="flex items-center justify-between border-b border-border-color pb-3">
-            <h2 className="text-lg font-bold text-text-primary">Tiến độ 4 Module</h2>
-            <Link
-              to="/modules"
-              className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
-            >
-              Chi tiết <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-lg font-bold">Tiến độ 4 Module</CardTitle>
+            <CardAction>
+              <Button variant="link" size="sm" asChild className="h-auto p-0 text-xs font-semibold">
+                <Link to="/modules">
+                  Chi tiết <ArrowRight className="size-3.5" />
+                </Link>
+              </Button>
+            </CardAction>
+          </CardHeader>
 
-          <div className="space-y-4">
+          <CardContent className="space-y-4">
             {modulesData.map((mod) => {
               const modQuestions = allQuestions.filter((q) => q.module === mod.id);
               const answeredMod = modQuestions.filter((q) =>
@@ -165,71 +223,53 @@ export const Dashboard: React.FC = () => {
               return (
                 <div key={mod.id} className="space-y-1.5">
                   <div className="flex items-center justify-between text-xs sm:text-sm">
-                    <span className="font-semibold text-text-primary">
+                    <span className="font-semibold">
                       {mod.code}: {mod.name}
                     </span>
-                    <span className="text-text-secondary">
+                    <span className="text-muted-foreground">
                       {answeredMod}/{modQuestions.length} câu
                     </span>
                   </div>
-                  <ProgressBar percent={percent} height="h-2" />
+                  <Progress value={percent} className="bg-muted" indicatorClassName={progressColor(percent)} />
                 </div>
               );
             })}
-          </div>
+          </CardContent>
         </Card>
 
-        <Card className="space-y-5">
-          <div className="flex items-center justify-between border-b border-border-color pb-3">
-            <h2 className="text-lg font-bold text-text-primary">Xu hướng điểm thi mô phỏng</h2>
-            <span className="text-xs text-text-secondary">Gần đây</span>
-          </div>
-          <ScoreTrendChart results={progress.completedMockTests} />
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-lg font-bold">Xu hướng điểm thi mô phỏng</CardTitle>
+            <CardAction className="text-xs text-muted-foreground">Gần đây</CardAction>
+          </CardHeader>
+          <CardContent>
+            <ScoreTrendChart results={progress.completedMockTests} />
+          </CardContent>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card
-          hoverEffect
-          onClick={() => navigate("/practice")}
-          className="flex items-center gap-4 p-5"
-        >
-          <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-            <PenTool className="w-6 h-6" />
-          </div>
-          <div>
-            <h3 className="font-bold text-sm text-text-primary">Luyện tập trắc nghiệm</h3>
-            <p className="text-xs text-text-secondary mt-0.5">Làm câu hỏi theo module & xem giải thích ngay</p>
-          </div>
-        </Card>
-
-        <Card
-          hoverEffect
-          onClick={() => navigate("/mock-test")}
-          className="flex items-center gap-4 p-5"
-        >
-          <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
-            <Clock className="w-6 h-6" />
-          </div>
-          <div>
-            <h3 className="font-bold text-sm text-text-primary">Đề mô phỏng 90 phút</h3>
-            <p className="text-xs text-text-secondary mt-0.5">Tự động xáo trộn câu hỏi, tính giờ như thi thật</p>
-          </div>
-        </Card>
-
-        <Card
-          hoverEffect
-          onClick={() => navigate("/review")}
-          className="flex items-center gap-4 p-5"
-        >
-          <div className="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center text-rose-500 shrink-0">
-            <RotateCcw className="w-6 h-6" />
-          </div>
-          <div>
-            <h3 className="font-bold text-sm text-text-primary">Ôn lại {incorrectCount} câu sai</h3>
-            <p className="text-xs text-text-secondary mt-0.5">Xem lại lỗi sai & đánh dấu đã ghi nhớ</p>
-          </div>
-        </Card>
+        <QuickLink
+          to="/practice"
+          icon={PenTool}
+          iconClassName="bg-primary/10 text-primary"
+          title="Luyện tập trắc nghiệm"
+          description="Làm câu hỏi theo module & xem giải thích ngay"
+        />
+        <QuickLink
+          to="/mock-test"
+          icon={Clock}
+          iconClassName="bg-brand/10 text-brand"
+          title="Đề mô phỏng 90 phút"
+          description="Tự động xáo trộn câu hỏi, tính giờ như thi thật"
+        />
+        <QuickLink
+          to="/review"
+          icon={RotateCcw}
+          iconClassName="bg-destructive/10 text-destructive"
+          title={`Ôn lại ${incorrectCount} câu sai`}
+          description="Xem lại lỗi sai & đánh dấu đã ghi nhớ"
+        />
       </div>
     </div>
   );

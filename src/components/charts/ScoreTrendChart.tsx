@@ -8,7 +8,7 @@ interface ScoreTrendChartProps {
 export const ScoreTrendChart: React.FC<ScoreTrendChartProps> = ({ results }) => {
   if (results.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-10 text-center text-text-secondary text-sm">
+      <div className="flex flex-col items-center justify-center py-10 text-center text-muted-foreground text-sm">
         Chưa có dữ liệu bài làm đề mô phỏng.
       </div>
     );
@@ -47,7 +47,7 @@ export const ScoreTrendChart: React.FC<ScoreTrendChartProps> = ({ results }) => 
                 <text
                   x={padding - 8}
                   y={y + 4}
-                  fill="var(--text-secondary)"
+                  fill="var(--muted-foreground)"
                   fontSize="10"
                   textAnchor="end"
                 >
@@ -97,7 +97,7 @@ export const ScoreTrendChart: React.FC<ScoreTrendChartProps> = ({ results }) => 
               <text
                 x={p.x}
                 y={p.y - 10}
-                fill="var(--text-primary)"
+                fill="var(--foreground)"
                 fontSize="11"
                 fontWeight="bold"
                 textAnchor="middle"
@@ -108,7 +108,7 @@ export const ScoreTrendChart: React.FC<ScoreTrendChartProps> = ({ results }) => 
           ))}
         </svg>
 
-        <div className="flex justify-between text-xs text-text-secondary mt-2 px-6">
+        <div className="flex justify-between text-xs text-muted-foreground mt-2 px-6">
           <span>Lần 1 ({points[0]?.date})</span>
           {points.length > 1 && <span>Lần gần nhất ({points[points.length - 1]?.date})</span>}
         </div>

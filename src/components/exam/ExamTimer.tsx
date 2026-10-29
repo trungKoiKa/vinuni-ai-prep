@@ -1,7 +1,8 @@
 import React from "react";
 import { Clock, AlertTriangle } from "lucide-react";
+import { cn } from "cn";
 import { formatTime } from "../../lib/scoring";
-import { clsx } from "clsx";
+import { Badge } from "@/components/ui/badge";
 
 interface ExamTimerProps {
   remainingSec: number;
@@ -11,26 +12,21 @@ export const ExamTimer: React.FC<ExamTimerProps> = ({ remainingSec }) => {
   const is10MinWarning = remainingSec <= 600 && remainingSec > 300;
   const is5MinDanger = remainingSec <= 300;
 
-  let timerContainerStyle = "bg-bg-surface border-border-color text-text-primary";
-  let icon = <Clock className="w-4 h-4 text-primary" />;
-
-  if (is5MinDanger) {
-    timerContainerStyle = "bg-rose-500/10 border-rose-500/30 text-rose-600 dark:text-rose-400 animate-pulse-subtle font-bold";
-    icon = <AlertTriangle className="w-4 h-4 text-rose-500 animate-bounce" />;
-  } else if (is10MinWarning) {
-    timerContainerStyle = "bg-amber-500/10 border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold";
-    icon = <AlertTriangle className="w-4 h-4 text-amber-500" />;
-  }
-
   return (
-    <div
-      className={clsx(
-        "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-sm shadow-xs transition-colors",
-        timerContainerStyle
+    <Badge
+      variant={is5MinDanger ? "danger" : is10MinWarning ? "warning" : "outline"}
+      className={cn(
+        "px-3.5 py-1.5 gap-2 text-sm [&>svg]:size-4",
+        is5MinDanger && "animate-pulse-subtle font-bold",
+        is10MinWarning && "font-bold"
       )}
     >
-      {icon}
+      {is5MinDanger || is10MinWarning ? (
+        <AlertTriangle className={cn(is5MinDanger && "animate-bounce")} />
+      ) : (
+        <Clock className="text-primary" />
+      )}
       <span className="font-mono text-base tracking-wider">{formatTime(remainingSec)}</span>
-    </div>
+    </Badge>
   );
 };

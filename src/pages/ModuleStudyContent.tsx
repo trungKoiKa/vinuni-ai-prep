@@ -1,11 +1,14 @@
 import React from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
+import { cn } from "cn";
 import { studyGuides } from "../data/studyContent";
 import { modulesData } from "../data/modules";
 import type { ModuleId } from "../types/question";
-import { Card } from "../components/ui/Card";
-import { Button } from "../components/ui/Button";
 import { MathText } from "../components/ui/MathText";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, PenTool, Lightbulb, AlertTriangle, Code } from "lucide-react";
 
 export const ModuleStudyContent: React.FC = () => {
@@ -17,113 +20,108 @@ export const ModuleStudyContent: React.FC = () => {
   const modMeta = modulesData.find((m) => m.id === activeModuleId)!;
 
   return (
-    <div className="space-y-8 animate-fade-in">
-      <div className="flex items-center justify-between gap-4 border-b border-border-color pb-4">
-        <div className="flex items-center gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigate("/modules")}
-            icon={<ArrowLeft className="w-4 h-4" />}
-          >
-            Danh sách Module
-          </Button>
-        </div>
+    <div className="space-y-8 animate-in fade-in duration-200">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b pb-4">
+        <Button variant="outline" size="sm" onClick={() => navigate("/modules")}>
+          <ArrowLeft />
+          Danh sách Module
+        </Button>
 
-        <Button
-          variant="primary"
-          size="sm"
-          onClick={() => navigate(`/practice/${activeModuleId}`)}
-          icon={<PenTool className="w-4 h-4" />}
-        >
+        <Button size="sm" onClick={() => navigate(`/practice/${activeModuleId}`)}>
+          <PenTool />
           Luyện tập ngay câu hỏi {modMeta.code}
         </Button>
       </div>
 
-      <div className="flex items-center gap-2 border-b border-border-color overflow-x-auto pb-2">
+      <nav className="flex items-center gap-2 border-b overflow-x-auto pb-2">
         {modulesData.map((m) => (
-          <Link
+          <NavLink
             key={m.id}
             to={`/modules/${m.id}/study`}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition-colors border ${
-              m.id === activeModuleId
-                ? "bg-primary text-white border-primary shadow-sm"
-                : "bg-bg-surface text-text-secondary border-border-color hover:bg-bg-surface-hover"
-            }`}
+            className={cn(
+              buttonVariants({ variant: m.id === activeModuleId ? "default" : "outline" }),
+              "font-semibold"
+            )}
           >
             {m.code}: {m.name}
-          </Link>
+          </NavLink>
         ))}
-      </div>
+      </nav>
 
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-bg-surface to-bg-surface-hover border border-border-color space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary">
-          <BookOpen className="w-3.5 h-3.5" />
-          <span>Tài liệu ôn tập chuẩn hóa</span>
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-          {guide.title}
-        </h1>
-        <p className="text-sm sm:text-base text-text-secondary leading-relaxed max-w-3xl">
+      <div className="p-6 rounded-3xl bg-linear-to-r from-card to-muted border space-y-3">
+        <Badge variant="soft" className="px-3 py-1 font-bold">
+          <BookOpen />
+          Tài liệu ôn tập chuẩn hóa
+        </Badge>
+        <h1 className="text-2xl sm:text-3xl font-extrabold">{guide.title}</h1>
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
           <MathText text={guide.overview} />
         </p>
       </div>
 
       <div className="space-y-6">
         {guide.topics.map((topic, idx) => (
-          <Card key={idx} className="space-y-4 p-6">
-            <h2 className="text-lg font-bold text-text-primary flex items-center gap-2">
-              <span className="w-2 h-6 rounded-full bg-primary inline-block" />
-              {topic.title}
-            </h2>
+          <Card key={idx}>
+            <CardHeader>
+              <CardTitle className="text-lg font-bold flex items-center gap-2">
+                <span className="w-2 h-6 rounded-full bg-primary inline-block" />
+                {topic.title}
+              </CardTitle>
+            </CardHeader>
 
-            <div className="text-sm sm:text-base text-text-primary leading-relaxed">
-              <MathText text={topic.summary} />
-            </div>
-
-            {topic.keyFormulas && topic.keyFormulas.length > 0 && (
-              <div className="p-4 rounded-xl bg-primary/5 border border-primary/15 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-wider">
-                  <Lightbulb className="w-4 h-4" />
-                  <span>Công thức & Nguyên lý cốt lõi</span>
-                </div>
-                <ul className="list-disc list-inside text-sm text-text-primary space-y-1.5 font-mono">
-                  {topic.keyFormulas.map((f, i) => (
-                    <li key={i}>
-                      <MathText text={f} />
-                    </li>
-                  ))}
-                </ul>
+            <CardContent className="space-y-4">
+              <div className="text-sm sm:text-base leading-relaxed">
+                <MathText text={topic.summary} />
               </div>
-            )}
 
-            {topic.codeExample && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  <Code className="w-4 h-4" />
-                  <span>Mã nguồn ví dụ Python</span>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-900 text-slate-100 font-mono text-xs sm:text-sm overflow-x-auto border border-slate-800">
-                  <pre className="m-0 leading-relaxed font-mono">{topic.codeExample}</pre>
-                </div>
-              </div>
-            )}
+              {topic.keyFormulas && topic.keyFormulas.length > 0 && (
+                <Alert variant="info">
+                  <Lightbulb />
+                  <AlertTitle className="text-xs font-bold uppercase tracking-wider">
+                    Công thức & Nguyên lý cốt lõi
+                  </AlertTitle>
+                  <AlertDescription>
+                    <ul className="list-disc list-inside space-y-1.5 font-mono">
+                      {topic.keyFormulas.map((f, i) => (
+                        <li key={i}>
+                          <MathText text={f} />
+                        </li>
+                      ))}
+                    </ul>
+                  </AlertDescription>
+                </Alert>
+              )}
 
-            {topic.commonPitfalls && topic.commonPitfalls.length > 0 && (
-              <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
-                  <AlertTriangle className="w-4 h-4" />
-                  <span>Lỗi sai thường gặp</span>
+              {topic.codeExample && (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                    <Code className="size-4" />
+                    <span>Mã nguồn ví dụ Python</span>
+                  </div>
+                  <div className="p-4 rounded-lg bg-slate-900 text-slate-100 font-mono text-xs sm:text-sm overflow-x-auto border border-slate-800">
+                    <pre className="m-0 leading-relaxed font-mono">{topic.codeExample}</pre>
+                  </div>
                 </div>
-                <ul className="list-disc list-inside text-sm text-text-primary space-y-1">
-                  {topic.commonPitfalls.map((p, i) => (
-                    <li key={i}>
-                      <MathText text={p} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+              )}
+
+              {topic.commonPitfalls && topic.commonPitfalls.length > 0 && (
+                <Alert className="border-destructive/20 bg-destructive/10 text-destructive *:data-[slot=alert-description]:text-foreground">
+                  <AlertTriangle />
+                  <AlertTitle className="text-xs font-bold uppercase tracking-wider">
+                    Lỗi sai thường gặp
+                  </AlertTitle>
+                  <AlertDescription>
+                    <ul className="list-disc list-inside space-y-1">
+                      {topic.commonPitfalls.map((p, i) => (
+                        <li key={i}>
+                          <MathText text={p} />
+                        </li>
+                      ))}
+                    </ul>
+                  </AlertDescription>
+                </Alert>
+              )}
+            </CardContent>
           </Card>
         ))}
       </div>

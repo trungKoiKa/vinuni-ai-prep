@@ -6,7 +6,7 @@ import { MobileNav } from "./MobileNav";
 
 export const AppShell: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-bg-base text-text-primary transition-colors">
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors">
       <TopBar />
 
       <div className="flex flex-1">
